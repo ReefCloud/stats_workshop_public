@@ -1,0 +1,172 @@
+---
+title: "Installation instructions"
+author: "Murray Logan"
+date: today
+date-format: "DD/MM/YYYY"
+format: 
+  html:
+    ## Format
+    theme: spacelab
+    css: ../resources/ws_style.css
+    html-math-method: mathjax
+    ## Table of contents
+    toc: true
+    toc-float: true
+    ## Numbering
+    number-sections: true
+    number-depth: 3
+    ## Layout
+    fig-caption-location: "bottom"
+    fig-align: "center"
+    fig-width: 4
+    fig-height: 4
+    fig-dpi: 72
+    tbl-cap-location: top
+    ## Code
+    code-fold: false
+    code-tools: true
+    code-summary: "Show the code"
+    code-line-numbers: true
+    code-block-border-left: "#ccc"
+    highlight-style: zenburn
+    ## Execution
+    execute:
+      echo: true
+      cache: true
+    ## Rendering
+    embed-resources: true
+crossref:
+  fig-title: '**Figure**'
+  fig-labels: arabic
+  tbl-title: '**Table**'
+  tbl-labels: arabic
+engine: knitr
+output_dir: "docs"
+documentclass: article
+fontsize: 12pt
+mainfont: Arial
+mathfont: LiberationMono
+monofont: DejaVu Sans Mono
+classoption: a4paper
+bibliography: ../resources/references.bib
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+knitr::opts_chunk$set(cache.lazy = FALSE,
+                      tidy = "styler")
+options(tinytex.engine = "xelatex")
+```
+
+
+# R
+
+All participants will require a relatively recent version of R (>=
+4.2.2)
+
+To install R, go to the following URL (<https://cran.r-project.org/>)
+and follow the appropriate link to download R (in the section on
+*Download and Install R*.
+
+- from the list of Subdirectories, chose **base**
+- click on the link that begins with **Download R-4.**
+
+Windows and Mac users most likely want to download the precompiled
+binaries downloadable from the link above, not the source code. The
+sources have to be compiled before you can use them. If you do not
+know what this means, you probably do not want to do it!
+
+# A code editor (such as RStudio)
+
+If you do not have any other code editor that you prefer to use, I
+would suggest Rstudio
+<https://www.rstudio.com/products/rstudio/download/>.
+
+- download and install the appropriate version for your system.
+
+This is a good Integrated Development Environment for R.
+
+Other useful editors include:
+
+- vim
+- emacs
+- vscode
+
+# git (for version control)
+
+In order to access and manipulate the course materials, you will also
+need **git**. Git is a distributed code versioning tool and github is
+a remote repository store for git repositories.
+
+Git can be downloaded from
+<https://git-scm.com/downloads>. Follow the links according to the
+operating system you are using.
+
+It is also advisable that you have a free
+github account: <https://github.com/>.
+
+
+# Rtools (Windows only)
+
+- <https://cran.r-project.org/bin/windows/Rtools/>
+- click on the Rtools version that matches the major version of R you
+  are using.
+- click on the installer link  
+
+# Xcode (MacOSX only)
+
+Follow instructions for installing Xcode on your system (if you do not
+already have it). Xcode are a suite of developer tools packaged up by
+apple for their operating systems.
+
+# Rstan
+
+::: {.callout-important}
+It is important that the next steps be performed in a vanilla R
+session (e.i. NOT within Rstudio) and with a completely empty
+environment.
+:::
+
+To install rstan (an implementation of the STAN Bayesian modelling
+language along with R interface wrappers), issue the following command
+in the R console.
+
+```{r}
+#| label: rstan
+#| eval: false
+install.packages("rstan", repos = "https://cloud.r-project.org/", dependencies = TRUE)
+```
+
+To test this installation, issue the following (again in the R console).
+
+```{r}
+#| label: rstan1
+#| eval: false
+library(rstan)
+example(stan_model, package = "rstan", run.dontrun = TRUE)
+```
+
+# BRMS
+
+`brms` is an R package that provides a more familiar R model fitting
+interface to `STAN`.
+
+Again, from a vanilla R session, issue the following:
+
+```{r}
+#| label: brms
+#| eval: false
+install.packages("brms", repos = "https://cloud.r-project.org/", dependencies = TRUE)
+```
+
+To test this installation, issue the following (again in the R console).
+
+```{r}
+#| label: brms1
+#| eval: false
+library(brms)
+dat <- data.frame(y = rnorm(10), x = rnorm(10))
+brm(y ~ x, data = dat)
+```

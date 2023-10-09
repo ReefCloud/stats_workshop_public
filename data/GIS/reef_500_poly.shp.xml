@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+	<idinfo>
+		<descript>
+			<abstract>Reef locations are based on 500 meter resolution gridded data (converted
+to polygon) reflecting shallow, tropical coral reefs of the world.
+Organizations contributing to the data and development of the map
+include the Institute for Marine Remote Sensing, University of South
+Florida (IMaRS/USF), Institut de Recherche pour le D&amp;eacute;veloppement
+(IRD), UNEP-WCMC, The World Fish Center, and WRI. The composite data set
+was compiled from multiple sources, incorporating products from the
+Millennium Coral Reef Mapping Project prepared by IMaRS/USF and IRD.</abstract>
+			<purpose>Global map of shallow, tropical coral reefs, gridded at 500-m resolution for use in the Reefs at Risk Revisited project.</purpose>
+			<supplinf/>
+		</descript>
+		<useconst>Data set is not for use in litigation. While efforts have been made to ensure that these data are accurate and reliable, WRI cannot assume liability for any damages or misrepresentations caused by any inaccuracies in the data, or as a result of the data used on a particular system. WRI makes no warranty, expressed or implied, nor does the fact of distribution constitute such a warranty.</useconst>
+		<datacred>Institute for Marine Remote Sensing, University of South Florida (IMaRS/USF), Institut de Recherche pour le Développement (IRD), UNEPWCMC, The WorldFish Center and WRI, 2011. Global coral reefs composite data set compiled from multiple sources, incorporating products from the Millennium Coral Reef Mapping Project prepared by IMaRS/USF and IRD.</datacred>
+		<citation>
+			<citeinfo>
+				<title>Tropical Coral Reefs of the World</title>
+				<pubdate/>
+				<othercit>&lt;div&gt;Burke, L., K. Reytar, M. Spalding, and A. Perry. Reefs at Risk
+  Revisited.  (Washington, DC, USA: World Resources Institute, 2011).&amp;nbsp;&lt;/div&gt;
+&lt;div&gt;
+  &lt;br /&gt;&lt;/div&gt;
+&lt;div&gt;Online linkages:&amp;nbsp;&lt;a
+    href="http://www.wri.org/reefs"&gt;www.wri.org/reefs&lt;/a&gt;&amp;nbsp;and&amp;nbsp;&lt;a
+    href="http://imars.usf.edu/MC/index.html" style="font-weight: inherit;font-style: inherit;vertical-align: baseline;"&gt;http://imars.usf.edu/MC/index.html&lt;/a&gt;&lt;/div&gt;</othercit>
+				<origin>World Resources Institute</origin>
+				<onlink>http://app.databasin.org/app/pages/datasetPage.jsp?id=b983863c0a1a41e8839383b40ade437d</onlink>
+				<pubinfo>
+					<publish/>
+					<pubplace/>
+				</pubinfo>
+			</citeinfo>
+		</citation>
+		<ptcontac>
+			<cntinfo>
+				<cntperp>
+					<cntper>GIS Data Manager, World Resources Institute (reefsatrisk@wri.org)</cntper>
+					<cntorg>World Resources Institute</cntorg>
+				</cntperp>
+			</cntinfo>
+		</ptcontac>
+		<status>
+			<progress/>
+			<update/>
+		</status>
+		<timeperd>
+			<timeinfo>
+				<sngdate>2011</sngdate>
+				<current/>
+			</timeinfo>
+		</timeperd>
+		<keywords/>
+		<spdom>
+			<bounding>
+				<northbc>32.5180770936159</northbc>
+				<eastbc>179.9999885408441</eastbc>
+				<southbc>-32.04143611566038</southbc>
+				<westbc>-179.9999885408441</westbc>
+			</bounding>
+		</spdom>
+	</idinfo>
+	<dataqual>
+		<attracc>
+			<attraccr/>
+		</attracc>
+		<complete/>
+		<lineage/>
+	</dataqual>
+	<eainfo>
+		<detailed>
+			<attr>
+				<attrlabl>FID</attrlabl>
+				<attalias>FID</attalias>
+				<attrdef>Internal feature number.</attrdef>
+				<attrdomv/>
+			</attr>
+			<attr>
+				<attrlabl>Shape</attrlabl>
+				<attalias>Shape</attalias>
+				<attrdef>Feature geometry.</attrdef>
+				<attrdomv/>
+			</attr>
+			<attr>
+				<attrlabl>GRIDCODE</attrlabl>
+				<attalias>GRIDCODE</attalias>
+				<attrdef>Coral Reefs</attrdef>
+				<attrdomv/>
+			</attr>
+		</detailed>
+	</eainfo>
+	<distinfo>
+		<resdesc>Tropical Coral Reefs of the World</resdesc>
+		<distrib>
+			<cntinfo>
+				<cntorgp>
+					<cntorg>Data Basin (www.databasin.org)</cntorg>
+				</cntorgp>
+				<cntemail>databasin@consbio.org</cntemail>
+				<cntorgp/>
+			</cntinfo>
+			<cntinfo/>
+			<cntinfo/>
+		</distrib>
+		<stdorder>
+			<digform>
+				<digtopt>
+					<onlinopt>
+						<computer>
+							<networka>
+								<networkr>http://app.databasin.org/app/pages/datasetPage.jsp?id=b983863c0a1a41e8839383b40ade437d</networkr>
+							</networka>
+						</computer>
+					</onlinopt>
+				</digtopt>
+			</digform>
+		</stdorder>
+	</distinfo>
+	<Esri><CreaDate>20110515</CreaDate><CreaTime>04454400</CreaTime><ArcGISFormat>1.0</ArcGISFormat><SyncOnce>TRUE</SyncOnce><DataProperties><itemProps><itemLocation><linkage Sync="TRUE">file://\\IP-0A5317A4\C\arcgisserver\services\im2\b983863c0a1a41e8839383b40ade437d\b983863c0a1a41e8839383b40ade437d\commondata\data0\reef_500_poly</linkage><protocol Sync="TRUE">Local Area Network</protocol></itemLocation></itemProps><copyHistory><copy source="C:\arcgisserver\services\im2\b983863c0a1a41e8839383b40ade437d\commondata\data0\reef_500_poly" dest="\\IP-0A5317A4\C\arcgisserver\services\im2\b983863c0a1a41e8839383b40ade437d\b983863c0a1a41e8839383b40ade437d\commondata\data0\reef_500_poly" date="20110515" time="04454400"></copy></copyHistory></DataProperties></Esri></metadata>

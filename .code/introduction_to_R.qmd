@@ -1,0 +1,1756 @@
+---
+title: "Introduction to R"
+author: "Murray Logan"
+date: today
+date-format: "DD/MM/YYYY"
+format: 
+  html:
+    ## Format
+    theme: spacelab
+    css: ../resources/ws_style.css
+    html-math-method: mathjax
+    ## Table of contents
+    toc: true
+    toc-float: true
+    ## Numbering
+    number-sections: true
+    number-depth: 3
+    ## Layout
+    fig-caption-location: "bottom"
+    fig-align: "center"
+    fig-width: 4
+    fig-height: 4
+    fig-dpi: 72
+    tbl-cap-location: top
+    ## Code
+    code-fold: false
+    code-tools: true
+    code-summary: "Show the code"
+    code-line-numbers: true
+    code-block-border-left: "#ccc"
+    highlight-style: zenburn
+    ## Execution
+    execute:
+      echo: true
+      cache: false
+    ## Rendering
+    embed-resources: true
+crossref:
+  fig-title: '**Figure**'
+  fig-labels: arabic
+  tbl-title: '**Table**'
+  tbl-labels: arabic
+engine: knitr
+output_dir: "docs"
+documentclass: article
+fontsize: 12pt
+mainfont: Arial
+mathfont: LiberationMono
+monofont: DejaVu Sans Mono
+classoption: a4paper
+bibliography: ../resources/references.bib
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+knitr::opts_chunk$set(cache.lazy = FALSE,
+                      tidy = "styler")
+options(tinytex.engine = "xelatex")
+```
+
+# Basic syntax
+
+## The R environment and command line / console
+
+Upon opening R, you are presented with the R Console along with the
+command prompt (`<`). R is a command driven application (as opposed to
+a 'point-and-click' application) and despite the steep learning curve,
+there are many very good reasons for this.
+
+Commands that you type are evaluated once the **Enter** (return) key
+has been pressed
+
+Lets start by evaluating the following command (5+1) at the command
+prompt (<);
+
+::: {.callout-important}
+Although the command we have issued has been evaluated, the code
+itself has not been captured in a file. Evaluating code in the console
+such as this is useful for testing out code, however, in order to have
+the code preserved for future runs, it must be included in a savable
+document such as an R script or quarto document.
+:::
+
+From now on, we will instead issue all commands via quarto chunks.
+That way we can ensure that the complete analysis pipeline has been
+recorded.
+
+To get us started, I will create the first chunk for you...
+
+Recall that in R:
+
+- anything that starts with a `#` is considered a comment and will not
+  be evaluated by R
+- inside a code chunk, `#|` indicates a chunk setting - in this case,
+  we have just set a label (name) for the chunk
+
+To evaluate this chunk do one of the following:
+
+- place the cursor somewhere on the line containing the R code to be
+  evaluated and hit **Cntr Enter** (that is the Cntrl key and the
+  Enter key at the same time)
+- click the green down-facing triangle to the far upper-right hand
+  side of the chunk
+
+Either of these actions will echo the evaluated result to both the R
+console and to a space directly under the code chunk.
+
+```{r}
+#| label: code 1
+5+1
+```
+
+In the output the `[1]` signifies that the item to its right is the
+_first_ item/element returned. In this case there is only one object
+returned. However, when a large set of objects (e.g. numbers) are
+returned, the output will wrap across multiple lines, each of which
+will start with an index number thereby making it easier to count
+through the elements.
+
+### Important definitions
+
+| Thing         | Definition                                                                                                                                                        |
+|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Object**    | As an object oriented language, everything in R is an object. Data, functions even output are objects.                                                            |
+| **Vector**    | A collection of one or more objects of the same type (e.g. all numbers or all characters).                                                                        |
+| **Function**  | A set of instructions carried out on one or more objects. Functions are typically wrappers for a sequence of instructions that perform specific and common tasks. |
+| **Parameter** | The kind of information passed to a function.                                                                                                                     |
+| **Argument**  | The specific information passed to a function                                                                                                                     |
+| **Operator**  | **Assignment operators**                                                                                                                                          |
+|               | `<-`	Assigning a name (left) to an object (right)                                                                                                                |
+|               | `->`	Assigning a name (right) to an object (left)                                                                                                                |
+|               | `=`  Used when defining and specifying function argments                                                                                                          |
+|               | **Logical operators (return TRUE or FALSE)**                                                                                                                      |
+|               | `<`  Less than                                                                                                                                                    |
+|               | `>`  Greater than                                                                                                                                                 |
+|               | `<=` Less than or equal                                                                                                                                           |
+|               | `>=` Greater than or equal                                                                                                                                        |
+|               | `==` Is the left hand side equal to that of the right hand side (a query)                                                                                         |
+|               | `!=` Is the left hand side **NOT** equal to that of the right hand side (a query)                                                                                 |
+|               | `&&` Are **BOTH** left hand and right hand conditions `TRUE`                                                                                                      |
+|               | `||` Are **EITHER** the left hand **OR** right hand conditions `TRUE`                                                                                             |
+|               | `|>` The native **pipe** operator that passes output from one function to the input of another                                                                    |
+: {.table-pretty}
+
+### Expressions, Assignment and Arithmetic
+
+Instead of evaluating a statement and printing the result directly to
+the console (or temporarily embedding in the quarto document), the
+results of evaluations can be stored in an object via a process called
+'Assignment'. Assignment assigns a name to an object and stores the
+result of an evaluation in that object. The contents of an object can
+be viewed (printed) by typing the name of the object at the command
+prompt and hitting Enter.
+
+Create a chunk to include the following:
+
+```
+VAR1 <- 2 + 3
+VAR1
+```
+
+```{r, mhidden=TRUE}
+#| label: code 2
+VAR1 <- 2 + 3
+VAR1
+```
+
+Command can also be spread across multiple lines. Create a chunk with
+the following:
+
+```
+VAR2 <- 
+  2 + 3
+VAR2
+```
+
+```{r, mhidden=TRUE}
+#| label: code 3
+VAR2 <-
+  2 + 3
+VAR2
+```
+
+::: {.callout-note}
+Notice that since R code is evaluated one line at a time, when the
+above is evaluated, the command prompt on the second line (`+`)
+indicates that the R interpreter does not yet consider the command
+complete and it is prompting you to add more code in order to complete
+the syntax.
+:::
+
+From this point on, I will not be providing snippets of code embedded
+in this document that you can simply cut and past. Instead, I will
+provide the code via a live editing session thereby forcing you to
+type out code and gain a better feel for the syntax and the kinds of
+typographical errors you are prone to making.
+
+When the contents of an object are numbers, standard arithmetic
+applies:
+
+
+```{r, mhidden=TRUE}
+#| label: code 4
+VAR2 - 1
+ANS1 <- VAR1 * VAR2
+ANS1
+```
+
+Objects can be concatenated (joined together) to create objects with
+multiple entries. Object concatenation is performed using the c()
+function.
+
+```{r, mhidden=TRUE}
+#| label: code 5
+c(1,2,6)
+c(VAR1,VAR2)
+```
+
+In addition to the typical addition, subtraction, multiplication and
+division operators, there are a number of special operators, the
+simplest of which are the quotient or integer divide operator (`%/%`)
+and the remainder or modulus operator (`%%`).
+
+
+```{r, mhidden=TRUE}
+#| label: code 6
+7/3
+7 %/% 3
+7 %% 3
+```
+
+### Operator precedence
+
+The rules of operator precedence are listed (highest to lowest) in the
+following table. Additionally, expressions within parentheses `()`
+always have highest precedence.
+
+| Operator                    | Description                                              |
+|-----------------------------|----------------------------------------------------------|
+| `[` or `[[`                 | indexing                                                 |
+| `::`                        | namespace                                                |
+| `$`                         | an element of an object                                  |
+| `^`                         | exponentiation (evaluated right to left)                 |
+| `-` `+`                     | sign (urary)                                             |
+| `:`                         | sequence                                                 |
+| `%special%`                 | special operators such as `%/%`, `%%`, `%*%`, `%in%` etc |
+| `*` `/`                     | multiplication and division                              |
+| `+` `-`                     | addition and subtraction                                 |
+| `>` `<` `>=` `<=` `==` `!=` | ordering and comparison                                  |
+| `!`                         | logical negation (NOT)                                   |
+| `&` `&&`                    | logical AND                                              |
+| `|` `||`                 | logical AND                                              |
+| `~`                         | formula                                                  |
+| `->` `->>`                  | assignment (left to right)                               |
+| `=`                         | assignment (right to left)                               |
+| `<-` `<<-`                  | assignment (left to right)                               |
+| `?`                         | help                                                         |
+
+: {.table-pretty}
+
+### Command history
+
+Each time a command is entered at the R command prompt (or issued from
+code), the command is also added to a list known as the command
+history. Within the R console, the up and down arrow keys scroll backward and forward
+respectively through the session's command history list and place the
+top most command at the current R command prompt. Scrolling through
+the command history enables previous commands to be rapidly
+re-executed, reviewed or modified and executed.
+
+In addition, Rstudio keeps a log of the command in the **History tab**.
+
+### Object names
+
+Everything created within R are objects. Objects are programming
+constructs that not only store values (the visible part of an object),
+they also define other properties of the object (such as the type of
+information contained in the object) and sometimes they also define
+certain routines that can be used to store, retrieve and manipulate
+data within the object.
+
+Importantly, all objects within R must have unique names to which they
+can be referred. Names given to any object in R can comprise virtually
+any sequence of letters and numbers providing that the following rules
+are adhered to:
+
+- Names should begin with a letter (names beginning with numbers or
+  operators are not permitted)
+- Names cannot contain the following characters; space `,` `-` `+` `*`
+  `/` `#` `%` `&` `[` `]` `{` `}` `(` `)` `~`
+
+If it is absolutely necessary to include a special character in a
+name, then this can be accommodated by back quoting the name. For
+example:
+
+```{r, mhidden=TRUE}
+#| label: code 7
+`density (#/m2)` <- 10.5
+`density (#/m2)`
+```
+
+Whilst the above rules are necessary, the following naming
+conventions are also recommended:
+
+- Since names cannot include spaces, separate words in a name by an
+  underscore (`_`)
+- Avoid names that are the names of common predefined functions as
+  this can provide a source of confusion for both you and R. For
+  example, to represent the mean of a head length variable, use
+  something like `mean_head_length` or `MeanHeadLength` (preferably
+  the former) rather than `mean` (which is the name of a predefined
+  function within R that calculates the mean of a set of numbers).
+- Names should reflect the content of the object. One of the powerful
+  features of R is that there is virtually no limit to the number of
+  objects (variables, datasets, results, models, etc) that can be in
+  use at a time. However, without careful name management, objects can
+  rapidly become misplaced or ambiguous. Therefore, the name of an
+  object should reflect what it is, and what has happened to it. For
+  example, the name `log_fish_wts` might be given to an object that
+  contains log transformed fish weights. Moreover, many prefer to
+  prefix the object name with a lowercase letter that denotes the type
+  of data containing in the object. For example, `d_mean_head_length`
+  might indicate that the object contains the mean head lengths stored
+  as a double floating point (real numbers).
+- Although there are no restrictions on the length of names, shorter
+  names are quicker to type and provide less scope for typographical
+  errors and are therefore recommended (of course within the
+  restrictions of the point above). Counter to this point is the fact
+  that any good R code editor will include **code completion** - this
+  is when the editor pops up suggested entries based on what possible
+  candidates match what you have already began to type
+
+Lets heed this advise and create one more object to represent the
+number of fish counted on a transect.
+
+```{r, mhidden=TRUE}
+#| label: code 8
+fish_count <- 14
+fish_count
+```
+
+
+### Sessions and workspaces
+
+A number of objects have been created in the current session (a
+session encapsulates all the activity since the current instance of
+the R application was started). To review the names of all of the
+objects in the users current workspace (storage of user created
+objects):
+
+```{r, mhidden=TRUE}
+#| label: code 9
+ls()
+```
+
+From the above output, ignore the element 'has_annotations' (if it is
+present) - this object is involved in the production of this worksheet!
+
+Note, the [5] indicating that the second row of output starts with the
+fifth element of the output.
+
+You can also refine the scope of the `ls()` function to search for
+object names that match a **regular expression** (pattern):
+
+```{r, mhidden=TRUE}
+#| label: code 10
+ls(pat = "VAR")
+ls(pat = "A.*1")
+```
+
+The list of objects created in the session is also echoed in the
+**Environment tab** of Rstudio.
+
+
+The longer the session is running, the more objects will be created
+resulting in a very cluttered workspace. Unneeded objects can be
+removed using the `rm()` function:
+
+```{r, mhidden=TRUE}
+#| label: code 11
+rm(VAR1,VAR2)  #remove the VAR1 and VAR2 objects
+rm(list=ls())  #remove all user defined objects
+ls()           #confirm that all objects have been removed
+```
+
+### Current working directory
+
+The R working directory (location from which files/data are read and
+written) is by default, the location of the R executable (or execution
+path in Linux). The current working directory can be reviewed and
+changed (for the session) using the `getwd()` function and `setwd()`
+functions respectively. 
+
+::: {.callout-important}
+Note that R uses the Unix/Linux style directory subdivision markers.
+That is, R uses the forward slash `/` in path names rather than the
+regular `\` of Windows.
+:::
+
+```{r, mhidden=TRUE}
+#| label: code 12
+getwd()
+list.files(path = getwd())
+list.files(path = "../")
+```
+
+### Workspaces
+
+Throughout an R session, all objects (including loaded packages, see
+below) that have been added are stored within the R global
+environment, called the workspace. Occasionally, it is desirable to
+save the workspace and thus all those objects (vectors, functions,
+etc) that were in use during a session so that they are automatically
+available during subsequent sessions. This can be done using the
+`save.image()` function. Note, this will save the workspace to a file
+called `.RData` in the current working directory (usually the R
+startup directory), unless a filename (and path) is supplied as an
+argument to the `save.image()` function. A previously saved workspace
+can be loaded by providing a full path and filename as an argument to
+the `load()` function. Whilst saving a workspace image can sometimes
+be convenient, it can also contribute greatly to organizational
+problems associated with large numbers of obsolete or undocumented
+objects. Instead, it is usually better to specifically store each of
+the objects you know you are going to want to have access to across
+sessions separately.
+
+### Quitting R elegantly
+
+To quit R, issue the following command. Note in Windows and MacOSX,
+the application can also be terminated using the standard Exiting
+protocols.
+
+When you issue the following expression in the R console (or quit via
+menus/buttons) you will then be asked whether or not you wish to save
+the current workspace. If you do, enter 'Y' otherwise enter 'N'.
+Unless you have a very good reason to save the workspace, I would
+suggest that you do not. A workspace generated in a typical session
+will have numerous poorly named objects (objects created to
+temporarily store information whilst testing). Next time R starts, it
+could restore this workspace thereby starting with a cluttered
+workspace, but becoming a potential source of confusion if you
+inadvertently refer to an object stored during a previous session.
+
+If you really do want to save the current workspace, do you yourself
+manually via the `save.image()` function and provide a path and name
+for the resulting file. This way it is not always reloaded each time
+you open a new R session which can pollute the session before you even
+start and lead to difficult downstream issues.
+
+::: {.callout-important}
+Do not include the following in an R script or quarto document, this
+is purely for quitting interactive sessions.
+:::
+
+```{r, mhidden=TRUE}
+#| label: code 13
+#| eval: false
+q()
+```
+
+## Functions
+
+As wrappers for collections of commands used together to perform a
+task, _functions_ provide a convenient way of interacting with all of
+these commands in sequence. Most functions require one or more inputs
+(**parameters**), and while a particular function can have multiple
+parameters, not all are necessarily required (some could have default
+values). Parameters are parsed to a function as an argument comprising
+the name of the parameter, an equals operator and the value of the
+parameter. Hence, arguments are specified as name-value pairs.
+
+Consider the `seq()` function, which generates a sequence of values (a
+vector) according to the values of the arguments. This function has
+the following definition:
+
+```{r, mhidden=TRUE}
+#| label: code 14
+#| eval: false
+function (from=1, to=1, by=((to - from)/(length.out - 1)), length.out=NULL, along.with=NULL, ...)
+```
+
+- If the `seq()` function is called without any arguments (e.g. `seq()`),
+  it will return a single number 1. Using the default arguments for
+  the function, it returns a vector starting at 1 (`from = 1`), going up
+  to 1 (`to = 1`) and thus having a length of 1.
+- We can alter this behavior by specifically providing values for the
+  named arguments. The following generates a sequence of numbers from
+  2 to 10 incrementing by 1 (default):
+
+
+```{r, mhidden=TRUE}
+#| label: code 15
+seq(from = 2, to = 10)
+```
+
+- The following generates a sequence of numbers from 2 to 10
+  incrementing by 2;
+
+```{r, mhidden=TRUE}
+#| label: code 16
+seq(from = 2, to = 10, by = 2)
+```
+
+- Alternatively, instead of manipulating the increment space of the
+  sequence, we could specify the desired length of the sequence
+
+```{r, mhidden=TRUE}
+#| label: code 17
+seq(from = 2, to = 10, length.out = 3)
+```
+
+- Named arguments need not include the full name of the parameter, so
+  long as it is unambiguous which parameter is being referred to. For
+  example, length.out could be shortened to just l since there are no
+  other parameters of this function that start with 'l';
+
+```{r, mhidden=TRUE}
+#| label: code 18
+seq(from = 2, to = 10, l = 4)
+```
+
+Parameters can also be specified as unnamed arguments provided they
+are in the order specified in the function definition. For example to
+generate a sequence of numbers from 2 to 10 incrementing by 2
+
+```{r, mhidden=TRUE}
+#| label: code 19
+seq(2, 10, 2)
+```
+
+- Named and unnamed arguments can be mixed, just remember the above
+  rules about parameter order and unambiguous names
+
+```{r, mhidden=TRUE}
+#| label: code 20
+seq(2, 10, l = 4)
+```
+
+### Function overloading (polymorphism)
+
+Many routines (functions) can be applied to different sorts of data.
+That is, they are somewhat generic. For example, we could calculate
+the mean (arithmetic center) of a set of numbers or we could calculate
+the mean of a set of dates or times. Whilst the calculations in both
+cases are analogous to one another, they nevertheless differ
+sufficiently so as to warrant separate functions.
+
+R could name the functions that calculate the mean of a set of numbers
+and the mean of a set of dates as `mean.numbers` and `mean.dates`
+respectively. Unfortunately, as this is a relatively common situation,
+the number of functions a user would be forced to learn rapidly
+expands. And from the perspective of writing a function that itself
+contains such a generic function, we would have to write multiple
+instances of the function in order to handle all the types of data we
+might want to accommodate.
+
+To simplify the process of applying these generic functions, R
+provides yet another layer that is responsible for determining which
+of a series of overloaded functions is likely to be applicable
+according to the nature of the parameters and data parsed as arguments
+to the function. To see this in action, type mean followed by hitting
+the TAB key. The TAB key is used for auto-completion and therefore
+this procedure lists all the objects that begin with the letters
+'mean'.
+
+```{r, mhidden=TRUE}
+#| label: code 21
+cat(paste(apropos("^mean", ignore=FALSE),c("\t","\t","\t","\n","\t","\t","\n")))
+```
+
+In addition to an object called `mean`, there are additional objects
+that are suffixed as a `.` followed by a data type. In this case, the
+objects `mean.default`, `mean.Date`, `mean.POSIXct`, `mean.POSIXlt`,
+`mean.difftime` and `mean.data.frame` are functions that respectively
+calculate the mean of a set of numbers, dates, times, times, time
+differences and data frame columns. The mean function determines which
+of the other functions is appropriate for the data parsed and then
+redirects to that appropriate function. Typically, this means that it
+is only necessary to remember the one generic function (in this case,
+`mean()`).
+
+
+```{r, mhidden=TRUE}
+#| label: code 22
+# mean of a series of numbers
+mean(c(1,2,3,4))
+
+# create a sequence of dates spaced 7 days apart between 29th Feb 2000 and 30th Apr 2000
+sampleDates <- seq(from=as.Date("2000-02-29"),to=as.Date("2000-04-30"), by="7 days")
+# print (view) these dates
+sampleDates
+
+# calculate the mean of these dates
+mean(sampleDates)
+```
+
+In the above examples, we called the same function (`mean()`) on both
+occasions. In the first instance, it was equivalent to calling the
+`mean.default()` function and in the second instance the `mean.Date()`
+function. Note that the `seq()` function is similarly overloaded.
+
+The above example also illustrates another important behaviour of
+function arguments. Function calls can be nested within the arguments
+of other functions and function arguments are evaluated before the
+function runs. In this way, multiple steps to be truncated together
+(although for the sake of the codes' readability and debugging, it is
+often better to break a problem up into smaller steps). If a function
+argument itself contains a function (as was the case above with the
+from= and to= arguments, both of which called the `as.Date()` function
+which converts a character string into a date object), the value of
+the evaluated argument is parsed to the outside function. That is,
+evaluations are made from the inside to out. The above example, could
+have been further truncated to:
+
+```{r, mhidden=TRUE}
+#| label: code 23
+# calculate the mean of a sequence of dates spaced 7 days apart between 29th Feb 2000 and 30th Apr 2000
+mean(seq(from = as.Date("2000-02-29"),
+  to = as.Date("2000-04-30"),
+  by = "7 days"))
+```
+
+### Piping
+
+Piping is a concept in popularised by the unix operating back in the
+1970's. Back then unix philosophy was that all software should perform
+a single task and do that task as efficiently and robustly as
+possible. In order to perform more complex tasks, the user would
+simply string (pipe) a set of programs together whereby the output of
+one program gets _piped_ to the input of the next program and so on.
+
+For the user, rather than have to learn very complex ways to interact
+with a single omnibus program, they only had to master a collection of
+very simple and predictable programs. In unix, the pipe operator is
+`|`. However, this operator already has a meaning within R.
+Consequently, when recently implementing a native pipe within R, the
+developers opted for the operator `|>` instead.
+
+
+As an example, we could re-write 
+
+```{r, mhidden=TRUE}
+#| label: code 24
+# calculate the mean of a sequence of dates spaced 7 days apart between 29th Feb 2000 and 30th Apr 2000
+seq(from = as.Date("2000-02-29"),
+    to = as.Date("2000-04-30"), by="7 days") |>
+  mean()
+```
+
+### External functions
+
+As R is a scripting language (rather than a compiled language), it has
+the potential to be very slow (since syntax checking, machine
+instruction interpretation, etc must all take place at runtime rather
+than at compile time). Consequently, many of the functions are
+actually containers (wrappers) for external code (link libraries)
+precompiled in either C or Fortran. In this way, the environment can
+benefit from the flexibility of a scripting language whilst still
+maintaining most of the speed of a compiled language. 
+
+::: {.callout-note}
+Within Rstudio, there is a short-cut key (`Ctrl-Shift-M`) for the R
+pipe. To ensure this is working properly:
+
+1. Select the **Tools->Global Options** menu
+2. Select the **Code** option and the **Editing** tab
+3. Make sure the **Use native pipe operator, `|>` (requires R 4.1+)
+   check box
+:::
+
+# Getting help
+
+There are numerous ways of seeking help on R syntax and functions (the
+following all ways of finding information about a function that
+calculates the mean of a vector).
+
+- Providing the name of the function as an argument to the `help()`
+  function issued in the R console:
+
+```
+help(mean)
+```
+
+- Typing the name of the function preceded by a `?`
+
+```
+?mean
+```
+
+- To run the examples within the standard help files, use the
+  `example()` function
+
+```
+example(mean)
+```
+
+- Some packages include demonstrations that showcase their features
+  and use cases. The `demo()` function provides a user-friendly way to
+  access these demonstrations. For example, to respectively get an
+  overview of the basic graphical procedures in R and get a list of
+  available demonstrations
+ 
+```
+demo(graphics)      ## run the graphics demo
+demo()              ## list all available demos
+```
+
+- If you don't know the exact name of the function, the `apropos()`
+  function is useful as it returns the name of all objects from the
+  current search list that match a specific pattern
+
+```
+apropos("mea")
+```
+
+- If you have no idea what the function is called, the `help.search()`
+  and `help.start()` functions search through the regular manuals and
+  the local HTML manuals (via a web browser) respectively for specific
+  terms
+
+```
+help.search('mean')  #search the local R manuals
+help.start()          #search the local HTML R manuals
+```
+
+- To get a snapshot of the order and default values of a functions'
+  arguments, use the `args()` function
+
+```
+args(mean)  #the arguments that apply to the mean function
+args(list.files)   #the arguments that apply to the list.files function
+```
+
+The `...` argument indicates that other arguments can also be provided
+that are then parsed onto other functions that may be called within
+the main function.
+
+```{r, mhidden=TRUE}
+#| label: code 25
+help(mean)
+```
+
+# Data types
+
+## Vectors
+
+Vectors are a collection of one or more entries (values) of the same
+type (class) and are the basic storage unit in R. Vectors are
+one-dimensional arrays (have a single dimension - length) and can be
+thought of as a single column of data. Each entry in a vector has a
+unique index (like a row number) to enable reference to particular
+entries in the vector.
+
+### The `c()` function
+
+The `c()` function concatenates values together into a vector. To create
+a vector with the numbers 1, 4, 7, 21
+
+```{r, mhidden=TRUE}
+#| label: code 26
+c(1, 4, 7, 21)
+```
+
+As an example, we could store the temperature recorded at 10 sites;
+
+```{r, mhidden=TRUE}
+#| label: code 27
+TEMPERATURE <- c(36.1, 30.6, 31, 36.3, 39.9, 6.5, 11.2, 12.8, 9.7, 15.9)
+TEMPERATURE
+```
+
+To create a vector with the words 'Fish', 'Rock', 'Tree', 'Git';
+
+```{r, mhidden=TRUE}
+#| label: code 28
+c('Fish', 'Rock', 'Tree', "Git")
+```
+
+### Regular or patterned sequences
+
+We have already seen the use of the `seq()` function to create
+sequences of entries.
+
+Sequences of repeated entries are supported with the `rep()` function;
+
+```{r, mhidden=TRUE}
+#| label: code 29
+rep(4, 5)
+rep('Fish', 5)
+```
+
+### The paste() function
+
+To create a sequence of quadrat labels we could use the `c()` function
+as illustrated above, e.g.
+
+```{r, mhidden=TRUE}
+#| label: code 30
+QUADRATS <- c("Q1","Q2","Q3","Q4","Q5","Q6","Q7","Q8","Q9","Q10")
+QUADRATS
+```
+
+A more elegant way of doing this is to use the `paste()` function;
+
+```{r, mhidden=TRUE}
+#| label: code 31
+QUADRATS <- paste("Q",1:10,sep="")
+QUADRATS
+```
+
+This can be useful for naming vector elements. For example, we could use the `names()` function to name the elements of the temperature variable according to the quadrat labels.
+
+```{r, mhidden=TRUE}
+#| label: code 32
+names(TEMPERATURE) <- QUADRATS
+TEMPERATURE
+```
+
+The `paste()` function can also be used in conjunction with other
+functions to generate lists of labels. For example, we could combine a
+vector in which the letters A, B, C, D and E (generated with the
+`LETTERS` constant) are each repeated twice consecutively (using the
+`rep()` function) with a vector that contains a 1 and a 2 to produce a
+character vector that labels sites in which the quadrats may have
+occurred.
+
+```{r, mhidden=TRUE}
+#| label: code 33
+SITE <- paste(rep(LETTERS[1:5], each = 2), 1:2, sep = "")
+SITE
+```
+
+| Vector Class            | Example                                                       |
+|-------------------------|---------------------------------------------------------------|
+| integer (whole numbers) | `2:4`                                                         |
+|                         | [1] 2 3 4                                                     |
+|                         | `c(1,3,9)`                                                    |
+|                         | [1] 1 3 9                                                     |
+| numeric (real numbers)  | `c(8.4, 2.1)`                                                 |
+|                         | [1] 8.4 2.1                                                   |
+| character (letters)     | `c('A', 'ABC')`                                               |
+|                         | [1] "A" "ABC"                                                 |
+| boolean (TRUE or FALSE) | `2:4 == 3`                                                    |
+|                         | [1] FALSE TRUE FALSE                                          |
+| date (dates)            | `c(as.Date("2000-02-29"), as.Date("29/02/2000","%d/%m/%Y"))`  |
+|                         | [1] "2000-02-29" "2000-02-29"                                 |
+| POSIXlt (date-time)     | `strptime('2011-03-27 01:30:00', format='%Y-%m-%d %H:%M:%S')` |
+|                         | [1] "2011-03-27 01:30:00"                                     |
+: {.table-pretty}
+
+### Factors
+
+Factors are more than a vector of characters. Factors have additional
+properties that are utilized during statistical analyses and graphical
+procedures. To illustrate the difference, we will create a vector to
+represent a categorical variable indicating the level of shading
+applied to 10 quadrats. Firstly, we will create a character vector;
+
+```{r, mhidden=TRUE}
+#| label: code 34
+SHADE <- rep(c("no","full"),each=5)
+SHADE
+```
+
+Now we convert this into a factor;
+
+```{r, mhidden=TRUE}
+#| label: code 35
+SHADE <- factor(SHADE)
+SHADE
+```
+
+Notice the additional property (Levels) at the end of the output. Notice also that unless specified otherwise, the levels are ordered alphabetically. Whilst this does not impact on analyses, it does effect interpretations and graphical displays. If the alphabetical ordering does not reflect the natural order of the data, it is best to reorder the levels whilst defining the factor;
+
+```{r, mhidden=TRUE}
+#| label: code 36
+SHADE <- factor(SHADE, levels=c("no","full"))
+SHADE
+```
+
+A more convenient way to create a balanced (equal number of replicates) factor is to use the gl() function. To create the shading factor from above;
+
+```{r, mhidden=TRUE}
+#| label: code 37
+SHADE <- gl(2,5,10,c("no","full"))
+SHADE
+```
+
+## Matrices
+
+Matrices have two dimensions (length and width). The entries (which
+must be all of the same length and type - `class`) are in rows and
+columns.
+
+We could arrange the vector of shading into two columns;
+
+```{r, mhidden=TRUE}
+#| label: code 38
+matrix(TEMPERATURE, nrow = 5)
+```
+
+Similarly, We could arrange the vector of shading into two columns;
+
+```{r, mhidden=TRUE}
+#| label: code 39
+matrix(SHADE, nrow = 5)
+```
+
+As another example, we could store the X, Y coordinates for five
+quadrats within a grid. We start by generating separate vectors to
+represent the X and Y coordinates and then we bind them together using
+the `cbind()` function (which combines objects by columns);
+
+```{r, mhidden=TRUE}
+#| label: code 40
+X <- c(16.92,24.03,7.61,15.49,11.77)
+Y<- c(8.37,12.93,16.65,12.2,13.12)
+XY <- cbind(X,Y)
+XY
+```
+
+
+We could alternatively combine by rows using the `rbind()` function;
+
+```{r, mhidden=TRUE}
+#| label: code 41
+rbind(X,Y)
+```
+
+We could even alter the row names;
+
+```{r, mhidden=TRUE}
+#| label: code 42
+rownames(XY) <- LETTERS[1:5]
+XY
+```
+
+::: {callout-important}
+Importantly, all entries in a matrix must be of the same type. That
+is, they must all be numeric, or all be characters etc. If we attempt
+to mix a combination of data types in a matrix, then the data will all
+be converted into a type that can accommodate all the data. For
+example, if we attempt to bind together the numeric TEMPERATURE data
+and the character SITE data into a matrix, then the result will be a
+matrix of characters (since while it is possible to covert numbers to
+strings, in this case the reverse is not possible).
+:::
+
+```{r, mhidden=TRUE}
+#| label: code 43
+cbind(TEMPERATURE,SITE)
+```
+
+On the other hand, if we attempt to bind together the numeric
+TEMPERATURE data and the factor SHADE data into a matrix, then the
+result will be a matrix of numbers (recall that factors are internally
+stored as integers, yet they have a levels property that acts rather
+like a lookup key).
+
+```{r, mhidden=TRUE}
+#| label: code 44
+cbind(TEMPERATURE, SHADE)
+```
+
+## Lists
+
+Lists provide a way to group together multiple objects of different
+type and length. For example, whilst the contents of any single vector
+or matrix must all be of the one type and length (e.g. all numeric or
+all character), a list can contain any combination of vectors,
+matrices, scalars and of any type. Furthermore, the objects contained
+in a list do not need to be of the same lengths (c.f data frames). The
+output of most analyses are returned as lists.
+
+As an example, we could group together the previously created isolated vectors and matrices into a single object that encapsulates the entire experiment;
+
+```{r, mhidden=TRUE}
+#| label: code 45
+EXPERIMENT <- list(SITE = SITE,
+                   QUADRATS = QUADRATS,
+                   COORDINATES = XY, 
+                   SHADE = SHADE, 
+                   TEMPERATURE = TEMPERATURE)
+EXPERIMENT
+```
+
+::: {callout-note}
+In the above, although it is not necessary to separate each of the
+arguments into a separate line of code, is does make the code a lot
+more readable and also makes it much easier to locate the source of
+errors and bugs.
+:::
+
+Lists can be thought of as a set of objects bound into a single
+container. In the example above, the list object EXPERIMENT contains a
+copy of the SITE, QUADRATS, COORDINATES, SHADE and TEMPERATURE
+objects.
+
+Importantly, once a list has been created the objects within the list
+are not linked in any way to the original objects from which the list
+is formed. Consequently, any changes made to (for example) the
+TEMPERATURE object will not be reflected in the content of the
+TEMPERATURE object within the EXPERIMENT list.
+
+To access an object within a list, the `$` operator is used as such:
+
+```{r, mhidden=TRUE}
+#| label: code 46
+EXPERIMENT$TEMPERATURE
+```
+
+## Dataframes - data sets
+
+Rarely are single biological variables collected in isolation. Rather,
+data are usually collected in sets of variables reflecting
+investigations of patterns between and/or among the different
+variables. Consequently, data sets are best organized into matrices of
+variables (vectors) all of the same lengths yet not necessarily of the
+same type. Hence, neither lists nor matrices represent natural
+storages for data sets. This is the role of data frames which are used
+to store a set of vectors of the same length (yet potentially
+different types) in a rectangular matrix.
+
+**Data frames** are generated by combining multiple vectors together
+such that each vector becomes a separate column in the data frame. For
+a data frame to faithfully represent a data set, the sequence in which
+observations appear in the vectors must be the same for each vector,
+and each vector should have the same number of observations. For
+example, the first, second, third...etc entries in each vector must
+represent respectively, the observations collected from the first,
+second, third...etc sampling units.
+
+Since the focus of these worksheets is on the exploration, analysis
+and summary of data sets, these will be covered in more detail as we
+progress through the series.
+
+As an example of a data frame, we could again group together the
+previously created isolated vectors into a single object that
+encapsulates a data set;
+
+```{r, mhidden=TRUE}
+#| label: code 47
+DATA <- data.frame(SITE = SITE,
+                   QUADRATS = QUADRATS, 
+                   SHADE = SHADE, 
+                   TEMPERATURE = TEMPERATURE)
+DATA
+```
+
+# Object Manipulation
+## Object information
+
+As indicated earlier, everything in R is an object. All objects have a
+type or class that encapsulates the sort of information stored in the
+object as well as determining how other functions interact with the
+object. The class of an object can be reviewed with the `class()`
+function:
+
+```{r, mhidden=TRUE}
+#| label: code 48
+class(TEMPERATURE)
+class(DATA)
+class(mean)
+```
+
+There is also a family of functions prefixed with is. that evaluate
+whether or not an object is of a particular class (or type) or not.
+The following table lists the common object query functions. All
+object query functions return a logical vector. Enter methods(is) for
+a more comprehensive list.
+
+| Function           | Returns TRUE:                                                                                                       | Example                                   |
+|--------------------|---------------------------------------------------------------------------------------------------------------------|-------------------------------------------|
+| `is.numeric(x)`    | if all elements of x are numeric or integer                                                                         | `is.numeric(c(1,-3.5, TEMPERATURE))`      |
+| `is.null(x)`       | if x is null (the object has no length)                                                                             | `is.null(NULL)`                           |
+| `is.logical(x)`    | if all elements of x are logical                                                                                    | `is.logical(c(TRUE, TRUE))`               |
+| `is.character(x)`  | if all elements of x are character strings                                                                          | `is.character(c("A", "Plant", QUADRATS))` |
+| `is.vector(x)`     | if the object x is a vector (has only a single dimension). Returns FALSE if object has attributes other than names. | `is.vector(TEMPERATURE)`                  |
+| `is.factor(x)`     | if the object x is a factor                                                                                         | `is.factor(SHADE)`                        |
+| `is.matrix(x)`     | if the object x is a matrix (two dimensions, yet not a `data.frame`                                                 | `is.matrix(XY)`                           |
+| `is.list(x)`       | if the object x is a list                                                                                           | `is.list(EXPERIMENT)`                     |
+| `is.data.frame(x)` | if the object x is a `data.frame`                                                                                   | `is.data.frame(DATA)`                     |
+| `is.na(x)`         | for each missing (NA) element in x                                                                                  | `is.na(c(NA,NA))`                         |
+| `!`                | ('not') operator as a prefix converts the above functions into 'is.not'                                             | `!is.factor(DATA)`                        |
+: {.table-pretty}
+
+## Attributes
+
+Many R objects also have a set of attributes, the number and type of
+which are specific to each class of object. For example, a matrix
+object has a specific number of dimensions as well as row and column
+names. The attributes of an object can be viewed using the
+attributes() function:
+
+```{r, mhidden=TRUE}
+#| label: code 49
+attributes(XY)
+```
+
+Similarly, the `attr()` function can be used to view and set individual
+attributes of an object, by specifying the name of the object and the
+name of the attribute (as a character string) as arguments. For
+example:
+
+```{r, mhidden=TRUE}
+#| label: code 50
+attr(XY, "dim")
+attr(XY, "description") <- "coordinates of quadrats"
+```
+
+Note that in the above example, the attribute 'description' is not a
+inbuilt attribute of a matrix. When a new attribute is set, this
+attribute is displayed along with the object. This provides a useful
+way of attaching a description to an object, thereby reducing the
+risks of the object becoming unfamiliar.
+
+| Function             | Converts object to:                                                                                                                                                                    |
+|----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `as.numeric(x)`      | a numeric vector (`integer` or `real`).  Factors converted to integers                                                                                                                 |
+| `as.null(x)`         | a `NULL`                                                                                                                                                                               |
+| `as.logical(x)`      | a logical vector. A values of `>1` converted to `TRUE` otherwise `FALSE`.                                                                                                              |
+| `as.character(x)`    | a character (string) vector                                                                                                                                                            |
+| `as.vector(x)`       | a vector. All attributes (including names) are removed.                                                                                                                                |
+| `as.factor(x)`       | a factor. This is an abbreviated (with respect to its argument `set)` version of the `factor()`  function.                                                                             |
+| `as.matrix(x)`       | a matrix. Any non-numeric elements result in all matrix elements being converted to characters                                                                                         |
+| `as.list(x)`         | a list                                                                                                                                                                                 |
+| `as.data.frame(x, )` | a data.frame. Matrix columns and list items are converted into separate vectors of the dataframe and character vectors are converted into factors. All previous attributes are removed |
+| `as.date(x)`         | a date                                                                                                                                                                                 |
+: {.table-pretty}
+ 
+## Indexing
+
+Indexing is the means by which data are filtered (subsetted) to
+include and exclude certain entries.
+
+### Vector indexing
+
+Subsets of vectors are produced by appending an index vector (enclosed
+in square brackets `[]`) to a vector name. There are four common forms
+of vector indexing used to extract a subset of vectors
+
+Vector of positive integers - a set of integers that indicate which
+elements of the vector should be included:
+
+```{r, mhidden=TRUE}
+#| label: code 51
+TEMPERATURE[2]
+TEMPERATURE[2:5]
+TEMPERATURE[c(1,5,6,9)]
+```
+
+Vector of negative integers - a set of integers that indicate which
+elements of the vector should be excluded;
+
+```{r, mhidden=TRUE}
+#| label: code 52
+TEMPERATURE[-2]
+TEMPERATURE[c(1,5,6,9)*-1]
+TEMPERATURE[2]
+TEMPERATURE[2:5]
+TEMPERATURE[c(1,5,6,9)]
+```
+
+Vector of character strings (referencing names) - for vectors whose
+elements have been named, a vector of names can be used to select
+elements to include;
+
+```{r, mhidden=TRUE}
+#| label: code 53
+TEMPERATURE["Q1"]
+TEMPERATURE[c("Q1", "Q4")]
+```
+
+Vector of logical values - a vector of logical values (`TRUE` or `FALSE`)
+the same length as the vector being subsetted. Entries corresponding
+to a logical `TRUE` are included, `FALSE` are excluded;
+
+```{r, mhidden=TRUE}
+#| label: code 54
+TEMPERATURE[TEMPERATURE < 15]
+TEMPERATURE[SHADE == "no"]
+TEMPERATURE[TEMPERATURE < 34 & SHADE == "no"]
+TEMPERATURE[TEMPERATURE < 10 | SHADE == "no"]
+```
+
+## Matrix indexing
+
+Similar to vectors, matrices can be indexed using positive integers,
+negative integers, character strings and logical vectors. However,
+whereas vectors have a single dimension (length), matrices have two
+dimensions (length and width). Hence, indexing needs to reflect this.
+It is necessary to specify both the row and column number. Matrix
+indexing takes of the form of `[row.indices, col.indices]` where
+row.indices and col.indices respectively represent sequences of row
+and column indices. If a row or column index sequence is omitted, it
+is interpreted as the entire row or column respectively.
+
+```{r, mhidden=TRUE}
+#| label: code 56
+XY[3,2]
+XY[3,]
+XY[,-2]
+XY["A",1:2]
+XY[,"X"]
+XY[XY[,"X"]>12,]
+```
+
+### List indexing
+
+Lists consist of collections of objects that need not be of the same
+size or type. The objects within a list are indexed by appending an
+index vector (enclosed in single or double square brackets, `[]` or
+`[[]]`), to the list name. Single square brackets provide access to
+multiple list items (returned as a list), whereas double square
+brackets provide access to individual list items (returned according
+to the type of object represented by the list item). A single object
+within a list can also be referred to by appending a string character
+(`$`) followed by the name of the object to the list names (e.g.
+list$object). The elements of objects within a list are indexed
+according to the object type. Vector indices to objects within other
+objects (lists) are placed within their own square brackets outside
+the list square brackets: Recall the EXPERIMENT list we generated
+earlier
+
+```{r, mhidden=TRUE}
+#| label: code 57
+EXPERIMENT
+```
+
+### Matrix indexing
+
+Similar to vectors, matrices can be indexed using positive integers,
+negative integers, character strings and logical vectors. However,
+whereas vectors have a single dimension (length), matrices have two
+dimensions (length and width). Hence, indexing needs to reflect this.
+It is necessary to specify both the row and column number. Matrix
+indexing takes of the form of [row.indices, col.indices] where
+row.indices and col.indices respectively represent sequences of row
+and column indices. If a row or column index sequence is omitted, it
+is interpreted as the entire row or column respectively.
+
+```{r, mhidden=TRUE}
+#| label: code 58
+XY[3,2]
+XY[3,]
+XY[,-2]
+XY["A",1:2]
+XY[,"X"]
+XY[XY[,"X"]>12,]
+```
+
+### List indexing
+
+Lists consist of collections of objects that need not be of the same
+size or type. The objects within a list are indexed by appending an
+index vector (enclosed in single or double square brackets, [] or
+[[]]), to the list name. Single square brackets provide access to
+multiple list items (returned as a list), whereas double square
+brackets provide access to individual list items (returned according
+to the type of object represented by the list item). A single object
+within a list can also be referred to by appending a string character
+($) followed by the name of the object to the list names (e.g.
+list$object). The elements of objects within a list are indexed
+according to the object type. Vector indices to objects within other
+objects (lists) are placed within their own square brackets outside
+the list square brackets: Recall the EXPERIMENT list we generated
+earlier
+
+```{r, mhidden=TRUE}
+#| label: code 59
+EXPERIMENT
+```
+
+- A vector of positive numbers (single brackets) - that indicate which
+  list items should be included:
+
+```{r, mhidden=TRUE}
+#| label: code 60
+EXPERIMENT[c(1,3)]
+```
+
+- A single positive number (double brackets) - that indicates which
+  list item should be included;
+
+```{r, mhidden=TRUE}
+#| label: code 61
+EXPERIMENT[[1]]
+```
+
+- A vector of character strings (single brackets) - that indicate
+  which list items should be included:
+
+```{r, mhidden=TRUE}
+#| label: code 62
+EXPERIMENT[c('TEMPERATURE','SHADE')]
+```
+
+- A single character string (double brackets) - that indicates which
+  list item should be included:
+
+```{r, mhidden=TRUE}
+#| label: code 63
+EXPERIMENT[['TEMPERATURE']]
+#OR equivalently (recall earlier)
+EXPERIMENT$TEMPERATURE
+EXPERIMENT[c('TEMPERATURE','SHADE')]
+```
+
+- Extract the first element of each list item - returned as a matrix:
+
+```{r, mhidden=TRUE}
+#| label: code 64
+sapply(EXPERIMENT,"[",1)
+#notice that only one element of the coordinate pair is included
+#OR when the list items are not vectors
+do.call(cbind, EXPERIMENT)[1,]
+#OR as a data frame (on the items that are of equal size)
+```
+
+# Packages
+
+One of the great strengths of R is the ease to which it can be
+extended via the creation of new functions. This means that the
+functionality of the environment is not limited by the development
+priorities and economics of a comercial enterprise. Moreover,
+collections of related functions can be assembled together into what
+is called a **package** or **library**. These packages can be
+distributed to others to use or modify and thus the community and
+capacity grows.
+
+One of the keys to the concept of packages is that they extend the
+functionality when it is required. Currently (2023), there are in
+excess of 5000 packages available on CRAN (Comprehensive R Archive
+Network) and an additional 3000+ packages available via other sources.
+If all of that functionality was available simultaneously, the
+environment would be impeared with bloat. In any given session, the
+amount of extended functionality is likely to be relatively low,
+therefore it makes sence to only 'load' the functionality into memory
+when it is required.
+
+The R environment comprises the core language itself (with its built
+in data, memory and control structures along with parsers error
+handlers and built in operators and constants) along with any number
+of packages. Even on a brand new install of R there are some packages.
+These tend to provide crucial of common functions and as such many of
+them are automatically loaded at the start of an R session.
+
+At any time we can see what packages are currently loaded in your
+session:
+
+
+::: {.callout-important}
+You should not typically issue any of the remaining function within a
+script or quarto. Over time, the number of installed packages can get
+very large and thus the output from the various functions can take
+over the rendered document.
+
+Moreover, some of the following functions require user feedback and
+thus break the flow of the code and rendering processes.
+
+If you wish to record the command for prosperity/reference, ensure
+that you add the `#| eval: false` chunk option.
+:::
+
+::: {.callout-important}
+Ideally, all package management should take place in a fresh R session
+(not Rstudio). Although Rstudio techically has the capacity to perform
+installations and is also just an R syntax interpreter, in practice,
+it often corrupts the packages. It also has a tendency to notice the
+loading of package statements in your code and then offer to install
+any missing packages for you
+
+The reason for the corruption is that Rstudio automatically load
+numerous packages into memory in an attempt to help you write and
+evaluate code. Any package that is held in memory (particularly on
+Windows systems) cannot be updated. Hence any attempts to update a
+loaded package (or package dependency) will fail.
+
+As an alternative, prior to working through this secion, you are
+strongly encouraged to save your document, close Rstudio (do not save
+workspace) and instead open up vanilla R.
+
+From here, all the following commands can be safely and robustly
+issued.
+:::
+
+For posterity, I will keep the codes that we will issue within the
+quarto document - just not allow them to evaluate.
+
+```{r, mhidden=FALSE}
+#| label: code 65
+#| eval: false
+print(.packages())
+```
+
+A more general alternative to using the `.packages()` function, is to
+use the `seach()` function.
+
+```{r, mhidden=FALSE}
+#| label: code 66
+#| eval: false
+search()
+```
+
+Actually, the `search()` function as just used (without providing a
+string to search for), returns the locations (search path) and order
+of where commands are searched for. For example, when you enter a
+command, the first place that R searches for this command (variable,
+function, constant, etc) is `.GlobalEnv.` `.GlobalEnv` is the current
+workspace and stores all the user created objects (such as variables,
+dataframe etc).
+
+If the object is not found in .GlobalEnv, the search continues within
+the next search location (in my case the stats package and so on. When
+you load an additional package (such as the car package, this package
+(along with any of other packages that it depends on) will be placed
+towards the start of the search que. The logic being that if you have
+just loaded the package, then chances are you intend to use its
+functionality and therefore your statements will most likely be
+evaluated faster (because there is likely to be less to search through
+before locating the relevant objects).
+
+## Listing installed packages
+
+The `installed.packages()` function tabulates a list of all the
+currently installed packages available on your system along with the
+package path (where is resides on your system) and version number.
+Additional fields can be requested (including "Priority", "Depends",
+"Imports", "LinkingTo", "Suggests", "Enhances", "OS_type", "License"
+and "Built").
+
+
+```{r, mhidden=FALSE}
+#| label: code 67
+#| eval: false
+installed.packages()
+installed.packages(fields = c("Package", "LibPath", "Version", "Depends", "Built"))
+```
+
+Yet more information can be obtained for any single package with the
+`packageDescription()` and library functions - the latter provides all
+the information of the former and then includes a descriptive index of
+all the functions and datasets defined within the package.
+
+```{r, mhidden=FALSE}
+#| label: code 68
+#| eval: false
+packageDescription("stats")
+library(help = "stats")
+```
+
+## Installing packages
+
+The R community contains some of the brightest and most generous
+mathematician, statisticians and practitioners who continue to
+actively develop and maintain concepts and routines. Most of these
+routines end up being packaged as a collection of functions and then
+hosted on one or more publicly available sites so that others can
+benefit from their efforts.
+
+Packages can be thought of as dictionaries that contain the
+definitions of the new objects and functions that they introduce.
+
+The locations of collections of packages are called repositories or
+'repos' for short. There four main repositories are **CRAN**
+(Comprehensive R Archive Network), Bioconductor, R-Forge and github.
+By default, R is only 'tuned in' to CRAN. That is any package queries
+or actions pertain just to the CRAN repositories.
+
+To get a tabulated list of all the packages available on CRAN (warning
+there are over 4000 packages, so this will be a large table):
+
+Again, do not issue the following command in script/quarto.
+
+```{r, mhidden=FALSE}
+#| label: code 69
+#| eval: false
+available.packages()
+```
+
+### Comprehensive R Archive Network - CRAN
+
+CRAN is a repository of R packages mirrored across 90 sites throughout
+the world. Packages are installed from CRAN using the
+`install.packages()` function. The first (and only mandatory) argument
+to the `install.packages()` function is the name of the package(s) to
+install (`pkgs = `). If no other arguments are provided, the
+`install.packages()` function will search CRAN for the specified
+package(s) and install it along with any of its dependencies that are
+not yet installed on your system.
+
+Note, unless you have started the session with administrator (root)
+privileges, the packages will be installed within a path of your home
+folder. Whilst this is not necessarily a bad thing, it does mean that
+the package is not globally available to all users on your system (not
+that it is common to have multiple users of a single system these
+days). Moreover, it means that R packages reside in multiple locations
+across your system. The packages that came with your R install will be
+in one location (or a couple or related locations) and the packages
+that you have installed will be in another location.
+
+To see the locations currently used on your system, you can issue the following statement.
+
+```{r, mhidden=FALSE}
+#| label: code 70
+#| eval: false
+.libPaths()
+```
+
+To get a feel for this, we will install a specific package (and its
+dependencies) from CRAN. The package we are going to install is called
+`remotes` and it provides tools for installing packages from *github*.
+
+```{r, mhidden=FALSE}
+#| label: code 71
+#| eval: false
+install.packages("remotes")
+```
+
+You will be prompted to select a mirror site. In the absence of any
+other criterion, just select the mirror that is closed geographically
+to you. The terminal will then provide feedback about the progress and
+status of the install process. By indicating a specific repository,
+you can avoid being prompted for a mirror. For example, I chose to use
+a CRAN mirror at Melbourne University (Australia), and therefore the
+following statement gives me direct access
+
+```{r, mhidden=FALSE}
+#| label: code 72
+#| eval: false
+install.packages("remotes", repos = "http://cran.csiro.au")
+install.packages("tidyverse", repos = "http://cran.csiro.au")
+```
+
+Finally, you could provide a vector of repository names if you were
+unsure which repository was likely to contain the package you were
+after. This can also be useful if your preferred mirror regularly
+experiences downtime - the alternative mirror (second in the vector)
+is used only when the first fails.
+
+### Bioconductor
+
+Bioconductor is an open source and open development project devoted to
+genomic data analysis tools, most of which are available as R
+packages. Whilst initially the packages focused primarily on the
+manipulation and analysis of DNA microarrays, as the scope of the
+projects has expanded, so too has the functional scope of the packages
+there hosted.
+
+```{r, mhidden=FALSE}
+#| label: code 73
+#| eval: false
+source("http://bioconductor.org/biocLite.R")
+biocLite("limma")
+Or to install multiple packages from Bioconductor
+
+source("http://bioconductor.org/biocLite.R")
+biocLite(c("GenomicFeatures", "AnnotationDbi"))
+```
+
+### R-Forge
+
+Unlike both CRAN and Bioconductor (which are essentially package
+repositories), R-Forge is an entire R package development platform.
+Package development is supported through a range of services
+including:
+
+version control (SVN) - allowing multiple collaborators to maintain
+current and historical versions of files by facilitating simultaneous
+editing, conflict resolution and rolling back daily package checking
+and building - so packages are always up to date bug tracking and
+feature request tools mailing lists and message boards full backup and
+archival system And all of this within a mature content management
+system like web environment. Installing packages from R-Forge is the
+same as it is for CRAN, just that the path of the root repository
+needs to be specified with the repos= argument.
+
+
+```{r, mhidden=FALSE}
+#| label: code 74
+#| eval: false
+install.packages("lme4.0", repos = "http://R-Forge.R-project.org")
+```
+
+### Github
+
+Github builds upon the philosophy of the development platform promoted
+by the Source Forge family (including R-Forge) by adding the ability
+to fork a project. Forking is when the direction of a project is split
+so that multiple new opportunities can be explored without
+jeopardizing the stability and integrity of the parent source. If the
+change in direction proves valuable, the project (package) can either
+become a new package or else feedback into the development of the
+original package.
+
+Hadley Wickham and collaborators have come up with a set of
+outrageously useful tools (`remotes` package). This package is a set
+of functions that simplify (albeit slightly dictatorially) the
+processes of package installion from github. For now, we will
+concentrate on the latter feature.
+
+In order to make use of this package to install packages from github,
+the `remotes` package must itself be installed. It is recommended that
+this install take place from CRAN (as outline above). Thereafter, the
+devtools package can be included in the search path and the
+install_github function used to retrieve and install a nominated
+package or packages from github.
+
+```{r, mhidden=FALSE}
+#| label: code 75
+#| eval: false
+install_git("ggplot2")
+```
+
+## Updating packages
+
+An integral component of package management is being able to maintain
+an up to date system. Many packages are regularly updated so as to
+adopt new ideas and functionality. Indeed, it is the speed of
+functional evolution that sets R apart from most other statistical
+environments.
+
+Along with the `install.packages()` function, there are three other
+functions to help manage and maintain the packages on your system.
+
+- `old.packages()` compares the versions of packages you have
+  installed with the versions of those packages available in the
+  current repositories. It tabulates the names, install paths and
+  versions of old packages on your system.
+
+```{r, mhidden=FALSE}
+#| label: code 76
+#| eval: false
+old.packages()
+```
+
+- Alternative repositories (than CRAN) can be indicated via the repos=
+  argument.
+
+```{r, mhidden=FALSE}
+#| label: code 77
+#| eval: false
+old.packages(repos="http://R-Forge.R-project.org")
+#or even multiple repos
+old.packages(repos=c("http://cran.csiro.au","http://R-Forge.R-project.org"))
+```
+
+- `new.packages()`jh provides a tabulated list of all the packages on
+  the repository that are either not in your local install, or else
+  are of a newer version. Note, with over 4000 packages available on
+  CRAN, unless the repos= parameter is pointing to somewhere very
+  specific (and with a narrow subset of packages) this function is
+  rarely of much use.
+
+```{r, mhidden=FALSE}
+#| label: code 78
+#| eval: false
+new.packages()
+```
+
+- `update.packages()` downloads and installs packages for which newer
+  versions of those packages identified as 'old' by the `old.packages()`
+  function. Just like `old.packages()`, alternative or multiple
+  repositories can be specified.
+
+```{r, mhidden=FALSE}
+#| label: code 79
+#| eval: false
+update.packages()
+#or from alternative multiple repos
+update.packages(repos=c("http://cran.csiro.au","http://R-Forge.R-project.org"))
+```
+
+## Loading a package
+
+If installing a package is analogous to purchasing a dictionary (an
+action you only need to do once - until a new edition is brought out
+with new entries), loading a package is analogous to taking the
+dictionary off the shelf and placing it on your desk where it is
+available for use. As such, a package needs to be loaded each time a
+new R session is created - this includes each time a quarto document
+is rendered.
+
+The loading of libraries is performed with the `library()` function.
+
+
+```{r, mhidden=TRUE}
+#| label: code 80
+library(tidyverse)
+```
+
+Ideally, any library loading statement should be placed in a code
+block towards the start of the script/quarto document so that anyone
+reading the code (your future self included) knows what packages are
+required to be installed prior to running the all the code.
+
+## Namespaces
+
+Early on in this tutorial, I presented a set of rules and
+recommendations for object naming. One recommendation that I left off
+was to use uppercase letters for naming objects that you create to
+avoid overwriting any of the functions built in to R (which are
+typically in lower case).
+
+Although it might seem like a good idea to avoid such conflicts, it is
+worth noting that R is not overly fragile and is sufficiently cleaver
+to enable it to resolve many naming conflicts. Object names are
+context specific (see also object overloading above).
+
+When the name of an object is supplied that could be used to refer to
+multiple objects (for example, if you had created an object called
+`mean` there would be two objects named `mean` - your object and the
+inbuilt object), R first attempts to determine which object you are
+likely to have been referring to.
+
+Objects are defined and apply within certain **namespaces** (or
+contexts). Namespaces define the context (environment) in which an
+object is available. Objects created within functions, remain local to
+those functions. Hence if an object is created within an object, it is
+not available outside that function.
+
+The namespace provides a context in which R should look for an object
+(such as a function). Functions defined within packages are available
+for use, when the library is loaded. This is essentially adding the
+libraries namespace to the list of contexts to search in.
+
+Using our dictionary example, R will only look for functions contained
+in the dictionaries currently present on the desk (not on the book
+shelf).
+
+Nevertheless, this does not guarantee that there will not be any
+conflicts. Consider the situation above were we loaded the `tidyverse`
+package. When we did so, we were notified that there were conflicts
+relating to a function called `filter`. Essentially, the definition of
+a function appeared in two dictionaries on the desk. When this is the
+case, the dictionary on top (the one loaded most recently) will be
+used as the working definition.
+
+However, we can prefix the function name with the package name (its
+namespace) thereby explicitly indicating the context in which the
+function is defined and thus, the function will be found.
+
+For example, lets say we actually wanted to use the `filter` function
+in the `stats` package. This function performs linear filtering of
+time series.
+
+```{r, mhidden=TRUE}
+#| label: code 81
+stats::filter(x = 1:100, filter = rep(1, 3))
+```
+
+As we will see in a subsequent worksheet, `dplyr::filter()` is used to
+subset the rows from a data set.
+

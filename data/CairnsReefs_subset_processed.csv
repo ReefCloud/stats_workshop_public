@@ -1,0 +1,689 @@
+Reef_id,site_id,site_name,site_latitude,site_longitude,survey_start_date,Year,survey_depth,transect_id,type,GROUP,COUNT,TOTAL
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2015-03-04T14:00:00Z,2015,9,36091,point_human_classification,HC,13,55
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2015-03-04T14:00:00Z,2015,9,36091,point_machine_classification,HC,16,55
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2015-03-04T14:00:00Z,2015,9,36092,point_human_classification,HC,4,55
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2015-03-04T14:00:00Z,2015,9,36092,point_machine_classification,HC,4,55
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2015-03-04T14:00:00Z,2015,9,36093,point_human_classification,HC,11,60
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2015-03-04T14:00:00Z,2015,9,36093,point_machine_classification,HC,12,60
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2015-03-04T14:00:00Z,2015,9,36094,point_human_classification,HC,10,65
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2015-03-04T14:00:00Z,2015,9,36094,point_machine_classification,HC,7,65
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2015-03-04T14:00:00Z,2015,9,36095,point_human_classification,HC,1,40
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2015-03-04T14:00:00Z,2015,9,36095,point_machine_classification,HC,2,40
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2015-11-30T14:00:00Z,2015,9,36091,point_human_classification,HC,13,45
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2015-11-30T14:00:00Z,2015,9,36091,point_machine_classification,HC,14,45
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2015-11-30T14:00:00Z,2015,9,36092,point_human_classification,HC,18,60
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2015-11-30T14:00:00Z,2015,9,36092,point_machine_classification,HC,19,60
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2015-11-30T14:00:00Z,2015,9,36093,point_human_classification,HC,12,55
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2015-11-30T14:00:00Z,2015,9,36093,point_machine_classification,HC,13,55
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2015-11-30T14:00:00Z,2015,9,36094,point_human_classification,HC,18,50
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2015-11-30T14:00:00Z,2015,9,36094,point_machine_classification,HC,19,50
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2015-11-30T14:00:00Z,2015,9,36095,point_human_classification,HC,18,50
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2015-11-30T14:00:00Z,2015,9,36095,point_machine_classification,HC,18,50
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2016-09-10T14:00:00Z,2016,9,36091,point_human_classification,HC,15,55
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2016-09-10T14:00:00Z,2016,9,36091,point_machine_classification,HC,14,55
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2016-09-10T14:00:00Z,2016,9,36092,point_human_classification,HC,4,60
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2016-09-10T14:00:00Z,2016,9,36092,point_machine_classification,HC,5,60
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2016-09-10T14:00:00Z,2016,9,36093,point_human_classification,HC,3,45
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2016-09-10T14:00:00Z,2016,9,36093,point_machine_classification,HC,4,45
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2016-09-10T14:00:00Z,2016,9,36094,point_human_classification,HC,6,50
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2016-09-10T14:00:00Z,2016,9,36094,point_machine_classification,HC,6,50
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2016-09-10T14:00:00Z,2016,9,36095,point_human_classification,HC,3,55
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2016-09-10T14:00:00Z,2016,9,36095,point_machine_classification,HC,3,55
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2017-12-15T14:00:00Z,2017,9,36091,point_human_classification,HC,6,45
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2017-12-15T14:00:00Z,2017,9,36091,point_machine_classification,HC,6,45
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2017-12-15T14:00:00Z,2017,9,36092,point_human_classification,HC,3,45
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2017-12-15T14:00:00Z,2017,9,36092,point_machine_classification,HC,4,45
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2017-12-15T14:00:00Z,2017,9,36093,point_human_classification,HC,5,30
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2017-12-15T14:00:00Z,2017,9,36093,point_machine_classification,HC,4,30
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2017-12-15T14:00:00Z,2017,9,36094,point_human_classification,HC,5,60
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2017-12-15T14:00:00Z,2017,9,36094,point_machine_classification,HC,7,60
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2017-12-15T14:00:00Z,2017,9,36095,point_human_classification,HC,6,50
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2017-12-15T14:00:00Z,2017,9,36095,point_machine_classification,HC,5,50
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2019-02-17T14:00:00Z,2019,9,36091,point_human_classification,HC,14,55
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2019-02-17T14:00:00Z,2019,9,36091,point_machine_classification,HC,16,55
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2019-02-17T14:00:00Z,2019,9,36092,point_human_classification,HC,8,45
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2019-02-17T14:00:00Z,2019,9,36092,point_machine_classification,HC,12,45
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2019-02-17T14:00:00Z,2019,9,36093,point_human_classification,HC,5,50
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2019-02-17T14:00:00Z,2019,9,36093,point_machine_classification,HC,5,50
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2019-02-17T14:00:00Z,2019,9,36094,point_human_classification,HC,0,30
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2019-02-17T14:00:00Z,2019,9,36094,point_machine_classification,HC,1,30
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2019-02-17T14:00:00Z,2019,9,36095,point_human_classification,HC,6,45
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2019-02-17T14:00:00Z,2019,9,36095,point_machine_classification,HC,7,45
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2020-02-08T14:00:00Z,2020,9,36091,point_human_classification,HC,18,55
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2020-02-08T14:00:00Z,2020,9,36091,point_machine_classification,HC,16,55
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2020-02-08T14:00:00Z,2020,9,36092,point_human_classification,HC,17,55
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2020-02-08T14:00:00Z,2020,9,36092,point_machine_classification,HC,14,55
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2020-02-08T14:00:00Z,2020,9,36093,point_human_classification,HC,9,55
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2020-02-08T14:00:00Z,2020,9,36093,point_machine_classification,HC,12,55
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2020-02-08T14:00:00Z,2020,9,36094,point_human_classification,HC,16,55
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2020-02-08T14:00:00Z,2020,9,36094,point_machine_classification,HC,18,55
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2020-02-08T14:00:00Z,2020,9,36095,point_human_classification,HC,11,55
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2020-02-08T14:00:00Z,2020,9,36095,point_machine_classification,HC,10,55
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2020-11-06T00:00:00Z,2020,7,36071,point_human_classification,HC,24,90
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2020-11-06T00:00:00Z,2020,7,36071,point_machine_classification,HC,26,90
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2020-11-06T00:00:00Z,2020,7,36072,point_human_classification,HC,32,100
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2020-11-06T00:00:00Z,2020,7,36072,point_machine_classification,HC,25,100
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2020-11-06T00:00:00Z,2020,7,36073,point_human_classification,HC,25,90
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2020-11-06T00:00:00Z,2020,7,36073,point_machine_classification,HC,12,90
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2020-11-06T00:00:00Z,2020,7,36074,point_human_classification,HC,32,90
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2020-11-06T00:00:00Z,2020,7,36074,point_machine_classification,HC,28,90
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2020-11-06T00:00:00Z,2020,7,36075,point_human_classification,HC,17,90
+Agincourt Reef No.1,360,Agincourt Reef No.1 Site 1,-16.04,145.87,2020-11-06T00:00:00Z,2020,7,36075,point_machine_classification,HC,17,90
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2015-03-04T14:00:00Z,2015,9,36191,point_human_classification,HC,9,50
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2015-03-04T14:00:00Z,2015,9,36191,point_machine_classification,HC,8,50
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2015-03-04T14:00:00Z,2015,9,36192,point_human_classification,HC,4,55
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2015-03-04T14:00:00Z,2015,9,36192,point_machine_classification,HC,7,55
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2015-03-04T14:00:00Z,2015,9,36193,point_human_classification,HC,21,60
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2015-03-04T14:00:00Z,2015,9,36193,point_machine_classification,HC,19,60
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2015-03-04T14:00:00Z,2015,9,36194,point_human_classification,HC,11,55
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2015-03-04T14:00:00Z,2015,9,36194,point_machine_classification,HC,11,55
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2015-03-04T14:00:00Z,2015,9,36195,point_human_classification,HC,9,65
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2015-03-04T14:00:00Z,2015,9,36195,point_machine_classification,HC,10,65
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2015-11-30T14:00:00Z,2015,9,36191,point_human_classification,HC,16,50
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2015-11-30T14:00:00Z,2015,9,36191,point_machine_classification,HC,16,50
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2015-11-30T14:00:00Z,2015,9,36192,point_human_classification,HC,7,50
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2015-11-30T14:00:00Z,2015,9,36192,point_machine_classification,HC,10,50
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2015-11-30T14:00:00Z,2015,9,36193,point_human_classification,HC,15,60
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2015-11-30T14:00:00Z,2015,9,36193,point_machine_classification,HC,17,60
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2015-11-30T14:00:00Z,2015,9,36194,point_human_classification,HC,11,40
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2015-11-30T14:00:00Z,2015,9,36194,point_machine_classification,HC,12,40
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2015-11-30T14:00:00Z,2015,9,36195,point_human_classification,HC,4,35
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2015-11-30T14:00:00Z,2015,9,36195,point_machine_classification,HC,5,35
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2016-09-10T14:00:00Z,2016,9,36191,point_human_classification,HC,4,55
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2016-09-10T14:00:00Z,2016,9,36191,point_machine_classification,HC,5,55
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2016-09-10T14:00:00Z,2016,9,36192,point_human_classification,HC,3,50
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2016-09-10T14:00:00Z,2016,9,36192,point_machine_classification,HC,5,50
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2016-09-10T14:00:00Z,2016,9,36193,point_human_classification,HC,5,50
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2016-09-10T14:00:00Z,2016,9,36193,point_machine_classification,HC,9,50
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2016-09-10T14:00:00Z,2016,9,36194,point_human_classification,HC,6,40
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2016-09-10T14:00:00Z,2016,9,36194,point_machine_classification,HC,5,40
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2016-09-10T14:00:00Z,2016,9,36195,point_human_classification,HC,5,50
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2016-09-10T14:00:00Z,2016,9,36195,point_machine_classification,HC,2,50
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2017-12-15T14:00:00Z,2017,9,36191,point_human_classification,HC,7,60
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2017-12-15T14:00:00Z,2017,9,36191,point_machine_classification,HC,7,60
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2017-12-15T14:00:00Z,2017,9,36192,point_human_classification,HC,5,45
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2017-12-15T14:00:00Z,2017,9,36192,point_machine_classification,HC,4,45
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2017-12-15T14:00:00Z,2017,9,36193,point_human_classification,HC,10,55
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2017-12-15T14:00:00Z,2017,9,36193,point_machine_classification,HC,10,55
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2017-12-15T14:00:00Z,2017,9,36194,point_human_classification,HC,8,45
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2017-12-15T14:00:00Z,2017,9,36194,point_machine_classification,HC,8,45
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2017-12-15T14:00:00Z,2017,9,36195,point_human_classification,HC,7,55
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2017-12-15T14:00:00Z,2017,9,36195,point_machine_classification,HC,6,55
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2019-02-17T14:00:00Z,2019,9,36191,point_human_classification,HC,13,65
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2019-02-17T14:00:00Z,2019,9,36191,point_machine_classification,HC,10,65
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2019-02-17T14:00:00Z,2019,9,36192,point_human_classification,HC,11,55
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2019-02-17T14:00:00Z,2019,9,36192,point_machine_classification,HC,13,55
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2019-02-17T14:00:00Z,2019,9,36193,point_human_classification,HC,10,50
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2019-02-17T14:00:00Z,2019,9,36193,point_machine_classification,HC,15,50
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2019-02-17T14:00:00Z,2019,9,36194,point_human_classification,HC,20,70
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2019-02-17T14:00:00Z,2019,9,36194,point_machine_classification,HC,21,70
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2019-02-17T14:00:00Z,2019,9,36195,point_human_classification,HC,9,45
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2019-02-17T14:00:00Z,2019,9,36195,point_machine_classification,HC,6,45
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2020-02-08T14:00:00Z,2020,9,36191,point_human_classification,HC,10,55
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2020-02-08T14:00:00Z,2020,9,36191,point_machine_classification,HC,11,55
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2020-02-08T14:00:00Z,2020,9,36192,point_human_classification,HC,0,50
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2020-02-08T14:00:00Z,2020,9,36192,point_machine_classification,HC,8,50
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2020-02-08T14:00:00Z,2020,9,36193,point_human_classification,HC,11,60
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2020-02-08T14:00:00Z,2020,9,36193,point_machine_classification,HC,13,60
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2020-02-08T14:00:00Z,2020,9,36194,point_human_classification,HC,18,50
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2020-02-08T14:00:00Z,2020,9,36194,point_machine_classification,HC,16,50
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2020-02-08T14:00:00Z,2020,9,36195,point_human_classification,HC,16,50
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2020-02-08T14:00:00Z,2020,9,36195,point_machine_classification,HC,17,50
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2020-11-06T00:00:00Z,2020,7,36171,point_human_classification,HC,27,100
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2020-11-06T00:00:00Z,2020,7,36171,point_machine_classification,HC,31,100
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2020-11-06T00:00:00Z,2020,7,36172,point_human_classification,HC,38,185
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2020-11-06T00:00:00Z,2020,7,36172,point_machine_classification,HC,23,185
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2020-11-06T00:00:00Z,2020,7,36174,point_human_classification,HC,32,95
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2020-11-06T00:00:00Z,2020,7,36174,point_machine_classification,HC,38,95
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2020-11-06T00:00:00Z,2020,7,36175,point_human_classification,HC,34,90
+Agincourt Reef No.1,361,Agincourt Reef No.1 Site 2,-16.04,145.87,2020-11-06T00:00:00Z,2020,7,36175,point_machine_classification,HC,27,90
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2015-03-04T14:00:00Z,2015,9,36291,point_human_classification,HC,9,45
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2015-03-04T14:00:00Z,2015,9,36291,point_machine_classification,HC,9,45
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2015-03-04T14:00:00Z,2015,9,36292,point_human_classification,HC,14,55
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2015-03-04T14:00:00Z,2015,9,36292,point_machine_classification,HC,10,55
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2015-03-04T14:00:00Z,2015,9,36293,point_human_classification,HC,11,60
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2015-03-04T14:00:00Z,2015,9,36293,point_machine_classification,HC,11,60
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2015-03-04T14:00:00Z,2015,9,36294,point_human_classification,HC,9,50
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2015-03-04T14:00:00Z,2015,9,36294,point_machine_classification,HC,9,50
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2015-03-04T14:00:00Z,2015,9,36295,point_human_classification,HC,7,45
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2015-03-04T14:00:00Z,2015,9,36295,point_machine_classification,HC,12,45
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2015-12-01T14:00:00Z,2015,9,36291,point_human_classification,HC,12,65
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2015-12-01T14:00:00Z,2015,9,36291,point_machine_classification,HC,11,65
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2015-12-01T14:00:00Z,2015,9,36292,point_human_classification,HC,10,45
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2015-12-01T14:00:00Z,2015,9,36292,point_machine_classification,HC,10,45
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2015-12-01T14:00:00Z,2015,9,36293,point_human_classification,HC,15,50
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2015-12-01T14:00:00Z,2015,9,36293,point_machine_classification,HC,12,50
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2015-12-01T14:00:00Z,2015,9,36294,point_human_classification,HC,14,40
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2015-12-01T14:00:00Z,2015,9,36294,point_machine_classification,HC,11,40
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2015-12-01T14:00:00Z,2015,9,36295,point_human_classification,HC,13,55
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2015-12-01T14:00:00Z,2015,9,36295,point_machine_classification,HC,12,55
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2016-09-10T14:00:00Z,2016,9,36291,point_human_classification,HC,7,40
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2016-09-10T14:00:00Z,2016,9,36291,point_machine_classification,HC,6,40
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2016-09-10T14:00:00Z,2016,9,36292,point_human_classification,HC,11,50
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2016-09-10T14:00:00Z,2016,9,36292,point_machine_classification,HC,12,50
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2016-09-10T14:00:00Z,2016,9,36293,point_human_classification,HC,5,50
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2016-09-10T14:00:00Z,2016,9,36293,point_machine_classification,HC,4,50
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2016-09-10T14:00:00Z,2016,9,36294,point_human_classification,HC,6,55
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2016-09-10T14:00:00Z,2016,9,36294,point_machine_classification,HC,5,55
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2016-09-10T14:00:00Z,2016,9,36295,point_human_classification,HC,10,55
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2016-09-10T14:00:00Z,2016,9,36295,point_machine_classification,HC,11,55
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2017-12-15T14:00:00Z,2017,9,36291,point_human_classification,HC,6,65
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2017-12-15T14:00:00Z,2017,9,36291,point_machine_classification,HC,5,65
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2017-12-15T14:00:00Z,2017,9,36292,point_human_classification,HC,5,55
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2017-12-15T14:00:00Z,2017,9,36292,point_machine_classification,HC,6,55
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2017-12-15T14:00:00Z,2017,9,36293,point_human_classification,HC,6,50
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2017-12-15T14:00:00Z,2017,9,36293,point_machine_classification,HC,7,50
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2017-12-15T14:00:00Z,2017,9,36294,point_human_classification,HC,10,55
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2017-12-15T14:00:00Z,2017,9,36294,point_machine_classification,HC,9,55
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2017-12-15T14:00:00Z,2017,9,36295,point_human_classification,HC,6,50
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2017-12-15T14:00:00Z,2017,9,36295,point_machine_classification,HC,6,50
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2019-02-17T14:00:00Z,2019,9,36291,point_human_classification,HC,5,50
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2019-02-17T14:00:00Z,2019,9,36291,point_machine_classification,HC,5,50
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2019-02-17T14:00:00Z,2019,9,36292,point_human_classification,HC,5,55
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2019-02-17T14:00:00Z,2019,9,36292,point_machine_classification,HC,6,55
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2019-02-17T14:00:00Z,2019,9,36293,point_human_classification,HC,6,60
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2019-02-17T14:00:00Z,2019,9,36293,point_machine_classification,HC,8,60
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2019-02-17T14:00:00Z,2019,9,36294,point_human_classification,HC,9,60
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2019-02-17T14:00:00Z,2019,9,36294,point_machine_classification,HC,10,60
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2019-02-17T14:00:00Z,2019,9,36295,point_human_classification,HC,6,45
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2019-02-17T14:00:00Z,2019,9,36295,point_machine_classification,HC,6,45
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2020-02-08T14:00:00Z,2020,9,36291,point_human_classification,HC,14,60
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2020-02-08T14:00:00Z,2020,9,36291,point_machine_classification,HC,15,60
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2020-02-08T14:00:00Z,2020,9,36292,point_human_classification,HC,14,55
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2020-02-08T14:00:00Z,2020,9,36292,point_machine_classification,HC,17,55
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2020-02-08T14:00:00Z,2020,9,36293,point_human_classification,HC,13,55
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2020-02-08T14:00:00Z,2020,9,36293,point_machine_classification,HC,14,55
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2020-02-08T14:00:00Z,2020,9,36294,point_human_classification,HC,9,60
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2020-02-08T14:00:00Z,2020,9,36294,point_machine_classification,HC,12,60
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2020-02-08T14:00:00Z,2020,9,36295,point_human_classification,HC,14,55
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2020-02-08T14:00:00Z,2020,9,36295,point_machine_classification,HC,14,55
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2020-11-06T00:00:00Z,2020,6,36261,point_human_classification,HC,35,100
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2020-11-06T00:00:00Z,2020,6,36261,point_machine_classification,HC,31,100
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2020-11-06T00:00:00Z,2020,6,36262,point_human_classification,HC,31,100
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2020-11-06T00:00:00Z,2020,6,36262,point_machine_classification,HC,31,100
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2020-11-06T00:00:00Z,2020,6,36263,point_human_classification,HC,28,85
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2020-11-06T00:00:00Z,2020,6,36263,point_machine_classification,HC,17,85
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2020-11-06T00:00:00Z,2020,6,36264,point_human_classification,HC,29,95
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2020-11-06T00:00:00Z,2020,6,36264,point_machine_classification,HC,32,95
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2020-11-06T00:00:00Z,2020,6,36265,point_human_classification,HC,24,90
+Agincourt Reef No.1,362,Agincourt Reef No.1 Site 3,-16.05,145.87,2020-11-06T00:00:00Z,2020,6,36265,point_machine_classification,HC,27,90
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2015-03-05T14:00:00Z,2015,9,48991,point_human_classification,HC,7,55
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2015-03-05T14:00:00Z,2015,9,48991,point_machine_classification,HC,6,55
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2015-03-05T14:00:00Z,2015,9,48992,point_human_classification,HC,16,60
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2015-03-05T14:00:00Z,2015,9,48992,point_machine_classification,HC,17,60
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2015-03-05T14:00:00Z,2015,9,48993,point_human_classification,HC,11,65
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2015-03-05T14:00:00Z,2015,9,48993,point_machine_classification,HC,12,65
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2015-03-05T14:00:00Z,2015,9,48994,point_human_classification,HC,13,50
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2015-03-05T14:00:00Z,2015,9,48994,point_machine_classification,HC,13,50
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2015-03-05T14:00:00Z,2015,9,48995,point_human_classification,HC,3,65
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2015-03-05T14:00:00Z,2015,9,48995,point_machine_classification,HC,6,65
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2015-12-02T14:00:00Z,2015,9,48991,point_human_classification,HC,18,45
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2015-12-02T14:00:00Z,2015,9,48991,point_machine_classification,HC,18,45
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2015-12-02T14:00:00Z,2015,9,48992,point_human_classification,HC,20,55
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2015-12-02T14:00:00Z,2015,9,48992,point_machine_classification,HC,23,55
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2015-12-02T14:00:00Z,2015,9,48993,point_human_classification,HC,15,60
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2015-12-02T14:00:00Z,2015,9,48993,point_machine_classification,HC,16,60
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2015-12-02T14:00:00Z,2015,9,48994,point_human_classification,HC,17,45
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2015-12-02T14:00:00Z,2015,9,48994,point_machine_classification,HC,17,45
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2015-12-02T14:00:00Z,2015,9,48995,point_human_classification,HC,5,55
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2015-12-02T14:00:00Z,2015,9,48995,point_machine_classification,HC,8,55
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2016-09-11T14:00:00Z,2016,9,48991,point_human_classification,HC,5,50
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2016-09-11T14:00:00Z,2016,9,48991,point_machine_classification,HC,5,50
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2016-09-11T14:00:00Z,2016,9,48992,point_human_classification,HC,7,45
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2016-09-11T14:00:00Z,2016,9,48992,point_machine_classification,HC,7,45
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2016-09-11T14:00:00Z,2016,9,48993,point_human_classification,HC,7,50
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2016-09-11T14:00:00Z,2016,9,48993,point_machine_classification,HC,7,50
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2016-09-11T14:00:00Z,2016,9,48994,point_human_classification,HC,4,50
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2016-09-11T14:00:00Z,2016,9,48994,point_machine_classification,HC,4,50
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2016-09-11T14:00:00Z,2016,9,48995,point_human_classification,HC,7,40
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2016-09-11T14:00:00Z,2016,9,48995,point_machine_classification,HC,9,40
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2017-12-16T14:00:00Z,2017,9,48991,point_human_classification,HC,9,55
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2017-12-16T14:00:00Z,2017,9,48991,point_machine_classification,HC,11,55
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2017-12-16T14:00:00Z,2017,9,48992,point_human_classification,HC,5,50
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2017-12-16T14:00:00Z,2017,9,48992,point_machine_classification,HC,6,50
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2017-12-16T14:00:00Z,2017,9,48993,point_human_classification,HC,5,40
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2017-12-16T14:00:00Z,2017,9,48993,point_machine_classification,HC,4,40
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2017-12-16T14:00:00Z,2017,9,48994,point_human_classification,HC,6,45
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2017-12-16T14:00:00Z,2017,9,48994,point_machine_classification,HC,4,45
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2017-12-16T14:00:00Z,2017,9,48995,point_human_classification,HC,8,50
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2017-12-16T14:00:00Z,2017,9,48995,point_machine_classification,HC,7,50
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2019-02-16T14:00:00Z,2019,9,48991,point_human_classification,HC,10,40
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2019-02-16T14:00:00Z,2019,9,48991,point_machine_classification,HC,10,40
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2019-02-16T14:00:00Z,2019,9,48992,point_human_classification,HC,10,35
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2019-02-16T14:00:00Z,2019,9,48992,point_machine_classification,HC,11,35
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2019-02-16T14:00:00Z,2019,9,48993,point_human_classification,HC,7,55
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2019-02-16T14:00:00Z,2019,9,48993,point_machine_classification,HC,9,55
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2019-02-16T14:00:00Z,2019,9,48994,point_human_classification,HC,15,55
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2019-02-16T14:00:00Z,2019,9,48994,point_machine_classification,HC,14,55
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2019-02-16T14:00:00Z,2019,9,48995,point_human_classification,HC,9,60
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2019-02-16T14:00:00Z,2019,9,48995,point_machine_classification,HC,8,60
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2019-12-12T14:00:00Z,2019,9,48991,point_human_classification,HC,21,50
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2019-12-12T14:00:00Z,2019,9,48991,point_machine_classification,HC,21,50
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2019-12-12T14:00:00Z,2019,9,48992,point_human_classification,HC,14,55
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2019-12-12T14:00:00Z,2019,9,48992,point_machine_classification,HC,14,55
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2019-12-12T14:00:00Z,2019,9,48993,point_human_classification,HC,6,50
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2019-12-12T14:00:00Z,2019,9,48993,point_machine_classification,HC,8,50
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2019-12-12T14:00:00Z,2019,9,48994,point_human_classification,HC,20,85
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2019-12-12T14:00:00Z,2019,9,48994,point_machine_classification,HC,21,85
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2019-12-12T14:00:00Z,2019,9,48995,point_human_classification,HC,6,55
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2019-12-12T14:00:00Z,2019,9,48995,point_machine_classification,HC,6,55
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2021-01-08T00:00:00Z,2021,8,48981,point_human_classification,HC,33,85
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2021-01-08T00:00:00Z,2021,8,48981,point_machine_classification,HC,25,85
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2021-01-08T00:00:00Z,2021,8,48982,point_human_classification,HC,37,95
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2021-01-08T00:00:00Z,2021,8,48982,point_machine_classification,HC,35,95
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2021-01-08T00:00:00Z,2021,8,48983,point_human_classification,HC,46,95
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2021-01-08T00:00:00Z,2021,8,48983,point_machine_classification,HC,47,95
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2021-01-08T00:00:00Z,2021,8,48984,point_human_classification,HC,33,70
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2021-01-08T00:00:00Z,2021,8,48984,point_machine_classification,HC,23,70
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2021-01-08T00:00:00Z,2021,8,48985,point_human_classification,HC,12,80
+St. Crispin Reef,489,St. Crispin Reef Site 1,-16.07,145.85,2021-01-08T00:00:00Z,2021,8,48985,point_machine_classification,HC,11,80
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2015-03-05T14:00:00Z,2015,9,49091,point_human_classification,HC,8,45
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2015-03-05T14:00:00Z,2015,9,49091,point_machine_classification,HC,8,45
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2015-03-05T14:00:00Z,2015,9,49092,point_human_classification,HC,9,55
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2015-03-05T14:00:00Z,2015,9,49092,point_machine_classification,HC,10,55
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2015-03-05T14:00:00Z,2015,9,49093,point_human_classification,HC,4,50
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2015-03-05T14:00:00Z,2015,9,49093,point_machine_classification,HC,5,50
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2015-03-05T14:00:00Z,2015,9,49094,point_human_classification,HC,8,50
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2015-03-05T14:00:00Z,2015,9,49094,point_machine_classification,HC,11,50
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2015-03-05T14:00:00Z,2015,9,49095,point_human_classification,HC,4,55
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2015-03-05T14:00:00Z,2015,9,49095,point_machine_classification,HC,8,55
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2015-12-02T14:00:00Z,2015,9,49091,point_human_classification,HC,5,55
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2015-12-02T14:00:00Z,2015,9,49091,point_machine_classification,HC,7,55
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2015-12-02T14:00:00Z,2015,9,49092,point_human_classification,HC,13,45
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2015-12-02T14:00:00Z,2015,9,49092,point_machine_classification,HC,14,45
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2015-12-02T14:00:00Z,2015,9,49093,point_human_classification,HC,13,60
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2015-12-02T14:00:00Z,2015,9,49093,point_machine_classification,HC,13,60
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2015-12-02T14:00:00Z,2015,9,49094,point_human_classification,HC,4,55
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2015-12-02T14:00:00Z,2015,9,49094,point_machine_classification,HC,4,55
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2015-12-02T14:00:00Z,2015,9,49095,point_human_classification,HC,7,45
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2015-12-02T14:00:00Z,2015,9,49095,point_machine_classification,HC,10,45
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2016-09-11T14:00:00Z,2016,9,49091,point_human_classification,HC,7,55
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2016-09-11T14:00:00Z,2016,9,49091,point_machine_classification,HC,8,55
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2016-09-11T14:00:00Z,2016,9,49092,point_human_classification,HC,5,45
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2016-09-11T14:00:00Z,2016,9,49092,point_machine_classification,HC,3,45
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2016-09-11T14:00:00Z,2016,9,49093,point_human_classification,HC,11,65
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2016-09-11T14:00:00Z,2016,9,49093,point_machine_classification,HC,9,65
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2016-09-11T14:00:00Z,2016,9,49094,point_human_classification,HC,6,60
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2016-09-11T14:00:00Z,2016,9,49094,point_machine_classification,HC,7,60
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2016-09-11T14:00:00Z,2016,9,49095,point_human_classification,HC,6,55
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2016-09-11T14:00:00Z,2016,9,49095,point_machine_classification,HC,6,55
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2017-12-16T14:00:00Z,2017,9,49091,point_human_classification,HC,3,55
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2017-12-16T14:00:00Z,2017,9,49091,point_machine_classification,HC,4,55
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2017-12-16T14:00:00Z,2017,9,49092,point_human_classification,HC,11,50
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2017-12-16T14:00:00Z,2017,9,49092,point_machine_classification,HC,12,50
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2017-12-16T14:00:00Z,2017,9,49093,point_human_classification,HC,5,55
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2017-12-16T14:00:00Z,2017,9,49093,point_machine_classification,HC,6,55
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2017-12-16T14:00:00Z,2017,9,49094,point_human_classification,HC,6,75
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2017-12-16T14:00:00Z,2017,9,49094,point_machine_classification,HC,6,75
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2017-12-16T14:00:00Z,2017,9,49095,point_human_classification,HC,5,70
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2017-12-16T14:00:00Z,2017,9,49095,point_machine_classification,HC,5,70
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2019-02-16T14:00:00Z,2019,9,49091,point_human_classification,HC,16,65
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2019-02-16T14:00:00Z,2019,9,49091,point_machine_classification,HC,17,65
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2019-02-16T14:00:00Z,2019,9,49092,point_human_classification,HC,15,50
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2019-02-16T14:00:00Z,2019,9,49092,point_machine_classification,HC,15,50
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2019-02-16T14:00:00Z,2019,9,49093,point_human_classification,HC,8,50
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2019-02-16T14:00:00Z,2019,9,49093,point_machine_classification,HC,12,50
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2019-02-16T14:00:00Z,2019,9,49094,point_human_classification,HC,9,45
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2019-02-16T14:00:00Z,2019,9,49094,point_machine_classification,HC,11,45
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2019-02-16T14:00:00Z,2019,9,49095,point_human_classification,HC,6,60
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2019-02-16T14:00:00Z,2019,9,49095,point_machine_classification,HC,8,60
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2019-12-12T14:00:00Z,2019,9,49091,point_human_classification,HC,10,50
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2019-12-12T14:00:00Z,2019,9,49091,point_machine_classification,HC,12,50
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2019-12-12T14:00:00Z,2019,9,49092,point_human_classification,HC,7,50
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2019-12-12T14:00:00Z,2019,9,49092,point_machine_classification,HC,8,50
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2019-12-12T14:00:00Z,2019,9,49093,point_human_classification,HC,18,85
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2019-12-12T14:00:00Z,2019,9,49093,point_machine_classification,HC,18,85
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2019-12-12T14:00:00Z,2019,9,49094,point_human_classification,HC,13,50
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2019-12-12T14:00:00Z,2019,9,49094,point_machine_classification,HC,14,50
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2019-12-12T14:00:00Z,2019,9,49095,point_human_classification,HC,4,55
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2019-12-12T14:00:00Z,2019,9,49095,point_machine_classification,HC,4,55
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2021-01-08T00:00:00Z,2021,7,49071,point_human_classification,HC,38,90
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2021-01-08T00:00:00Z,2021,7,49071,point_machine_classification,HC,32,90
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2021-01-08T00:00:00Z,2021,7,49072,point_human_classification,HC,36,95
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2021-01-08T00:00:00Z,2021,7,49072,point_machine_classification,HC,33,95
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2021-01-08T00:00:00Z,2021,7,49073,point_human_classification,HC,29,90
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2021-01-08T00:00:00Z,2021,7,49073,point_machine_classification,HC,25,90
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2021-01-08T00:00:00Z,2021,7,49074,point_human_classification,HC,43,95
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2021-01-08T00:00:00Z,2021,7,49074,point_machine_classification,HC,35,95
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2021-01-08T00:00:00Z,2021,7,49075,point_human_classification,HC,17,80
+St. Crispin Reef,490,St. Crispin Reef Site 2,-16.07,145.85,2021-01-08T00:00:00Z,2021,7,49075,point_machine_classification,HC,15,80
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2015-03-05T14:00:00Z,2015,9,49191,point_human_classification,HC,5,45
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2015-03-05T14:00:00Z,2015,9,49191,point_machine_classification,HC,6,45
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2015-03-05T14:00:00Z,2015,9,49192,point_human_classification,HC,4,55
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2015-03-05T14:00:00Z,2015,9,49192,point_machine_classification,HC,3,55
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2015-03-05T14:00:00Z,2015,9,49193,point_human_classification,HC,5,50
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2015-03-05T14:00:00Z,2015,9,49193,point_machine_classification,HC,3,50
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2015-03-05T14:00:00Z,2015,9,49194,point_human_classification,HC,8,50
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2015-03-05T14:00:00Z,2015,9,49194,point_machine_classification,HC,8,50
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2015-03-05T14:00:00Z,2015,9,49195,point_human_classification,HC,9,55
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2015-03-05T14:00:00Z,2015,9,49195,point_machine_classification,HC,11,55
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2015-12-02T14:00:00Z,2015,9,49191,point_human_classification,HC,8,50
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2015-12-02T14:00:00Z,2015,9,49191,point_machine_classification,HC,8,50
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2015-12-02T14:00:00Z,2015,9,49192,point_human_classification,HC,8,55
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2015-12-02T14:00:00Z,2015,9,49192,point_machine_classification,HC,9,55
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2015-12-02T14:00:00Z,2015,9,49193,point_human_classification,HC,5,65
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2015-12-02T14:00:00Z,2015,9,49193,point_machine_classification,HC,7,65
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2015-12-02T14:00:00Z,2015,9,49194,point_human_classification,HC,8,55
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2015-12-02T14:00:00Z,2015,9,49194,point_machine_classification,HC,9,55
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2015-12-02T14:00:00Z,2015,9,49195,point_human_classification,HC,3,60
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2015-12-02T14:00:00Z,2015,9,49195,point_machine_classification,HC,2,60
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2016-09-12T14:00:00Z,2016,9,49191,point_human_classification,HC,6,55
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2016-09-12T14:00:00Z,2016,9,49191,point_machine_classification,HC,5,55
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2016-09-12T14:00:00Z,2016,9,49192,point_human_classification,HC,6,55
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2016-09-12T14:00:00Z,2016,9,49192,point_machine_classification,HC,6,55
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2016-09-12T14:00:00Z,2016,9,49193,point_human_classification,HC,8,65
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2016-09-12T14:00:00Z,2016,9,49193,point_machine_classification,HC,8,65
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2016-09-12T14:00:00Z,2016,9,49194,point_human_classification,HC,3,60
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2016-09-12T14:00:00Z,2016,9,49194,point_machine_classification,HC,5,60
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2016-09-12T14:00:00Z,2016,9,49195,point_human_classification,HC,10,75
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2016-09-12T14:00:00Z,2016,9,49195,point_machine_classification,HC,10,75
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2017-12-16T14:00:00Z,2017,9,49191,point_human_classification,HC,5,55
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2017-12-16T14:00:00Z,2017,9,49191,point_machine_classification,HC,5,55
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2017-12-16T14:00:00Z,2017,9,49192,point_human_classification,HC,2,45
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2017-12-16T14:00:00Z,2017,9,49192,point_machine_classification,HC,1,45
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2017-12-16T14:00:00Z,2017,9,49193,point_human_classification,HC,9,60
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2017-12-16T14:00:00Z,2017,9,49193,point_machine_classification,HC,7,60
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2017-12-16T14:00:00Z,2017,9,49194,point_human_classification,HC,8,50
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2017-12-16T14:00:00Z,2017,9,49194,point_machine_classification,HC,7,50
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2017-12-16T14:00:00Z,2017,9,49195,point_human_classification,HC,3,65
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2017-12-16T14:00:00Z,2017,9,49195,point_machine_classification,HC,4,65
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2019-02-16T14:00:00Z,2019,9,49191,point_human_classification,HC,6,50
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2019-02-16T14:00:00Z,2019,9,49191,point_machine_classification,HC,6,50
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2019-02-16T14:00:00Z,2019,9,49192,point_human_classification,HC,7,60
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2019-02-16T14:00:00Z,2019,9,49192,point_machine_classification,HC,8,60
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2019-02-16T14:00:00Z,2019,9,49193,point_human_classification,HC,10,55
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2019-02-16T14:00:00Z,2019,9,49193,point_machine_classification,HC,8,55
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2019-02-16T14:00:00Z,2019,9,49194,point_human_classification,HC,5,40
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2019-02-16T14:00:00Z,2019,9,49194,point_machine_classification,HC,3,40
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2019-02-16T14:00:00Z,2019,9,49195,point_human_classification,HC,15,60
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2019-02-16T14:00:00Z,2019,9,49195,point_machine_classification,HC,14,60
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2019-12-12T14:00:00Z,2019,9,49191,point_human_classification,HC,8,55
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2019-12-12T14:00:00Z,2019,9,49191,point_machine_classification,HC,9,55
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2019-12-12T14:00:00Z,2019,9,49192,point_human_classification,HC,14,85
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2019-12-12T14:00:00Z,2019,9,49192,point_machine_classification,HC,16,85
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2019-12-12T14:00:00Z,2019,9,49193,point_human_classification,HC,12,55
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2019-12-12T14:00:00Z,2019,9,49193,point_machine_classification,HC,11,55
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2019-12-12T14:00:00Z,2019,9,49194,point_human_classification,HC,9,40
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2019-12-12T14:00:00Z,2019,9,49194,point_machine_classification,HC,9,40
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2019-12-12T14:00:00Z,2019,9,49195,point_human_classification,HC,4,35
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2019-12-12T14:00:00Z,2019,9,49195,point_machine_classification,HC,4,35
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2021-01-08T00:00:00Z,2021,7,49171,point_human_classification,HC,19,95
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2021-01-08T00:00:00Z,2021,7,49171,point_machine_classification,HC,21,95
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2021-01-08T00:00:00Z,2021,7,49172,point_human_classification,HC,21,95
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2021-01-08T00:00:00Z,2021,7,49172,point_machine_classification,HC,22,95
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2021-01-08T00:00:00Z,2021,7,49173,point_human_classification,HC,34,95
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2021-01-08T00:00:00Z,2021,7,49173,point_machine_classification,HC,33,95
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2021-01-08T00:00:00Z,2021,7,49174,point_human_classification,HC,29,85
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2021-01-08T00:00:00Z,2021,7,49174,point_machine_classification,HC,28,85
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2021-01-08T00:00:00Z,2021,7,49175,point_human_classification,HC,30,90
+St. Crispin Reef,491,St. Crispin Reef Site 3,-16.08,145.85,2021-01-08T00:00:00Z,2021,7,49175,point_machine_classification,HC,23,90
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2015-03-02T14:00:00Z,2015,9,58691,point_human_classification,HC,4,50
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2015-03-02T14:00:00Z,2015,9,58691,point_machine_classification,HC,3,50
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2015-03-02T14:00:00Z,2015,9,58692,point_human_classification,HC,5,60
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2015-03-02T14:00:00Z,2015,9,58692,point_machine_classification,HC,6,60
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2015-03-02T14:00:00Z,2015,9,58693,point_human_classification,HC,12,50
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2015-03-02T14:00:00Z,2015,9,58693,point_machine_classification,HC,11,50
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2015-03-02T14:00:00Z,2015,9,58694,point_human_classification,HC,3,55
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2015-03-02T14:00:00Z,2015,9,58694,point_machine_classification,HC,2,55
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2015-03-02T14:00:00Z,2015,9,58695,point_human_classification,HC,7,45
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2015-03-02T14:00:00Z,2015,9,58695,point_machine_classification,HC,6,45
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2016-12-03T14:00:00Z,2016,9,58691,point_human_classification,HC,5,50
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2016-12-03T14:00:00Z,2016,9,58691,point_machine_classification,HC,5,50
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2016-12-03T14:00:00Z,2016,9,58692,point_human_classification,HC,2,35
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2016-12-03T14:00:00Z,2016,9,58692,point_machine_classification,HC,2,35
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2016-12-03T14:00:00Z,2016,9,58693,point_human_classification,HC,8,45
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2016-12-03T14:00:00Z,2016,9,58693,point_machine_classification,HC,6,45
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2016-12-03T14:00:00Z,2016,9,58694,point_human_classification,HC,5,55
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2016-12-03T14:00:00Z,2016,9,58694,point_machine_classification,HC,6,55
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2016-12-03T14:00:00Z,2016,9,58695,point_human_classification,HC,10,50
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2016-12-03T14:00:00Z,2016,9,58695,point_machine_classification,HC,11,50
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2019-02-18T14:00:00Z,2019,9,58691,point_human_classification,HC,9,50
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2019-02-18T14:00:00Z,2019,9,58691,point_machine_classification,HC,10,50
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2019-02-18T14:00:00Z,2019,9,58692,point_human_classification,HC,6,65
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2019-02-18T14:00:00Z,2019,9,58692,point_machine_classification,HC,8,65
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2019-02-18T14:00:00Z,2019,9,58693,point_human_classification,HC,3,45
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2019-02-18T14:00:00Z,2019,9,58693,point_machine_classification,HC,4,45
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2019-02-18T14:00:00Z,2019,9,58694,point_human_classification,HC,6,60
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2019-02-18T14:00:00Z,2019,9,58694,point_machine_classification,HC,6,60
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2019-02-18T14:00:00Z,2019,9,58695,point_human_classification,HC,11,40
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2019-02-18T14:00:00Z,2019,9,58695,point_machine_classification,HC,12,40
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2021-01-09T00:00:00Z,2021,7,58671,point_human_classification,HC,26,90
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2021-01-09T00:00:00Z,2021,7,58671,point_machine_classification,HC,26,90
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2021-01-09T00:00:00Z,2021,7,58672,point_human_classification,HC,12,95
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2021-01-09T00:00:00Z,2021,7,58672,point_machine_classification,HC,15,95
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2021-01-09T00:00:00Z,2021,7,58673,point_human_classification,HC,33,95
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2021-01-09T00:00:00Z,2021,7,58673,point_machine_classification,HC,24,95
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2021-01-09T00:00:00Z,2021,7,58674,point_human_classification,HC,28,100
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2021-01-09T00:00:00Z,2021,7,58674,point_machine_classification,HC,25,100
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2021-01-09T00:00:00Z,2021,7,58675,point_human_classification,HC,28,85
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2021-01-09T00:00:00Z,2021,7,58675,point_machine_classification,HC,26,85
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2021-09-17T00:00:00Z,2021,7,58671,point_human_classification,HC,21,90
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2021-09-17T00:00:00Z,2021,7,58671,point_machine_classification,HC,21,90
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2021-09-17T00:00:00Z,2021,7,58672,point_human_classification,HC,28,100
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2021-09-17T00:00:00Z,2021,7,58672,point_machine_classification,HC,24,100
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2021-09-17T00:00:00Z,2021,7,58673,point_human_classification,HC,45,95
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2021-09-17T00:00:00Z,2021,7,58673,point_machine_classification,HC,34,95
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2021-09-17T00:00:00Z,2021,7,58674,point_human_classification,HC,11,85
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2021-09-17T00:00:00Z,2021,7,58674,point_machine_classification,HC,6,85
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2021-09-17T00:00:00Z,2021,7,58675,point_human_classification,HC,38,90
+Mackay Reef,586,Mackay Reef Site 1,-16.04,145.65,2021-09-17T00:00:00Z,2021,7,58675,point_machine_classification,HC,37,90
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2015-03-02T14:00:00Z,2015,9,58791,point_human_classification,HC,5,50
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2015-03-02T14:00:00Z,2015,9,58791,point_machine_classification,HC,3,50
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2015-03-02T14:00:00Z,2015,9,58792,point_human_classification,HC,0,60
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2015-03-02T14:00:00Z,2015,9,58792,point_machine_classification,HC,0,60
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2015-03-02T14:00:00Z,2015,9,58793,point_human_classification,HC,13,55
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2015-03-02T14:00:00Z,2015,9,58793,point_machine_classification,HC,14,55
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2015-03-02T14:00:00Z,2015,9,58794,point_human_classification,HC,3,30
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2015-03-02T14:00:00Z,2015,9,58794,point_machine_classification,HC,2,30
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2015-03-02T14:00:00Z,2015,9,58795,point_human_classification,HC,8,65
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2015-03-02T14:00:00Z,2015,9,58795,point_machine_classification,HC,8,65
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2016-12-03T14:00:00Z,2016,9,58791,point_human_classification,HC,19,60
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2016-12-03T14:00:00Z,2016,9,58791,point_machine_classification,HC,19,60
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2016-12-03T14:00:00Z,2016,9,58792,point_human_classification,HC,14,50
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2016-12-03T14:00:00Z,2016,9,58792,point_machine_classification,HC,11,50
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2016-12-03T14:00:00Z,2016,9,58793,point_human_classification,HC,14,60
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2016-12-03T14:00:00Z,2016,9,58793,point_machine_classification,HC,15,60
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2016-12-03T14:00:00Z,2016,9,58794,point_human_classification,HC,3,65
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2016-12-03T14:00:00Z,2016,9,58794,point_machine_classification,HC,3,65
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2016-12-03T14:00:00Z,2016,9,58795,point_human_classification,HC,10,60
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2016-12-03T14:00:00Z,2016,9,58795,point_machine_classification,HC,9,60
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2019-02-18T14:00:00Z,2019,9,58791,point_human_classification,HC,4,55
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2019-02-18T14:00:00Z,2019,9,58791,point_machine_classification,HC,5,55
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2019-02-18T14:00:00Z,2019,9,58792,point_human_classification,HC,3,45
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2019-02-18T14:00:00Z,2019,9,58792,point_machine_classification,HC,5,45
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2019-02-18T14:00:00Z,2019,9,58793,point_human_classification,HC,11,60
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2019-02-18T14:00:00Z,2019,9,58793,point_machine_classification,HC,13,60
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2019-02-18T14:00:00Z,2019,9,58794,point_human_classification,HC,5,60
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2019-02-18T14:00:00Z,2019,9,58794,point_machine_classification,HC,4,60
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2019-02-18T14:00:00Z,2019,9,58795,point_human_classification,HC,5,60
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2019-02-18T14:00:00Z,2019,9,58795,point_machine_classification,HC,6,60
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2021-01-09T00:00:00Z,2021,7,58771,point_human_classification,HC,18,100
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2021-01-09T00:00:00Z,2021,7,58771,point_machine_classification,HC,15,100
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2021-01-09T00:00:00Z,2021,7,58772,point_human_classification,HC,28,100
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2021-01-09T00:00:00Z,2021,7,58772,point_machine_classification,HC,26,100
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2021-01-09T00:00:00Z,2021,7,58773,point_human_classification,HC,21,90
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2021-01-09T00:00:00Z,2021,7,58773,point_machine_classification,HC,13,90
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2021-01-09T00:00:00Z,2021,7,58774,point_human_classification,HC,18,80
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2021-01-09T00:00:00Z,2021,7,58774,point_machine_classification,HC,22,80
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2021-01-09T00:00:00Z,2021,7,58775,point_human_classification,HC,22,80
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2021-01-09T00:00:00Z,2021,7,58775,point_machine_classification,HC,18,80
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2021-09-17T00:00:00Z,2021,7,58771,point_human_classification,HC,29,105
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2021-09-17T00:00:00Z,2021,7,58771,point_machine_classification,HC,19,105
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2021-09-17T00:00:00Z,2021,7,58772,point_human_classification,HC,39,105
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2021-09-17T00:00:00Z,2021,7,58772,point_machine_classification,HC,26,105
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2021-09-17T00:00:00Z,2021,7,58773,point_human_classification,HC,35,110
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2021-09-17T00:00:00Z,2021,7,58773,point_machine_classification,HC,26,110
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2021-09-17T00:00:00Z,2021,7,58774,point_human_classification,HC,12,70
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2021-09-17T00:00:00Z,2021,7,58774,point_machine_classification,HC,7,70
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2021-09-17T00:00:00Z,2021,7,58775,point_human_classification,HC,23,80
+Mackay Reef,587,Mackay Reef Site 2,-16.04,145.65,2021-09-17T00:00:00Z,2021,7,58775,point_machine_classification,HC,14,80
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2015-03-02T14:00:00Z,2015,9,58891,point_human_classification,HC,5,50
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2015-03-02T14:00:00Z,2015,9,58891,point_machine_classification,HC,6,50
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2015-03-02T14:00:00Z,2015,9,58892,point_human_classification,HC,8,45
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2015-03-02T14:00:00Z,2015,9,58892,point_machine_classification,HC,12,45
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2015-03-02T14:00:00Z,2015,9,58893,point_human_classification,HC,14,65
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2015-03-02T14:00:00Z,2015,9,58893,point_machine_classification,HC,13,65
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2015-03-02T14:00:00Z,2015,9,58894,point_human_classification,HC,8,45
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2015-03-02T14:00:00Z,2015,9,58894,point_machine_classification,HC,7,45
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2015-03-02T14:00:00Z,2015,9,58895,point_human_classification,HC,14,55
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2015-03-02T14:00:00Z,2015,9,58895,point_machine_classification,HC,13,55
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2016-12-03T14:00:00Z,2016,9,58891,point_human_classification,HC,5,45
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2016-12-03T14:00:00Z,2016,9,58891,point_machine_classification,HC,4,45
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2016-12-03T14:00:00Z,2016,9,58892,point_human_classification,HC,10,55
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2016-12-03T14:00:00Z,2016,9,58892,point_machine_classification,HC,9,55
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2016-12-03T14:00:00Z,2016,9,58893,point_human_classification,HC,4,45
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2016-12-03T14:00:00Z,2016,9,58893,point_machine_classification,HC,3,45
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2016-12-03T14:00:00Z,2016,9,58894,point_human_classification,HC,8,55
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2016-12-03T14:00:00Z,2016,9,58894,point_machine_classification,HC,7,55
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2016-12-03T14:00:00Z,2016,9,58895,point_human_classification,HC,3,55
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2016-12-03T14:00:00Z,2016,9,58895,point_machine_classification,HC,3,55
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2019-02-18T14:00:00Z,2019,9,58891,point_human_classification,HC,7,65
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2019-02-18T14:00:00Z,2019,9,58891,point_machine_classification,HC,9,65
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2019-02-18T14:00:00Z,2019,9,58892,point_human_classification,HC,17,65
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2019-02-18T14:00:00Z,2019,9,58892,point_machine_classification,HC,18,65
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2019-02-18T14:00:00Z,2019,9,58893,point_human_classification,HC,11,55
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2019-02-18T14:00:00Z,2019,9,58893,point_machine_classification,HC,14,55
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2019-02-18T14:00:00Z,2019,9,58894,point_human_classification,HC,5,45
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2019-02-18T14:00:00Z,2019,9,58894,point_machine_classification,HC,6,45
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2019-02-18T14:00:00Z,2019,9,58895,point_human_classification,HC,4,45
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2019-02-18T14:00:00Z,2019,9,58895,point_machine_classification,HC,6,45
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2021-01-09T00:00:00Z,2021,6,58861,point_human_classification,HC,18,100
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2021-01-09T00:00:00Z,2021,6,58861,point_machine_classification,HC,12,100
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2021-01-09T00:00:00Z,2021,6,58862,point_human_classification,HC,21,90
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2021-01-09T00:00:00Z,2021,6,58862,point_machine_classification,HC,19,90
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2021-01-09T00:00:00Z,2021,6,58863,point_human_classification,HC,23,100
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2021-01-09T00:00:00Z,2021,6,58863,point_machine_classification,HC,23,100
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2021-01-09T00:00:00Z,2021,6,58864,point_human_classification,HC,22,80
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2021-01-09T00:00:00Z,2021,6,58864,point_machine_classification,HC,16,80
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2021-01-09T00:00:00Z,2021,6,58865,point_human_classification,HC,13,85
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2021-01-09T00:00:00Z,2021,6,58865,point_machine_classification,HC,12,85
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2021-09-17T00:00:00Z,2021,6,58861,point_human_classification,HC,20,105
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2021-09-17T00:00:00Z,2021,6,58861,point_machine_classification,HC,17,105
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2021-09-17T00:00:00Z,2021,6,58862,point_human_classification,HC,31,105
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2021-09-17T00:00:00Z,2021,6,58862,point_machine_classification,HC,23,105
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2021-09-17T00:00:00Z,2021,6,58863,point_human_classification,HC,35,105
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2021-09-17T00:00:00Z,2021,6,58863,point_machine_classification,HC,24,105
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2021-09-17T00:00:00Z,2021,6,58864,point_human_classification,HC,21,85
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2021-09-17T00:00:00Z,2021,6,58864,point_machine_classification,HC,12,85
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2021-09-17T00:00:00Z,2021,6,58865,point_human_classification,HC,20,115
+Mackay Reef,588,Mackay Reef Site 3,-16.05,145.65,2021-09-17T00:00:00Z,2021,6,58865,point_machine_classification,HC,18,115
+Opal Reef,610,Opal Reef Site 1,-16.2,145.91,2015-04-28T14:00:00Z,2015,9,61091,point_human_classification,HC,11,50
+Opal Reef,610,Opal Reef Site 1,-16.2,145.91,2015-04-28T14:00:00Z,2015,9,61091,point_machine_classification,HC,10,50
+Opal Reef,610,Opal Reef Site 1,-16.2,145.91,2015-04-28T14:00:00Z,2015,9,61092,point_human_classification,HC,18,55
+Opal Reef,610,Opal Reef Site 1,-16.2,145.91,2015-04-28T14:00:00Z,2015,9,61092,point_machine_classification,HC,19,55
+Opal Reef,610,Opal Reef Site 1,-16.2,145.91,2015-04-28T14:00:00Z,2015,9,61093,point_human_classification,HC,18,65
+Opal Reef,610,Opal Reef Site 1,-16.2,145.91,2015-04-28T14:00:00Z,2015,9,61093,point_machine_classification,HC,17,65
+Opal Reef,610,Opal Reef Site 1,-16.2,145.91,2015-04-28T14:00:00Z,2015,9,61094,point_human_classification,HC,9,55
+Opal Reef,610,Opal Reef Site 1,-16.2,145.91,2015-04-28T14:00:00Z,2015,9,61094,point_machine_classification,HC,9,55
+Opal Reef,610,Opal Reef Site 1,-16.2,145.91,2015-04-29T00:00:00Z,2015,9,61095,point_human_classification,HC,10,50
+Opal Reef,610,Opal Reef Site 1,-16.2,145.91,2015-04-29T00:00:00Z,2015,9,61095,point_machine_classification,HC,3,50
+Opal Reef,610,Opal Reef Site 1,-16.2,145.91,2016-09-12T14:00:00Z,2016,9,61091,point_human_classification,HC,3,55
+Opal Reef,610,Opal Reef Site 1,-16.2,145.91,2016-09-12T14:00:00Z,2016,9,61091,point_machine_classification,HC,5,55
+Opal Reef,610,Opal Reef Site 1,-16.2,145.91,2016-09-12T14:00:00Z,2016,9,61092,point_human_classification,HC,6,65
+Opal Reef,610,Opal Reef Site 1,-16.2,145.91,2016-09-12T14:00:00Z,2016,9,61092,point_machine_classification,HC,6,65
+Opal Reef,610,Opal Reef Site 1,-16.2,145.91,2016-09-13T00:00:00Z,2016,9,61093,point_human_classification,HC,4,50
+Opal Reef,610,Opal Reef Site 1,-16.2,145.91,2016-09-13T00:00:00Z,2016,9,61093,point_machine_classification,HC,0,50
+Opal Reef,610,Opal Reef Site 1,-16.2,145.91,2016-09-13T00:00:00Z,2016,9,61094,point_human_classification,HC,3,50
+Opal Reef,610,Opal Reef Site 1,-16.2,145.91,2016-09-13T00:00:00Z,2016,9,61094,point_machine_classification,HC,0,50
+Opal Reef,610,Opal Reef Site 1,-16.2,145.91,2016-09-13T00:00:00Z,2016,9,61095,point_human_classification,HC,0,50
+Opal Reef,610,Opal Reef Site 1,-16.2,145.91,2016-09-13T00:00:00Z,2016,9,61095,point_machine_classification,HC,0,50
+Opal Reef,610,Opal Reef Site 1,-16.2,145.91,2019-02-14T14:00:00Z,2019,9,61091,point_human_classification,HC,6,50
+Opal Reef,610,Opal Reef Site 1,-16.2,145.91,2019-02-14T14:00:00Z,2019,9,61091,point_machine_classification,HC,6,50
+Opal Reef,610,Opal Reef Site 1,-16.2,145.91,2019-02-14T14:00:00Z,2019,9,61092,point_human_classification,HC,4,55
+Opal Reef,610,Opal Reef Site 1,-16.2,145.91,2019-02-14T14:00:00Z,2019,9,61092,point_machine_classification,HC,2,55
+Opal Reef,610,Opal Reef Site 1,-16.2,145.91,2019-02-14T14:00:00Z,2019,9,61093,point_human_classification,HC,0,25
+Opal Reef,610,Opal Reef Site 1,-16.2,145.91,2019-02-14T14:00:00Z,2019,9,61093,point_machine_classification,HC,1,25
+Opal Reef,610,Opal Reef Site 1,-16.2,145.91,2019-02-14T14:00:00Z,2019,9,61094,point_human_classification,HC,1,70
+Opal Reef,610,Opal Reef Site 1,-16.2,145.91,2019-02-14T14:00:00Z,2019,9,61094,point_machine_classification,HC,4,70
+Opal Reef,610,Opal Reef Site 1,-16.2,145.91,2019-02-14T14:00:00Z,2019,9,61095,point_human_classification,HC,3,60
+Opal Reef,610,Opal Reef Site 1,-16.2,145.91,2019-02-14T14:00:00Z,2019,9,61095,point_machine_classification,HC,5,60
+Opal Reef,610,Opal Reef Site 1,-16.2,145.91,2021-01-11T00:00:00Z,2021,8,61081,point_human_classification,HC,16,90
+Opal Reef,610,Opal Reef Site 1,-16.2,145.91,2021-01-11T00:00:00Z,2021,8,61081,point_machine_classification,HC,6,90
+Opal Reef,610,Opal Reef Site 1,-16.2,145.91,2021-01-11T00:00:00Z,2021,8,61082,point_human_classification,HC,16,95
+Opal Reef,610,Opal Reef Site 1,-16.2,145.91,2021-01-11T00:00:00Z,2021,8,61082,point_machine_classification,HC,12,95
+Opal Reef,610,Opal Reef Site 1,-16.2,145.91,2021-01-11T00:00:00Z,2021,8,61083,point_human_classification,HC,10,85
+Opal Reef,610,Opal Reef Site 1,-16.2,145.91,2021-01-11T00:00:00Z,2021,8,61083,point_machine_classification,HC,6,85
+Opal Reef,610,Opal Reef Site 1,-16.2,145.91,2021-01-11T00:00:00Z,2021,8,61084,point_human_classification,HC,13,90
+Opal Reef,610,Opal Reef Site 1,-16.2,145.91,2021-01-11T00:00:00Z,2021,8,61084,point_machine_classification,HC,11,90
+Opal Reef,610,Opal Reef Site 1,-16.2,145.91,2021-01-11T00:00:00Z,2021,8,61085,point_human_classification,HC,6,85
+Opal Reef,610,Opal Reef Site 1,-16.2,145.91,2021-01-11T00:00:00Z,2021,8,61085,point_machine_classification,HC,4,85
+Opal Reef,611,Opal Reef Site 2,-16.21,145.91,2015-04-28T14:00:00Z,2015,9,61191,point_human_classification,HC,11,50
+Opal Reef,611,Opal Reef Site 2,-16.21,145.91,2015-04-28T14:00:00Z,2015,9,61191,point_machine_classification,HC,9,50
+Opal Reef,611,Opal Reef Site 2,-16.21,145.91,2015-04-28T14:00:00Z,2015,9,61192,point_human_classification,HC,2,45
+Opal Reef,611,Opal Reef Site 2,-16.21,145.91,2015-04-28T14:00:00Z,2015,9,61192,point_machine_classification,HC,2,45
+Opal Reef,611,Opal Reef Site 2,-16.21,145.91,2015-04-28T14:00:00Z,2015,9,61193,point_human_classification,HC,9,55
+Opal Reef,611,Opal Reef Site 2,-16.21,145.91,2015-04-28T14:00:00Z,2015,9,61193,point_machine_classification,HC,8,55
+Opal Reef,611,Opal Reef Site 2,-16.21,145.91,2015-04-28T14:00:00Z,2015,9,61194,point_human_classification,HC,14,50
+Opal Reef,611,Opal Reef Site 2,-16.21,145.91,2015-04-28T14:00:00Z,2015,9,61194,point_machine_classification,HC,12,50
+Opal Reef,611,Opal Reef Site 2,-16.21,145.91,2015-04-28T14:00:00Z,2015,9,61195,point_human_classification,HC,8,55
+Opal Reef,611,Opal Reef Site 2,-16.21,145.91,2015-04-28T14:00:00Z,2015,9,61195,point_machine_classification,HC,9,55
+Opal Reef,611,Opal Reef Site 2,-16.21,145.91,2016-09-13T14:00:00Z,2016,9,61191,point_human_classification,HC,1,45
+Opal Reef,611,Opal Reef Site 2,-16.21,145.91,2016-09-13T14:00:00Z,2016,9,61191,point_machine_classification,HC,3,45
+Opal Reef,611,Opal Reef Site 2,-16.21,145.91,2016-09-13T14:00:00Z,2016,9,61193,point_human_classification,HC,9,65
+Opal Reef,611,Opal Reef Site 2,-16.21,145.91,2016-09-13T14:00:00Z,2016,9,61193,point_machine_classification,HC,10,65
+Opal Reef,611,Opal Reef Site 2,-16.21,145.91,2016-09-13T14:00:00Z,2016,9,61194,point_human_classification,HC,9,60
+Opal Reef,611,Opal Reef Site 2,-16.21,145.91,2016-09-13T14:00:00Z,2016,9,61194,point_machine_classification,HC,10,60
+Opal Reef,611,Opal Reef Site 2,-16.21,145.91,2016-09-13T14:00:00Z,2016,9,61195,point_human_classification,HC,2,60
+Opal Reef,611,Opal Reef Site 2,-16.21,145.91,2016-09-13T14:00:00Z,2016,9,61195,point_machine_classification,HC,2,60
+Opal Reef,611,Opal Reef Site 2,-16.21,145.91,2016-09-14T00:00:00Z,2016,9,61192,point_human_classification,HC,9,55
+Opal Reef,611,Opal Reef Site 2,-16.21,145.91,2016-09-14T00:00:00Z,2016,9,61192,point_machine_classification,HC,3,55
+Opal Reef,611,Opal Reef Site 2,-16.21,145.91,2019-02-14T14:00:00Z,2019,9,61191,point_human_classification,HC,1,45
+Opal Reef,611,Opal Reef Site 2,-16.21,145.91,2019-02-14T14:00:00Z,2019,9,61191,point_machine_classification,HC,2,45
+Opal Reef,611,Opal Reef Site 2,-16.21,145.91,2019-02-14T14:00:00Z,2019,9,61192,point_human_classification,HC,0,55
+Opal Reef,611,Opal Reef Site 2,-16.21,145.91,2019-02-14T14:00:00Z,2019,9,61192,point_machine_classification,HC,0,55
+Opal Reef,611,Opal Reef Site 2,-16.21,145.91,2019-02-14T14:00:00Z,2019,9,61193,point_human_classification,HC,0,45
+Opal Reef,611,Opal Reef Site 2,-16.21,145.91,2019-02-14T14:00:00Z,2019,9,61193,point_machine_classification,HC,1,45
+Opal Reef,611,Opal Reef Site 2,-16.21,145.91,2019-02-14T14:00:00Z,2019,9,61194,point_human_classification,HC,3,65
+Opal Reef,611,Opal Reef Site 2,-16.21,145.91,2019-02-14T14:00:00Z,2019,9,61194,point_machine_classification,HC,4,65
+Opal Reef,611,Opal Reef Site 2,-16.21,145.91,2019-02-14T14:00:00Z,2019,9,61195,point_human_classification,HC,2,50
+Opal Reef,611,Opal Reef Site 2,-16.21,145.91,2019-02-14T14:00:00Z,2019,9,61195,point_machine_classification,HC,2,50
+Opal Reef,611,Opal Reef Site 2,-16.21,145.91,2021-01-12T00:00:00Z,2021,7,61171,point_human_classification,HC,12,90
+Opal Reef,611,Opal Reef Site 2,-16.21,145.91,2021-01-12T00:00:00Z,2021,7,61171,point_machine_classification,HC,7,90
+Opal Reef,611,Opal Reef Site 2,-16.21,145.91,2021-01-12T00:00:00Z,2021,7,61172,point_human_classification,HC,10,90
+Opal Reef,611,Opal Reef Site 2,-16.21,145.91,2021-01-12T00:00:00Z,2021,7,61172,point_machine_classification,HC,7,90
+Opal Reef,611,Opal Reef Site 2,-16.21,145.91,2021-01-12T00:00:00Z,2021,7,61173,point_human_classification,HC,6,95
+Opal Reef,611,Opal Reef Site 2,-16.21,145.91,2021-01-12T00:00:00Z,2021,7,61173,point_machine_classification,HC,4,95
+Opal Reef,611,Opal Reef Site 2,-16.21,145.91,2021-01-12T00:00:00Z,2021,7,61174,point_human_classification,HC,14,75
+Opal Reef,611,Opal Reef Site 2,-16.21,145.91,2021-01-12T00:00:00Z,2021,7,61174,point_machine_classification,HC,12,75
+Opal Reef,611,Opal Reef Site 2,-16.21,145.91,2021-01-12T00:00:00Z,2021,7,61175,point_human_classification,HC,3,85
+Opal Reef,611,Opal Reef Site 2,-16.21,145.91,2021-01-12T00:00:00Z,2021,7,61175,point_machine_classification,HC,0,85
+Opal Reef,612,Opal Reef Site 3,-16.21,145.91,2015-04-28T14:00:00Z,2015,9,61291,point_human_classification,HC,9,60
+Opal Reef,612,Opal Reef Site 3,-16.21,145.91,2015-04-28T14:00:00Z,2015,9,61291,point_machine_classification,HC,8,60
+Opal Reef,612,Opal Reef Site 3,-16.21,145.91,2015-04-28T14:00:00Z,2015,9,61292,point_human_classification,HC,5,60
+Opal Reef,612,Opal Reef Site 3,-16.21,145.91,2015-04-28T14:00:00Z,2015,9,61292,point_machine_classification,HC,8,60
+Opal Reef,612,Opal Reef Site 3,-16.21,145.91,2015-04-28T14:00:00Z,2015,9,61293,point_human_classification,HC,13,60
+Opal Reef,612,Opal Reef Site 3,-16.21,145.91,2015-04-28T14:00:00Z,2015,9,61293,point_machine_classification,HC,10,60
+Opal Reef,612,Opal Reef Site 3,-16.21,145.91,2015-04-28T14:00:00Z,2015,9,61294,point_human_classification,HC,5,60
+Opal Reef,612,Opal Reef Site 3,-16.21,145.91,2015-04-28T14:00:00Z,2015,9,61294,point_machine_classification,HC,8,60
+Opal Reef,612,Opal Reef Site 3,-16.21,145.91,2015-04-28T14:00:00Z,2015,9,61295,point_human_classification,HC,6,55
+Opal Reef,612,Opal Reef Site 3,-16.21,145.91,2015-04-28T14:00:00Z,2015,9,61295,point_machine_classification,HC,9,55
+Opal Reef,612,Opal Reef Site 3,-16.21,145.91,2016-09-13T14:00:00Z,2016,9,61291,point_human_classification,HC,5,55
+Opal Reef,612,Opal Reef Site 3,-16.21,145.91,2016-09-13T14:00:00Z,2016,9,61291,point_machine_classification,HC,5,55
+Opal Reef,612,Opal Reef Site 3,-16.21,145.91,2016-09-13T14:00:00Z,2016,9,61293,point_human_classification,HC,0,50
+Opal Reef,612,Opal Reef Site 3,-16.21,145.91,2016-09-13T14:00:00Z,2016,9,61293,point_machine_classification,HC,0,50
+Opal Reef,612,Opal Reef Site 3,-16.21,145.91,2016-09-13T14:00:00Z,2016,9,61294,point_human_classification,HC,8,55
+Opal Reef,612,Opal Reef Site 3,-16.21,145.91,2016-09-13T14:00:00Z,2016,9,61294,point_machine_classification,HC,12,55
+Opal Reef,612,Opal Reef Site 3,-16.21,145.91,2016-09-14T00:00:00Z,2016,9,61292,point_human_classification,HC,0,50
+Opal Reef,612,Opal Reef Site 3,-16.21,145.91,2016-09-14T00:00:00Z,2016,9,61292,point_machine_classification,HC,0,50
+Opal Reef,612,Opal Reef Site 3,-16.21,145.91,2016-09-14T00:00:00Z,2016,9,61295,point_human_classification,HC,1,55
+Opal Reef,612,Opal Reef Site 3,-16.21,145.91,2016-09-14T00:00:00Z,2016,9,61295,point_machine_classification,HC,0,55
+Opal Reef,612,Opal Reef Site 3,-16.21,145.91,2019-02-14T14:00:00Z,2019,9,61291,point_human_classification,HC,0,45
+Opal Reef,612,Opal Reef Site 3,-16.21,145.91,2019-02-14T14:00:00Z,2019,9,61291,point_machine_classification,HC,0,45
+Opal Reef,612,Opal Reef Site 3,-16.21,145.91,2019-02-14T14:00:00Z,2019,9,61292,point_human_classification,HC,0,65
+Opal Reef,612,Opal Reef Site 3,-16.21,145.91,2019-02-14T14:00:00Z,2019,9,61292,point_machine_classification,HC,3,65
+Opal Reef,612,Opal Reef Site 3,-16.21,145.91,2019-02-14T14:00:00Z,2019,9,61293,point_human_classification,HC,0,45
+Opal Reef,612,Opal Reef Site 3,-16.21,145.91,2019-02-14T14:00:00Z,2019,9,61293,point_machine_classification,HC,2,45
+Opal Reef,612,Opal Reef Site 3,-16.21,145.91,2019-02-14T14:00:00Z,2019,9,61294,point_human_classification,HC,0,50
+Opal Reef,612,Opal Reef Site 3,-16.21,145.91,2019-02-14T14:00:00Z,2019,9,61294,point_machine_classification,HC,1,50
+Opal Reef,612,Opal Reef Site 3,-16.21,145.91,2019-02-14T14:00:00Z,2019,9,61295,point_human_classification,HC,0,35
+Opal Reef,612,Opal Reef Site 3,-16.21,145.91,2019-02-14T14:00:00Z,2019,9,61295,point_machine_classification,HC,0,35
+Opal Reef,612,Opal Reef Site 3,-16.21,145.91,2021-01-12T00:00:00Z,2021,6,61261,point_human_classification,HC,4,90
+Opal Reef,612,Opal Reef Site 3,-16.21,145.91,2021-01-12T00:00:00Z,2021,6,61261,point_machine_classification,HC,2,90
+Opal Reef,612,Opal Reef Site 3,-16.21,145.91,2021-01-12T00:00:00Z,2021,6,61262,point_human_classification,HC,9,95
+Opal Reef,612,Opal Reef Site 3,-16.21,145.91,2021-01-12T00:00:00Z,2021,6,61262,point_machine_classification,HC,2,95
+Opal Reef,612,Opal Reef Site 3,-16.21,145.91,2021-01-12T00:00:00Z,2021,6,61263,point_human_classification,HC,6,95
+Opal Reef,612,Opal Reef Site 3,-16.21,145.91,2021-01-12T00:00:00Z,2021,6,61263,point_machine_classification,HC,1,95
+Opal Reef,612,Opal Reef Site 3,-16.21,145.91,2021-01-12T00:00:00Z,2021,6,61264,point_human_classification,HC,4,75
+Opal Reef,612,Opal Reef Site 3,-16.21,145.91,2021-01-12T00:00:00Z,2021,6,61264,point_machine_classification,HC,4,75
+Opal Reef,612,Opal Reef Site 3,-16.21,145.91,2021-01-12T00:00:00Z,2021,6,61265,point_human_classification,HC,6,80
+Opal Reef,612,Opal Reef Site 3,-16.21,145.91,2021-01-12T00:00:00Z,2021,6,61265,point_machine_classification,HC,2,80
