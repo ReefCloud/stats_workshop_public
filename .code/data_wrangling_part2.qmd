@@ -1,0 +1,380 @@
+---
+title: "Data wrangling part2"
+author: "Murray Logan"
+date: today
+date-format: "DD/MM/YYYY"
+format: 
+  html:
+    ## Format
+    theme: spacelab
+    css: ../resources/ws_style.css
+    html-math-method: mathjax
+    ## Table of contents
+    toc: true
+    toc-float: true
+    ## Numbering
+    number-sections: true
+    number-depth: 3
+    ## Layout
+    fig-caption-location: "bottom"
+    fig-align: "center"
+    fig-width: 4
+    fig-height: 4
+    fig-dpi: 72
+    tbl-cap-location: top
+    ## Code
+    code-fold: false
+    code-tools: true
+    code-summary: "Show the code"
+    code-line-numbers: true
+    code-block-border-left: "#ccc"
+    highlight-style: zenburn
+    ## Execution
+    execute:
+      echo: true
+      cache: true
+    ## Rendering
+    embed-resources: true
+crossref:
+  fig-title: '**Figure**'
+  fig-labels: arabic
+  tbl-title: '**Table**'
+  tbl-labels: arabic
+engine: knitr
+output_dir: "docs"
+documentclass: article
+fontsize: 12pt
+mainfont: Arial
+mathfont: LiberationMono
+monofont: DejaVu Sans Mono
+classoption: a4paper
+bibliography: ../resources/references.bib
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+knitr::opts_chunk$set(cache.lazy = FALSE,
+                      tidy = "styler")
+options(tinytex.engine = "xelatex")
+```
+
+# Preparations
+Load the necessary libraries
+
+```{r}
+#| label: libraries
+#| output: false
+#| eval: true
+#| warning: false
+#| message: false
+#| cache: false
+
+library(tidyverse)
+library(easystats)
+library(knitr)
+library(sf)
+library(rnaturalearth)
+source('helperFunctions.R')
+```
+
+# Scenario
+
+For this exercise we will be working with a few extracts from the
+ReefCloud database. The data represent machine learning point
+classifications for select sampling sites within the Great Barrier
+Reef. We will use these data to motivate an exploration of data
+wrangling and visualisation techniques within R.
+
+The goal of this exercise will be to prepare the data for simple data
+analyes and summarisation (both tabular and graphical)
+
+# Read in the data
+
+We will start off by reading in the `HorseshoeReef.csv` data.  There are many functions
+in R that can read in a CSV file.  We will use a the `read_csv()` function as it
+is part of the tidyverse ecosystem.
+
+```{r}
+#| label: readData
+dat <- read_csv("../data/CairnsReefs_subset.csv", trim_ws = TRUE)
+```
+
+<!-- START_PRIVATE-->
+After reading in a dataset, it is always a good
+idea to quickly explore a few summaries in order to ascertain whether
+the imported data are correctly transcribed. In particular, we should
+pay attention to whether there are any unexpected missing values and
+ensure that each variable (column) has the expected class (e.g. that
+variables we expected to be considered numbers are indeed listed as
+either `<dbl>` or `<int>` and not `<char>`).
+<!-- END_PRIVATE-->
+
+::: {.panel-tabset}
+
+## glimpse
+```{r}
+#| label: examinData
+dat |> glimpse() 
+```
+
+## head
+```{r}
+#| label: examinData1
+## Explore the first 6 rows of the data
+dat |> head() 
+```
+
+## str
+```{r}
+#| label: examinData2
+dat |> str() 
+```
+
+## Easystats (datawizard)
+```{r}
+#| label: examinData3
+dat |> datawizard::data_codebook() |> knitr::kable() 
+```
+:::
+
+There are a large number of fields (columns) in this dataset, many of
+which we are going to ignore for this exercise. The important fields
+are:
+
+- `site_id` - a unique identifier of the site
+- `site_name` - a unique name of the site
+- `site latitude` - latitude of the site
+- `site_longitude` - longitude of the site
+- `survey_start_date` - date (and time) of survey
+- `survey_depth` - depth at which the survey took place
+- `survey_transect_number` - unique identifier of the transect
+- `image_id` - unique identifier of the image
+- `image_quality` - indication of the quality of the image
+- `point_id` - unique identifier of the point
+- `point_num` - the number of the point within the image
+- `point_machine_classification` - classification determined by AI
+- `point_human_classification` - classification determined by a human
+
+
+Necessary wrangling steps:
+
+1. exclude extraneous (unneeded) fields
+2. exclude poor images
+2. lengthen the data with respect to classification type
+3. join to a labelset lookup
+4. tally up the points per date/image/GROUP/type
+5. recode transect id
+6. fill in the gaps and add the zeros
+7. sum to transect level
+8. generate a Year field from the sample date
+
+
+
+
+## **Select**ing out the useful fields
+
+Although it is often harmless enough to retain the other fields, it
+does make reviewing the data more combersum, so at an early stage
+within this exercise, we will probably restrict the data to just the
+above fields.
+
+```{r, mhidden=TRUE}
+#| label: selecting 
+dat <- dat |>
+  dplyr::select(site_id,
+    site_name,
+    site_latitude,
+    site_longitude,
+    survey_start_date,
+    survey_depth,
+    survey_transect_number,
+    image_id,
+    image_quality,
+    point_id,
+    point_num,
+    point_machine_classification,
+    point_human_classification
+    )
+dat |> head()
+```
+
+## Excluding poor images
+
+```{r, mhidden=TRUE}
+#| label: filter
+dat <-
+  dat |>
+  dplyr::filter(is.na(image_quality) | image_quality != 0)  
+```
+
+
+## Lengthen (**pivot_longer**) the data
+
+```{r}
+#| label: pivot
+dat <-
+  dat |>
+  pivot_longer(cols = matches("point_.*_classification"),
+    names_to = "type",
+    values_to = "classification"
+    ) 
+```
+
+
+## **Join**ing to the group code lookup data
+Our primary interest in these data will be in exploring patterns in
+broad taxanomic groups such as *Hard coral* and *algae*. Since the
+machine learning tools behind ReefCloud are tuned to classify to finer
+taxonomic resolutions, next task will be to use a lookup table so as
+to assign the higher order group codes (HC and A) to the data.
+
+```{r}
+#| label: readLabelset
+labelset <- read_csv("../data/labelset_ltmp.csv", trim_ws = TRUE) 
+```
+
+::: {.panel-tabset}
+
+### glimpse
+```{r}
+#| label: examineLabelset
+labelset |> glimpse() 
+```
+
+### head
+```{r}
+#| label: examineLabelset1
+## Explore the first 6 rows of the labelseta
+labelset |> head() 
+```
+
+### str
+```{r}
+#| label: examineLabelset2
+labelset |> str() 
+```
+
+### Easystats (datawizard)
+```{r}
+#| label: examineLabelset3
+labelset |> datawizard::data_codebook() |> knitr::kable() 
+```
+:::
+
+```{r, mhidden=TRUE}
+#| label: join
+dat <-
+  dat |>
+  left_join(labelset |>
+              dplyr::select(CODE, GROUP = `FUNCTIONAL GROUP`),
+              by = c("classification" = "CODE")
+    )
+dat |> as.data.frame() |> head() 
+```
+
+
+## Tally up points
+
+Count the number of points of each type as well as sum up the total
+number of points per image.
+
+```{r, mhidden=TRUE}
+#| label: count
+dat <- 
+  dat |> 
+  group_by(across(c(starts_with("site"),
+    starts_with("survey"),
+    type,
+    image_id,
+    #Year,
+    GROUP))
+  ) |>
+  summarise(COUNT = n(), .groups = "keep") |> 
+  ungroup(GROUP) |>
+  mutate(TOTAL = sum(COUNT)) |>
+  ungroup() 
+```
+
+## Recode transects
+
+```{r, mhidden=TRUE}
+#| label: recode_transects
+dat <- 
+  dat |>
+  mutate(transect_id = paste0(site_id, survey_depth, survey_transect_number)) 
+```
+
+## Fill in any gaps
+
+Since the data represent the classification of points in images, they
+only include what was present, not what was also absent. For example,
+if all five points are Algae, then this also means that all other
+functional groups are absent - yet this information is lacking in the
+data. For modelling purposes it is vital that we fill in all the zero
+values.
+
+To do so, we must create a data set that contains every GROUP in every
+IMAGE.
+
+
+```{r, mhidden=TRUE}
+GROUPS <- dat |> pull(GROUP) |> unique()
+data.filler <- dat %>%
+  dplyr::select(
+    starts_with("site"),
+    survey_start_date,
+    #Year,
+    survey_depth,
+    transect_id,
+    image_id,
+    type,
+    ## GROUP,
+    TOTAL) |> 
+  distinct() |> 
+ tidyr::crossing(GROUP = GROUPS) 
+
+dat <-
+  dat |> 
+  full_join(data.filler) |>
+  group_by(
+    across(c(starts_with("site"),
+      survey_start_date,
+      #Year,
+      survey_depth,
+      transect_id,
+      image_id,
+      type,
+      GROUP
+    ))) |> 
+  mutate(COUNT = ifelse(is.na(COUNT), 0, COUNT),
+    TOTAL = max(TOTAL, na.rm = TRUE)
+  )
+```
+
+## Sum to transect level
+
+
+```{r, mhidden=TRUE}
+## Now sum up to transect level
+dat <- 
+  dat |>
+  ungroup(image_id) |>
+  summarise(COUNT = sum(COUNT),
+    TOTAL = sum(TOTAL)
+  ) |> 
+  ungroup() |> 
+  droplevels()
+```
+
+## Generate a year field
+
+```{r, mhidden=TRUE}
+#| label: mutateYear
+dat <-
+  dat |>
+  mutate(Year = lubridate::year(survey_start_date),
+    TropYear = lubridate::year(survey_start_date + months(3))
+  ) 
+```
