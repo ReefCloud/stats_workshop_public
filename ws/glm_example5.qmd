@@ -1,0 +1,180 @@
+---
+title: "GLM Part5"
+author: "Murray Logan"
+date: today
+date-format: "DD/MM/YYYY"
+format: 
+  html:
+    ## Format
+    theme: spacelab
+    css: ../resources/ws_style.css
+    html-math-method: mathjax
+    ## Table of contents
+    toc: true
+    toc-float: true
+    ## Numbering
+    number-sections: true
+    number-depth: 3
+    ## Layout
+    fig-caption-location: "bottom"
+    fig-align: "center"
+    fig-width: 4
+    fig-height: 4
+    fig-dpi: 72
+    tbl-cap-location: top
+    ## Code
+    code-fold: false
+    code-tools: true
+    code-summary: "Show the code"
+    code-line-numbers: true
+    code-block-border-left: "#ccc"
+    highlight-style: zenburn
+    ## Execution
+    execute:
+      echo: true
+      cache: true
+    ## Rendering
+    embed-resources: true
+crossref:
+  fig-title: '**Figure**'
+  fig-labels: arabic
+  tbl-title: '**Table**'
+  tbl-labels: arabic
+engine: knitr
+bibliography: ../resources/references.bib
+output_dir: "docs"
+documentclass: article
+fontsize: 12pt
+mainfont: Arial
+mathfont: LiberationMono
+monofont: DejaVu Sans Mono
+classoption: a4paper
+---
+
+```{r setup, include=FALSE, warnings=FALSE, message=FALSE}
+knitr::opts_chunk$set(cache.lazy = FALSE, tidy='styler')
+```
+
+# Preparations
+
+Load the necessary libraries
+
+```{r}
+#| label: libraries
+#| output: false
+#| eval: true
+#| warning: false
+#| message: false
+#| cache: false
+
+library(glmmTMB)       #for model fitting
+library(car)           #for regression diagnostics
+library(broom)         #for tidy output
+library(ggfortify)     #for model diagnostics
+library(DHARMa)        #for residual diagnostics
+library(see)           #for plotting residuals
+library(knitr)         #for kable
+library(effects)       #for partial effects plots
+library(ggeffects)     #for partial effects plots
+library(emmeans)       #for estimating marginal means
+library(modelr)        #for auxillary modelling functions
+library(tidyverse)     #for data wrangling
+library(lindia)        #for diagnostics of lm and glm
+library(performance)   #for residuals diagnostics
+library(sjPlot)        #for outputs
+library(report)        #for reporting methods/results
+library(easystats)     #framework for stats, modelling and visualisation
+library(MASS)          #for negative binomials
+library(MuMIn)         #for AICc
+library(patchwork)     #for figure layouts
+
+```
+
+# Scenario
+
+Here is a modified example from @Quinn-2002-2002. Day and Quinn (1989) described
+an experiment that examined how rock surface type affected the recruitment of
+barnacles to a rocky shore. The experiment had a single factor, surface type,
+with 4 treatments or levels: algal species 1 (ALG1), algal species 2 (ALG2),
+naturally bare surfaces (NB) and artificially scraped bare surfaces (S). There
+were 5 replicate plots for each surface type and the response (dependent)
+variable was the number of newly recruited barnacles on each plot after 4 weeks.
+
+![Six-plated barnacle](../resources/barnacles.jpg){#fig-day width="224" height="308"}
+
+:::: {.columns}
+::: {.column width="30%"}
+
+TREAT   BARNACLE
+------- ----------
+ALG1    27
+..      ..
+ALG2    24
+..      ..
+NB      9
+..      ..
+S       12
+..      ..
+
+: Format of day.csv data files {#tbl-day .table-condensed}
+
+:::
+::: {.column width="70%"}
+
+-------------- ----------------------------------------------------------------------------------------------------------------------------------------------
+**TREAT**      Categorical listing of surface types. ALG1 = algal species 1, ALG2 = algal species 2, NB = naturally bare surface, S = scraped bare surface.
+**BARNACLE**   The number of newly recruited barnacles on each plot after 4 weeks.
+-------------- ----------------------------------------------------------------------------------------------------------------------------------------------
+
+: Description of the variables in the day data file {#tbl-day1 .table-condensed}
+
+:::
+::::
+
+# Read in the data
+
+As we are going to treat Treatment as a categorical predictor, we will
+specifically declare it as such straight after importing the data.
+
+```{r readData, results='markdown', eval=TRUE}
+day <- read_csv("../data/day.csv", trim_ws = TRUE)
+```
+
+```{r}
+#| label: defineFactor
+day <- day |> 
+  mutate(TREAT = factor(TREAT))
+```
+
+
+# Exploratory data analysis
+
+Model formula:
+$$
+y_i \sim{} \mathcal{Pois}(\lambda_i)\\
+\mu_i = \boldsymbol{\beta} \bf{X_i}
+$$
+
+where $\boldsymbol{\beta}$ is a vector of effects parameters and $\bf{X}$ is a
+model matrix representing the intercept and treatment contrasts for the effects
+of Treatment on barnacle recruitment.
+ 
+
+
+# Fit the model
+
+
+
+# Model validation
+
+# Partial plots
+
+
+# Model investigation / hypothesis testing
+# Predictions
+
+
+# Summary figures
+
+
+# References
