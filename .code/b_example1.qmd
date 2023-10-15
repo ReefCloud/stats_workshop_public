@@ -1,0 +1,649 @@
+---
+title: "Bayesian modelling part1"
+author: "Murray Logan"
+date: today
+date-format: "DD/MM/YYYY"
+format: 
+  html:
+    ## Format
+    theme: spacelab
+    css: ../resources/ws_style.css
+    html-math-method: mathjax
+    ## Table of contents
+    toc: true
+    toc-float: true
+    ## Numbering
+    number-sections: true
+    number-depth: 3
+    ## Layout
+    fig-caption-location: "bottom"
+    fig-align: "center"
+
+    fig-width: 4
+    fig-height: 4
+    fig-dpi: 72
+    tbl-cap-location: top
+    ## Code
+    code-fold: false
+    code-tools: true
+    code-summary: "Show the code"
+    code-line-numbers: true
+    code-block-border-left: "#ccc"
+    highlight-style: zenburn
+    ## Execution
+    execute:
+      echo: true
+      cache: false
+    ## Rendering
+    embed-resources: true
+crossref:
+  fig-title: '**Figure**'
+  fig-labels: arabic
+  tbl-title: '**Table**'
+  tbl-labels: arabic
+engine: knitr
+output_dir: "docs"
+documentclass: article
+fontsize: 12pt
+mainfont: Arial
+mathfont: LiberationMono
+monofont: DejaVu Sans Mono
+classoption: a4paper
+bibliography: ../resources/references.bib
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+knitr::opts_chunk$set(cache.lazy = FALSE,
+                      tidy = "styler")
+options(tinytex.engine = "xelatex")
+```
+
+# Preparations
+Load the necessary libraries
+
+```{r}
+#| label: libraries
+#| output: false
+#| eval: true
+#| warning: false
+#| message: false
+#| cache: false
+
+library(tidyverse)
+library(easystats)
+library(knitr)
+library(sf)
+library(rnaturalearth)
+library(brms)
+library(rstan)
+library(tidybayes)
+library(patchwork)
+library(DHARMa)
+library(HDInterval)
+library(emmeans)
+source('helperFunctions.R')
+```
+
+# Scenario
+
+Here is a modified example from @Quinn-2002-2002. Day and Quinn
+(1989) described an experiment that examined how rock surface type
+affected the recruitment of barnacles to a rocky shore. The experiment
+had a single factor, surface type, with 4 treatments or levels: algal
+species 1 (ALG1), algal species 2 (ALG2), naturally bare surfaces (NB)
+and artificially scraped bare surfaces (S). There were 5 replicate plots
+for each surface type and the response (dependent) variable was the
+number of newly recruited barnacles on each plot after 4 weeks.
+
+![Six-plated barnacle](../resources/barnacles.jpg){#fig-barnacle width="224" height="308"}
+
+
+TREAT   BARNACLE
+------- ----------
+ALG1    27
+..      ..
+ALG2    24
+..      ..
+NB      9
+..      ..
+S       12
+..      ..
+
+: Format of day.csv data files {#tbl-day .table-condensed}
+
+-------------- ----------------------------------------------------------------------------------------------------------------------------------------------
+**TREAT**      Categorical listing of surface types. ALG1 = algal species 1, ALG2 = algal species 2, NB = naturally bare surface, S = scraped bare surface.
+**BARNACLE**   The number of newly recruited barnacles on each plot after 4 weeks.
+-------------- ----------------------------------------------------------------------------------------------------------------------------------------------
+
+: Description of the variables in the day data file {#tbl-day1 .table-condensed}
+
+    
+# Read in the data
+
+Now we will move to the raw `CairnsReefs_subset.csv` data.
+There are many functions in R that can read in a CSV file. We will use
+a the `read_csv()` function as it is part of the tidyverse ecosystem.
+
+```{r}
+#| label: readData
+day <- read_csv('../data/day.csv', trim_ws = TRUE)
+```
+
+<!-- START_PRIVATE--> After reading in a dataset, it is always a good
+idea to quickly explore a few summaries in order to ascertain whether
+the imported data are correctly transcribed. In particular, we should
+pay attention to whether there are any unexpected missing values and
+ensure that each variable (column) has the expected class (e.g. that
+variables we expected to be considered numbers are indeed listed as
+either `<dbl>` or `<int>` and not `<char>`). <!-- END_PRIVATE-->
+
+::: {.panel-tabset}
+
+## glimpse
+```{r}
+#| label: examinData
+day |> glimpse() 
+```
+
+## head
+```{r}
+#| label: examinData1
+## Explore the first 6 rows of the data
+day |> head() 
+```
+
+## str
+```{r}
+#| label: examinData2
+day |> str() 
+```
+
+## Easystats (datawizard)
+```{r}
+#| label: examinData3
+day |> datawizard::data_codebook() |> knitr::kable() 
+```
+:::
+
+
+Start by declaring the categorical variables as factor.
+
+```{r prepare, results='markdown', eval=TRUE, mhidden=TRUE}
+day <- day |> mutate(TREAT = factor(TREAT))
+```
+
+Model formula:
+$$
+\begin{align}
+y_i &\sim{} \mathcal{Pois}(\lambda_i)\\
+ln(\mu_i) &= \boldsymbol{\beta} \bf{X_i}\\
+\beta_0 &\sim{} \mathcal{N}(3.1, 1)\\
+\beta_{1,2,3} &\sim{} \mathcal{N}(0,1)\\
+\end{align}
+$$
+
+where $\boldsymbol{\beta}$ is a vector of effects parameters and $\bf{X}$ is a model matrix representing the intercept and treatment contrasts for the effects of Treatment on barnacle recruitment.
+
+
+# Exploratory data analysis 
+<!-- START_PRIVATE-->
+
+The exploratory data analyses that we performed in the frequentist instalment
+of this example are equally valid here.  That is, boxplots and/or violin plots for each population
+(substrate type).
+
+```{r EDA, results='markdown', eval=TRUE, mhidden=TRUE, fig.width=6, fig.height=6, mhidden=TRUE}
+day |> ggplot(aes(y = BARNACLE, x = TREAT)) +
+    geom_boxplot()+
+    geom_point(color = 'red')
+day |> ggplot(aes(y = BARNACLE, x = TREAT)) +
+    geom_violin()+
+    geom_point(color = 'red')
+```
+
+**Conclusions:**
+
+- although exploratory data analysis suggests that we might well be fine
+modelling these data against a Gaussian distribution, a Poisson distribution
+would clearly be a more natural choice and it would also prevent any non
+positive predictions.
+
+<!-- END_PRIVATE-->
+
+# Fit the model
+
+<!-- START_PRIVATE-->
+## brms 
+
+:::: {.panel-tabset}
+
+### Prior only
+
+One way to assess the priors is to have the MCMC sampler sample purely from the
+prior predictive distribution without conditioning on the observed data.  Doing
+so provides a glimpse at the range of predictions possible under the priors.  On
+the one hand, wide ranging predictions would ensure that the priors are unlikely
+to influence the actual predictions once they are conditioned on the data.  On
+the other hand, if they are too wide, the sampler is being permitted to traverse
+into regions of parameter space that are not logically possible in the context
+of the actual underlying ecological context.  Not only could this mean that
+illogical parameter estimates are possible, when the sampler is traversing
+regions of parameter space that are not supported by the actual data, the sampler
+can become unstable and have difficulty.
+
+In `brms`, we can inform the sampler to draw from the prior predictive
+distribution instead of conditioning on the response, by running the model with
+the `sample_prior='only'` argument.  Unfortunately, this cannot be applied when
+there are flat priors (since the posteriors will necessarily extend to negative
+and positive infinity).  Therefore, in order to use this useful routine, we need
+to make sure that we have defined a proper prior for all parameters.
+
+
+```{r, mhidden=TRUE}
+#| label: fit model 1
+#| cache: true
+day |> group_by(TREAT) |>
+  summarise(mean(log(BARNACLE)),
+    sd(log(BARNACLE)))
+
+day.form <- bf(BARNACLE ~ TREAT,
+  family = poisson(link = 'log'))
+priors <- prior(normal(3, 0.3), class = 'Intercept') +
+ prior(normal(0, 1), class = "b")
+day.model1 <- brm(day.form,
+               data = day,
+               prior = priors, 
+               sample_prior = 'only', 
+               iter = 5000,
+               warmup = 1000,
+               chains = 3,
+               cores = 3,
+               thin = 5,
+               refresh = 0,
+               backend = "cmdstan")
+```
+
+```{r, mhidden=TRUE}
+#| label: conditional effects 1
+day.model1 |> conditional_effects() |>  plot(points=TRUE)
+day.model1 |>
+    conditional_effects() |>
+    plot(points=TRUE) |>
+    wrap_plots() &
+    scale_y_log10()
+```
+
+## Add data
+
+```{r, mhidden=TRUE}
+#| label: fit model 2
+#| cache: true
+day.model2 <- day.model1 |> update(sample_prior = 'yes', refresh = 0) 
+```
+
+```{r, mhidden=TRUE}
+#| label: conditional effects 2
+day.model2 |> conditional_effects() |>  plot(points=TRUE)
+```
+
+```{r, mhidden=TRUE}
+#| label: prior and posterior 2
+day.model2 |> SUYR_prior_and_posterior()
+```
+
+::::
+
+<!-- END_PRIVATE-->
+
+# MCMC sampling diagnostics
+<!-- START_PRIVATE-->
+::: {.panel-tabset}
+
+In addition to the regular model diagnostics checking, for Bayesian analyses, it
+is also necessary to explore the MCMC sampling diagnostics to be sure that the
+chains are well mixed and have converged on a stable posterior.
+
+There are a wide variety of tests that range from the big picture, overall chain
+characteristics to the very specific detailed tests that allow the experienced
+modeller to drill down to the very fine details of the chain behaviour.
+Furthermore, there are a multitude of packages and approaches for exploring
+these diagnostics.
+
+
+## brms 
+
+The `brms` package offers a range of MCMC diagnostics.
+Lets start with the MCMC diagnostics.
+
+Of these, we will focus on:
+
+- stan_trace: this plots the estimates of each parameter over the post-warmup
+  length of each MCMC chain. Each chain is plotted in a different colour, with
+  each parameter in its own facet. Ideally, each **trace** should just look like
+  noise without any discernible drift and each of the traces for a specific
+  parameter should look the same (i.e, should not be displaced above or below
+  any other trace for that parameter).
+  
+```{r, mhidden=TRUE}
+#| label: stan trace
+#| fig.width: 6
+#| fig.height: 4
+day.model2$fit |> stan_trace()
+day.model2$fit |> stan_trace(inc_warmup=TRUE)
+```
+
+   The chains appear well mixed and very similar
+   
+- stan_acf (auto-correlation function): plots the auto-correlation between successive
+  MCMC sample lags for each parameter and each chain
+  
+```{r, mhidden=TRUE}
+#| label: stan ac
+#| fig.width: 6
+#| fig.height: 4
+day.model2$fit |> stan_ac() 
+```
+
+   There is no evidence of auto-correlation in the MCMC samples
+
+- stan_rhat: Rhat is a **scale reduction factor** measure of convergence between the chains.  The closer the
+  values are to 1, the more the chains have converged.  Values greater than 1.05
+  indicate a lack of convergence.  There will be an Rhat value for each
+  parameter estimated.
+
+```{r,mhidden=TRUE}
+#| label: stan rhat
+#| fig.width: 6
+#| fig.height: 4
+day.model2$fit |> stan_rhat() 
+```
+
+  All Rhat values are below 1.05, suggesting the chains have converged.
+  
+- stan_ess (number of effective samples): the ratio of the number of effective
+  samples (those not rejected by the sampler) to the number of samples provides
+  an indication of the effectiveness (and efficiency) of the MCMC sampler.
+  Ratios that are less than 0.5 for a parameter suggest that the sampler spent
+  considerable time in difficult areas of the sampling domain and rejected more
+  than half of the samples (replacing them with the previous effective sample).  
+  
+  If the ratios are low, tightening the priors may help.
+  
+```{r, mhidden=TRUE}
+#| label: stan ess
+#| fig.width: 6
+#| fig.height: 4
+day.model2$fit |> stan_ess()
+```
+
+  Ratios all very high.
+
+
+:::
+<!-- END_PRIVATE-->
+
+
+# Model validation 
+
+<!-- START_PRIVATE-->
+
+::: {.panel-tabset}
+
+### pp check
+
+```{r, mhidden=TRUE}
+#| label: pp check
+#| fig.width: 6
+#| fig.height: 4
+day.model2 |> pp_check(type = 'dens_overlay', ndraws=200)
+```
+
+### DHARMa residuals
+
+DHARMa residuals provide very useful diagnostics.  Unfortunately, we cannot
+directly use the `simulateResiduals()` function to generate the simulated
+residuals.  However, if we are willing to calculate some of the components
+yourself, we can still obtain the simulated residuals from the fitted stan model.
+
+We need to supply:
+
+- simulated (predicted) responses associated with each observation.
+- observed values
+- fitted (predicted) responses (averaged) associated with each observation
+
+
+```{r, mhidden=TRUE}
+#| label: DHARMa
+#| fig.width: 10
+#| fig.height: 8
+day.resids <- make_brms_dharma_res(day.model2, integerResponse = TRUE)
+wrap_elements(~testUniformity(day.resids)) +
+               wrap_elements(~plotResiduals(day.resids, form = factor(rep(1, nrow(day))))) +
+               wrap_elements(~plotResiduals(day.resids, quantreg = TRUE)) +
+               wrap_elements(~testDispersion(day.resids))
+
+```
+
+**Conclusions:**
+
+- the simulated residuals DO NOT suggest any issues with the model fit
+
+:::
+
+<!-- END_PRIVATE-->
+
+# Partial effects plots 
+
+<!-- START_PRIVATE-->
+### conditional_effects
+
+```{r, mhidden=TRUE}
+#| label: partial plot 3
+#| fig.width: 8
+#| fig.height: 5
+day.model2 |> conditional_effects() |> plot(points = TRUE)
+```
+<!-- END_PRIVATE-->
+
+# Model investigation 
+
+<!-- START_PRIVATE-->
+```{r, mhidden=TRUE}
+#| label: summarise
+day.model2 |> as_draws_df()
+day.model2 |>
+  as_draws_df() |>
+  summarise_draws(
+    median,
+    hdi,
+    rhat,
+    length,
+    ess_bulk, ess_tail
+  )
+
+day.model2 |>
+  as_draws_df() |>
+  mutate(across(everything(), exp)) |> 
+  dplyr::select(starts_with("b_")) |> 
+  summarise_draws(
+    median,
+    hdi,
+    rhat,
+    length,
+    ess_bulk,
+    ess_tail,
+    Pl = ~mean(.x < 1),
+    Pg = ~mean(.x > 1)
+    )
+```
+
+```{r, mhidden=TRUE}
+#| label: R2
+
+day.model2 |>
+  bayes_R2(summary=FALSE) |>
+  median_hdci()
+```
+
+<!-- END_PRIVATE-->
+
+# Further investigations 
+<!-- START_PRIVATE-->
+::: {.panel-tabset}
+
+The estimated coefficients as presented in the summary tables above highlight
+very specific comparisons.  However, there are other possible comparisons that
+we might be interested in.  For example, whist the treatment effects compare
+each of the substrate types against the first level (ALG1), we might also be
+interested in the differences between (for example) the two bare substrates (NB
+and S).
+
+To get at more of the comparisons we have two broad approaches:
+
+- compare all substrates to each other in a pairwise manner.
+   - importantly, given that the probability of a Type I error (falsely rejecting a
+  null hypothesis) is set at 0.05 per comparison, when there are multiple
+  comparisons, the family-wise Type I error (probability of at least one false
+  rejection amongst all comparisons) rate compounds.  It is important to
+  attempt to constrain this family-wise Type I error rate.  One approach to do
+  this is a Tukey's test.
+   - keep in mind that in order to constrain the family-wise Type I error rate at
+  0.05, the power of each individual comparison is reduced (individual Type II
+  error rates increased).
+- define a small set of specific comparisons.  There should be a maximum of
+  $p-1$ comparisons defined (where $p$ is the number of levels of the
+  categorical predictors) and each comparison should be independent of one another.
+
+We will now only peruse the Poisson model.
+
+## Post-hoc test (Tukey's)
+
+```{r , mhidden=TRUE}
+#| label: tukey
+day.model2 |>
+    emmeans(~TREAT, type = 'response') |>
+    pairs()
+
+day.model2 |>
+    emmeans(~TREAT) |>
+    pairs() |>
+    gather_emmeans_draws() |>
+    mutate(.ratio = exp(.value)) |>
+    summarise(
+        median_hdci(.ratio),
+        Pl = mean(.ratio < 1),
+        Pg = mean(.ratio > 1)
+        )
+```
+
+```{r , mhidden=TRUE}
+#| label: tukey 1
+day.model2 |>
+  emmeans(~TREAT, type = 'response') |>
+  regrid() |> 
+  pairs()
+
+day.model2 |>
+  emmeans(~TREAT) |>
+  regrid() |> 
+  pairs() |>
+  gather_emmeans_draws() |>
+  summarise(
+    median_hdci(.value),
+    Pl = mean(.value < 0),
+    Pg = mean(.value > 0)
+  )
+```
+
+## Planned contrasts
+
+Define your own
+
+Compare:
+
+a) ALG1 vs ALG2
+b) NB vs S
+c) average of ALG1+ALG2 vs NB+S
+
+
+| Levels | Alg1 vs Alg2 | NB vs S | Alg vs Bare |
+| ------ | ------------ | ------- | ----------- |
+| Alg1   | 1            | 0       | 0.5         |
+| Alg2   | -1           | 0       | 0.5         |
+| NB     | 0            | 1       | -0.5        |
+| S      | 0            | -1      | -0.5        |
+
+```{r , mhidden=TRUE}
+#| label: planned contrasts
+
+##Planned contrasts
+cmat<-cbind('Alg2_Alg1' = c(-1,1,0,0),
+            'NB_S' = c(0,0,1,-1),
+            'Alg_Bare' = c(0.5,0.5,-0.5,-0.5),
+            'Alg_NB' = c(0.5,0.5,-1,0))
+# On the link scale
+day.model2 |> emmeans(~TREAT, type = 'link') |>
+    contrast(method = list(TREAT = cmat))
+# On the response scale
+day.model2 |>
+    emmeans(~TREAT, type = 'response') |>
+    contrast(method = list(TREAT = cmat))
+
+day.em <- day.model2 |>
+    emmeans(~TREAT, type = 'link') |>
+    contrast(method = list(TREAT = cmat)) |>
+    gather_emmeans_draws() |>
+    mutate(Fit = exp(.value)) 
+
+day.em |>
+  summarise(median_hdci(Fit),
+    Pl = mean(Fit < 1),
+    Pg = mean(Fit > 1)
+    )
+
+```
+
+:::
+
+<!-- END_PRIVATE-->
+
+# Summary figures
+
+<!-- START_PRIVATE-->
+```{r , mhidden=TRUE}
+#| label: summary figures
+#| fig.width: 6
+#| fig.height: 3
+g1 <-
+  day.model2 |>
+  emmeans(~TREAT, type = 'response') |>
+  as.data.frame() |>
+  ggplot(aes(y = rate, x = TREAT)) +
+  geom_pointrange(aes(ymin = lower.HPD, ymax = upper.HPD)) +
+  theme_classic() +
+  scale_x_discrete("Substrate type") +
+  scale_y_continuous("Newly recruited barnacles")
+
+g2 <- 
+  day.model2 |>
+  emmeans(~TREAT, type = 'response') |>
+  pairs() |>
+  as.data.frame() |> 
+  ggplot(aes(x = ratio, y = contrast)) +
+  geom_vline(xintercept =  1, linetype = "dashed") +
+  geom_pointrange(aes(xmin = lower.HPD, xmax = upper.HPD)) +
+  theme_classic() +
+  scale_y_discrete("") +
+  scale_x_continuous("Effect size", trans =  scales::log2_trans())
+
+g1 + g2
+
+(g1 + annotate_npc(" a)", x = 0, y = 1, hjust = 0, vjust = 1)) +
+  (g2 + annotate_npc(" b)", x = 0, y = 1, hjust = 0, vjust = 1))
+```
+
+<!-- END_PRIVATE-->

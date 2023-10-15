@@ -1,0 +1,973 @@
+---
+title: "Bayesian modelling part3"
+author: "Murray Logan"
+date: today
+date-format: "DD/MM/YYYY"
+format: 
+  html:
+    ## Format
+    theme: spacelab
+    css: ../resources/ws_style.css
+    html-math-method: mathjax
+    ## Table of contents
+    toc: true
+    toc-float: true
+    ## Numbering
+    number-sections: true
+    number-depth: 3
+    ## Layout
+    fig-caption-location: "bottom"
+    fig-align: "center"
+    fig-width: 4
+    fig-height: 4
+    fig-dpi: 72
+    tbl-cap-location: top
+    ## Code
+    code-fold: false
+    code-tools: true
+    code-summary: "Show the code"
+    code-line-numbers: true
+    code-block-border-left: "#ccc"
+    highlight-style: zenburn
+    ## Execution
+    execute:
+      echo: true
+      cache: false
+    ## Rendering
+    embed-resources: true
+crossref:
+  fig-title: '**Figure**'
+  fig-labels: arabic
+  tbl-title: '**Table**'
+  tbl-labels: arabic
+engine: knitr
+output_dir: "docs"
+documentclass: article
+fontsize: 12pt
+mainfont: Arial
+mathfont: LiberationMono
+monofont: DejaVu Sans Mono
+classoption: a4paper
+bibliography: ../resources/references.bib
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+knitr::opts_chunk$set(cache.lazy = FALSE,
+                      tidy = "styler")
+options(tinytex.engine = "xelatex")
+```
+
+# Preparations
+Load the necessary libraries
+
+```{r}
+#| label: libraries
+#| output: false
+#| eval: true
+#| warning: false
+#| message: false
+#| cache: false
+
+library(tidyverse)
+library(easystats)
+library(knitr)
+library(sf)
+library(rnaturalearth)
+library(brms)
+library(rstan)
+library(tidybayes)
+library(patchwork)
+library(DHARMa)
+library(HDInterval)
+library(emmeans)
+source('helperFunctions.R')
+```
+
+    
+# Read in the data
+
+Now we will move to the raw `CairnsReefs_subset.csv` data.
+There are many functions in R that can read in a CSV file. We will use
+a the `read_csv()` function as it is part of the tidyverse ecosystem.
+
+```{r}
+#| label: readData
+dat <- read_csv("../data/CairnsReefs_subset.csv", trim_ws = TRUE)
+```
+
+<!-- START_PRIVATE--> After reading in a dataset, it is always a good
+idea to quickly explore a few summaries in order to ascertain whether
+the imported data are correctly transcribed. In particular, we should
+pay attention to whether there are any unexpected missing values and
+ensure that each variable (column) has the expected class (e.g. that
+variables we expected to be considered numbers are indeed listed as
+either `<dbl>` or `<int>` and not `<char>`). <!-- END_PRIVATE-->
+
+::: {.panel-tabset}
+
+## glimpse
+```{r}
+#| label: examinData
+dat |> glimpse() 
+```
+
+## head
+```{r}
+#| label: examinData1
+## Explore the first 6 rows of the data
+dat |> head() 
+```
+
+## str
+```{r}
+#| label: examinData2
+dat |> str() 
+```
+
+## Easystats (datawizard)
+```{r}
+#| label: examinData3
+dat |> datawizard::data_codebook() |> knitr::kable() 
+```
+:::
+
+
+# Data preparation
+
+Before we can model these data, they need to be processed into a
+format compatible with statistical modelling. The necessary wrangling
+steps:
+
+1. exclude extraneous (unneeded) fields
+2. exclude poor images
+3. lengthen the data with respect to classification type
+4. join to a labelset lookup
+5. tally up the points per date/image/GROUP/type
+6. recode transect id
+7. fill in the gaps and add the zeros
+8. sum to transect level
+9. generate a Year field from the sample date
+
+::: {.panel-tabset}
+
+## Exclude fields
+
+Although it is often harmless enough to retain the other fields, it
+does make reviewing the data more combersum, so at an early stage
+within this exercise, we will probably restrict the data to just the
+above fields.
+
+```{r}
+#| label: selecting 
+dat <- dat |>
+  dplyr::select(site_id,
+    site_name,
+    site_latitude,
+    site_longitude,
+    survey_start_date,
+    survey_depth,
+    survey_transect_number,
+    image_id,
+    image_quality,
+    point_id,
+    point_num,
+    point_machine_classification,
+    point_human_classification
+    )
+dat |> as.data.frame() |> head()
+```
+
+
+## Excluding poor images
+
+```{r}
+#| label: filter
+dat <-
+  dat |>
+  dplyr::filter(is.na(image_quality) | image_quality != 0)  
+dat |> as.data.frame() |> head()
+dat |> dim()
+```
+
+
+## Lengthen the data
+
+```{r}
+#| label: pivot
+dat <-
+  dat |>
+  pivot_longer(cols = matches("point_.*_classification"),
+    names_to = "type",
+    values_to = "classification"
+    ) 
+dat |> as.data.frame() |> head()
+```
+
+## Joining to the group code lookup data
+Our primary interest in these data will be in exploring patterns in
+broad taxanomic groups such as *Hard coral* and *algae*. Since the
+machine learning tools behind ReefCloud are tuned to classify to finer
+taxonomic resolutions, next task will be to use a lookup table so as
+to assign the higher order group codes (HC and A) to the data.
+
+```{r}
+#| label: readLabelset
+labelset <- read_csv("../data/labelset_ltmp.csv", trim_ws = TRUE) 
+```
+
+:::: {.panel-tabset}
+
+### glimpse
+```{r}
+#| label: examineLabelset
+labelset |> glimpse() 
+```
+
+### head
+```{r}
+#| label: examineLabelset1
+## Explore the first 6 rows of the labelseta
+labelset |> head() 
+```
+
+### str
+```{r}
+#| label: examineLabelset2
+labelset |> str() 
+```
+
+### Easystats (datawizard)
+```{r}
+#| label: examineLabelset3
+labelset |> datawizard::data_codebook() |> knitr::kable() 
+```
+::::
+
+```{r}
+#| label: join
+dat <-
+  dat |>
+  left_join(labelset |>
+              dplyr::select(CODE, GROUP = `FUNCTIONAL GROUP`),
+              by = c("classification" = "CODE")
+    )
+dat |> as.data.frame() |> head() 
+```
+
+## Tally up points
+
+Count the number of points of each type as well as sum up the total
+number of points per image.
+
+```{r}
+#| label: count
+dat <- 
+  dat |> 
+  group_by(across(c(starts_with("site"),
+    starts_with("survey"),
+    type,
+    image_id,
+    GROUP))
+  ) |>
+  summarise(COUNT = n(), .groups = "keep") |> 
+  ungroup(GROUP) |>
+  mutate(TOTAL = sum(COUNT)) |>
+  ungroup() 
+dat |> as.data.frame() |> head() 
+```
+
+## Recode transects
+
+```{r}
+#| label: recode_transects
+dat <- 
+  dat |>
+  mutate(transect_id = paste0(site_id, survey_depth, survey_transect_number)) 
+dat |> as.data.frame() |> head() 
+```
+
+## Fill in any gaps
+
+Since the data represent the classification of points in images, they
+only include what was present, not what was also absent. For example,
+if all five points are Algae, then this also means that all other
+functional groups are absent - yet this information is lacking in the
+data. For modelling purposes it is vital that we fill in all the zero
+values.
+
+To do so, we must create a data set that contains every GROUP in every
+IMAGE.
+
+
+```{r}
+GROUPS <- dat |> pull(GROUP) |> unique()
+data.filler <- dat %>%
+  dplyr::select(
+    starts_with("site"),
+    survey_start_date,
+    #Year,
+    survey_depth,
+    transect_id,
+    image_id,
+    type,
+    ## GROUP,
+    TOTAL) |> 
+  distinct() |> 
+ tidyr::crossing(GROUP = GROUPS) 
+
+dat <-
+  dat |> 
+  full_join(data.filler) |>
+  group_by(
+    across(c(starts_with("site"),
+      survey_start_date,
+      #Year,
+      survey_depth,
+      transect_id,
+      image_id,
+      type,
+      GROUP
+    ))) |> 
+  mutate(COUNT = ifelse(is.na(COUNT), 0, COUNT),
+    TOTAL = max(TOTAL, na.rm = TRUE)
+  )
+dat |> as.data.frame() |> head() 
+```
+
+## Sum to transect level
+
+
+```{r}
+## Now sum up to transect level
+dat <- 
+  dat |>
+  ungroup(image_id) |>
+  summarise(COUNT = sum(COUNT),
+    TOTAL = sum(TOTAL)
+  ) |> 
+  ungroup() |> 
+  droplevels()
+dat |> as.data.frame() |> head() 
+```
+
+## Generate a year field
+
+```{r}
+#| label: mutateYear
+dat <-
+  dat |>
+  mutate(Year = lubridate::year(survey_start_date),
+    TropYear = lubridate::year(survey_start_date + months(3))
+  ) 
+dat |> as.data.frame() |> head() 
+```
+
+## Generate Reef_id
+
+```{r}
+#| label: mutataReef_id
+dat <-
+  dat |>
+  mutate(Reef_id = str_replace(site_name, "(.*) Site.*", "\\1"))
+
+dat |> as.data.frame() |> head() 
+```
+
+## Declare all character vectors as categorical
+
+We will also create a categorical version of year.
+
+```{r}
+#| label: declare factors
+dat <-
+  dat |>
+  mutate(across(where(is.character), factor)) |> 
+  mutate(across(c(Year, TropYear),
+    .fns = list(f = factor),
+    .names = "{.fn}{.col}"
+    ))
+
+dat |> as.data.frame() |> head() 
+```
+
+:::
+
+## Exploratory data analysis
+
+::: {.panel-tabset}
+
+### Time series plot
+
+```{r}
+#| label: EDA1
+#| fig.width: 8
+#| fig.height: 4
+dat |>
+  filter(type == "point_machine_classification", GROUP == "HC") |> 
+  ggplot(aes(y =  100*COUNT/TOTAL, x = survey_start_date, colour = factor(survey_depth))) +
+  geom_point() +
+  geom_line(aes(group = transect_id)) + 
+  scale_y_continuous("Hard coral cover (%)") +
+  scale_colour_discrete("Survey depth (m)") +
+  scale_x_datetime("Year", date_breaks = "1 years", date_labels = "%Y") + 
+  facet_wrap(~site_name) +
+  theme_classic()
+```
+
+### Boxplots
+
+```{r}
+#| label: EDA2
+#| fig.width: 6
+#| fig.height: 4
+dat |>
+  filter(type == "point_machine_classification", GROUP == "HC") |> 
+  ggplot(aes(y =  100*COUNT/TOTAL, x = fYear, colour = factor(survey_depth))) +
+  geom_boxplot() +
+  facet_wrap(~site_name) 
+```
+
+**Conclusions -** variances are clearly not equal between the groups
+:::
+
+Benthic monitoring programs typically adopt a hierarchical sampling
+design in which (usually) fixed sampling units (such as quadrats or
+transects) are nested within in Sites which are in turn nested within
+progressively larger spatial units (e.g. Reefs within Regions). In
+such designs, monitors collect data from those same units over
+multiple years.  That is, the units are repeatedly measured.
+
+Such a design is an attempt to control some of the numerous sources of
+uncertainty that would otherwise make it very difficult to draw out a
+signal (temporal pattern) amongst the noise. If instead, researchers
+sampled different locations each year, it is much harder to uncouple
+how much of any changes are due to genuine temporal shifts and how
+much is due to just a shift in location.
+
+Whist this design does provide substantial statistical power
+advantages, it does introduce additional complexities to do with the
+independence of observations. Repeated observations from the same
+sampling units (transects etc) are not independent. Similarly,
+observations of sampling units that are close in space (or time) are
+likely to be highly correlated. This violates a important assumption
+that underlies most statistical analyses.
+
+Complex hierarchical statistical designs exist to accommodate these
+dependency issues. Although such analyses are very powerful, they are
+not a good starting point when learning how to fit models. This series
+of workshops is intended to progressively increase the complexity of
+the statistical designs and analyses.
+
+The current dataset represents only a tiny fraction of a much larger
+dataset that includes multiple sites, reefs and years. As such, it has
+been prepared to fill in for a very simple design/analyses.
+
+::: {.callout-important}
+Unfortunately, these data are still not appropriate for a very simple
+analyses for the following two reasons:
+
+- as we can see in the time series figure above, the earlier samples
+  were collected at a depth of 9m whereas the later samples were
+  collected at 7m
+- the samples each year are not independent as they were collected
+  from the same transects - that is the sampling units have been
+  repeatedly sampled and thus are not independent.
+
+I fully acknowledge this issue and therefore acknowledge that the
+analysis I will present is completely invalid.
+:::
+
+
+```{r, mhiden=TRUE}
+#| label: hard coral
+dat_hc <- dat |>
+  filter(GROUP == "HC") |>
+  droplevels()
+```
+
+
+
+# Fit models
+
+::: {.panel-tabset}
+
+## Binomial model
+
+$$
+\begin{align}
+y_{i} &\sim{} Bin(\pi_{i}, n_{i})\\
+log\left(\frac{\pi_i}{1-\pi_i}\right) &= \beta_0 + \beta_{i}\mathbf{X}\\
+\beta_0 \sim{} N(0, 1)\\
+\beta_{1-3} \sim{} N(0, 1)\\
+\end{align}
+$$
+
+:::: {.panel-tabset}
+
+### Define priors
+
+```{r, mhidden=TRUE}
+#| label: define priors
+dat_hc |>
+  mutate(COVER = COUNT/TOTAL) |> 
+  group_by(fYear) |>
+  summarise(
+    qlogis(mean(COVER)),
+    qlogis(sd(COVER)))
+
+priors <- prior(normal(0, 1), class = "Intercept") +
+  prior(normal(0, 3), class =  "b") +
+  prior(student_t(3, 0, 3), class = "sd")
+```
+
+### Fit prior only model
+
+```{r, mhidden=TRUE}
+#| label: fit prior only
+#| cache: true
+
+form <- bf(COUNT | trials(TOTAL) ~ fYear + (1|site_name) + (1|transect_id),
+  family =  binomial(link =  "logit"))
+
+model1 <- brm(form,
+  data = dat_hc,
+  prior = priors,
+  sample_prior = "only",
+  iter =  5000,
+  warmup =  1000,
+  chains =  3,
+  cores =  3,
+  thin =  5,
+  refresh = 0,
+  backend = "cmdstanr"
+  )
+```
+
+
+```{r, mhidden=TRUE}
+#| label: partial
+
+model1 |>
+  conditional_effects() |> 
+  plot() |>
+  _[[1]] +
+  geom_point(data = dat_hc, aes(y = COUNT/TOTAL, x = fYear), inherit.aes = FALSE)
+```
+
+### Fit full model
+
+```{r, mhidden=TRUE}
+#| label: fit with prior
+#| cache: true
+model1 <- update(model1, sample_prior = "yes") 
+```
+
+```{r, mhidden=TRUE}
+#| label: partial 1
+
+model1 |>
+  conditional_effects() |> 
+  plot() |>
+  _[[1]] +
+  geom_point(data = dat_hc, aes(y = COUNT/TOTAL, x = fYear), inherit.aes = FALSE)
+```
+
+```{r, mhidden=TRUE}
+#| label: prior vs posterior
+#| fig.width: 8
+#| fig.height: 4
+
+model1 |> SUYR_prior_and_posterior()
+```
+
+
+### MCMC sampling diagnostics
+
+```{r, mhidden=TRUE}
+#| label: mcmc diagnostics
+
+model1$fit |> stan_trace()
+model1$fit |> stan_ac()
+model1$fit |> stan_rhat()
+model1$fit |> stan_ess()
+```
+
+### Posterior probability checks
+
+```{r, mhidden=TRUE}
+#| label: pp checks
+
+model1 |> pp_check(type = 'dens_overlay', ndraws =  100)
+```
+
+### Model validation
+
+```{r, mhidden=TRUE}
+#| label: dharma
+#| fig.width: 8
+#| fig.height: 8
+
+resids <- model1 |> make_brms_dharma_res(integerResponse = FALSE)
+wrap_elements(~testUniformity(resids)) +
+               wrap_elements(~plotResiduals(resids, form = factor(rep(1, nrow(dat_hc))))) +
+               wrap_elements(~plotResiduals(resids)) +
+               wrap_elements(~testDispersion(resids))
+```
+
+
+::::
+
+## Beta-Binomial model
+
+$$
+\begin{align}
+y_{i} &\sim{} Beta-Bin(\pi_{i}, n_{i})\\
+log\left(\frac{\pi_i}{1-\pi_i}\right) &= \beta_0 + \beta_{1i}  + \beta_{2i} + \beta_{3i}\\
+\beta_0 \sim{} N(0, 1)\\
+\beta_{1-3} \sim{} N(0, 1)\\
+\end{align}
+$$
+
+:::: {.panel-tabset}
+
+### Define priors
+
+```{r, mhidden=TRUE}
+#| label: define priors beta-binomial
+dat_hc |>
+  mutate(COVER = COUNT/TOTAL) |> 
+  group_by(fYear) |>
+  summarise(
+    qlogis(mean(COVER)),
+    qlogis(sd(COVER)))
+
+priors <- prior(normal(0, 1), class = "Intercept") +
+  prior(normal(0, 3), class =  "b") +
+  prior(student_t(3,0,3), class = "sd") +
+  prior(gamma(0.01, 0.01), class = "phi")
+```
+
+### Fit prior only model
+
+```{r, mhidden=TRUE}
+#| label: fit prior only beta-binomial
+#| cache: true
+ 
+form <- bf(COUNT | trials(TOTAL) ~ fYear + (1|site_name) + (1|transect_id),
+  family =  beta_binomial(link =  "logit"))
+
+model2 <- brm(form,
+  data = dat_hc,
+  prior = priors,
+  sample_prior = "only",
+  iter =  5000,
+  warmup =  1000,
+  chains =  3,
+  cores =  3,
+  thin =  5,
+  refresh = 0,
+  control = list(adapt_delta = 0.99, max_treedepth =  20),
+  backend = "cmdstanr"
+  )
+```
+
+
+```{r, mhidden=TRUE}
+#| label: partial beta-binomial
+
+model2 |>
+  conditional_effects() |> 
+  plot() |>
+  _[[1]] +
+  geom_point(data = dat_hc, aes(y = COUNT/TOTAL, x = fYear), inherit.aes = FALSE)
+```
+
+### Fit full model
+
+```{r, mhidden=TRUE}
+#| label: fit with prior beta-binomial
+#| cache: true
+
+model2 <- update(model2, sample_prior = "yes") 
+```
+
+```{r, mhidden=TRUE}
+#| label: partial 1 beta-binomial
+
+model2 |>
+  conditional_effects() |> 
+  plot() |>
+  _[[1]] +
+  geom_point(data = dat_hc, aes(y = COUNT/TOTAL, x = fYear), inherit.aes = FALSE)
+```
+
+```{r, mhidden=TRUE}
+#| label: prior vs posterior beta-binomial
+#| fig.width: 8
+#| fig.height: 4
+
+model2 |> SUYR_prior_and_posterior()
+```
+
+
+### MCMC sampling diagnostics
+
+```{r, mhidden=TRUE}
+#| label: mcmc diagnostics beta-binomial
+
+model2$fit |> stan_trace()
+model2$fit |> stan_ac()
+model2$fit |> stan_rhat()
+model2$fit |> stan_ess()
+```
+
+### Posterior probability checks
+
+```{r, mhidden=TRUE}
+#| label: pp checks beta-binomial
+
+model2 |> pp_check(type = 'dens_overlay', ndraws =  100)
+```
+
+### Model validation
+
+```{r, mhidden=TRUE}
+#| label: dharma beta-binomial
+#| fig.width: 8
+#| fig.height: 8
+
+resids <- model2 |> make_brms_dharma_res(integerResponse = FALSE)
+wrap_elements(~testUniformity(resids)) +
+               wrap_elements(~plotResiduals(resids, form = factor(rep(1, nrow(dat_hc))))) +
+               wrap_elements(~plotResiduals(resids)) +
+               wrap_elements(~testDispersion(resids))
+```
+::::
+
+:::
+
+# Model posterior summaries
+
+```{r, mhidden=TRUE}
+#| label: model summaries
+
+model1 |>
+  as_draws_df() |>
+  summarise_draws(median,
+    hdi,
+    rhat,
+    length,
+    ess_bulk,
+    ess_tail
+    )
+```
+
+```{r, mhidden=TRUE}
+#| label: model summaries 1
+
+model1 |>
+  as_draws_df() |>
+  dplyr::select(starts_with("b_")) |> 
+  mutate(across(everything(), exp)) |> 
+  summarise_draws(median,
+    hdi,
+    rhat,
+    length,
+    Pl = ~ mean(. < 1),
+    Pg = ~ mean(. > 1)
+  ) |>
+  knitr::kable()
+
+```
+
+```{r, mhidden=TRUE}
+#| label: model summaries 2
+
+model1 |>
+  as_draws_df() |>
+  dplyr::select(starts_with("b_")) |> 
+  mutate(across(everything(), exp)) |> 
+  dplyr::select(starts_with("b_f")) |> 
+  pivot_longer(cols = everything()) |> 
+  ggplot(aes(x = value, y = name)) +
+  stat_halfeye(aes(fill = after_stat(level)), .width = c(0.66, 0.95, 1)) +
+  geom_vline(xintercept = 1, linetype = "dashed") +
+  scale_fill_brewer() +
+  theme_classic()
+```
+
+# Further explorations
+
+::: {.panels-tabset}
+
+## Pairwise constrasts
+
+```{r, mhidden=TRUE}
+#| label: model further
+#| fig.width: 6
+#| fig.height: 3
+
+model1 |>
+  emmeans(~fYear) |>
+  pairs() |>
+  gather_emmeans_draws() |>
+  mutate(value = exp(.value)) |>
+  summarise(median_hdci(value),
+    Pl = mean(value < 1),
+    Pg = mean(value > 1)
+    )
+    
+model1 |>
+  emmeans(~fYear) |>
+  pairs() |>
+  gather_emmeans_draws() |>
+  mutate(value = exp(.value)) |>
+  mutate(contrast = str_replace_all(contrast, "fYear", ""),
+    contrast = str_replace(contrast, "-", ":")) |> 
+  ggplot(aes(x = value, y = contrast)) +
+  stat_halfeye(aes(fill = after_stat(level)), .width = c(0.66, 0.95, 1)) +
+  scale_fill_brewer() +
+  geom_vline(xintercept = 1, linetype = "dashed") +
+  scale_x_continuous("Effect size", trans = scales::log2_trans()) +
+  scale_y_discrete("") +
+  theme_classic()
+```
+
+If we want to express this in percentage units
+
+
+```{r, mhidden=TRUE}
+#| label: model further 2
+#| fig.width: 6
+#| fig.height: 3
+
+model1 |>
+  emmeans(~fYear) |>
+  regrid() |> 
+  pairs() |> 
+  gather_emmeans_draws() |>
+  summarise(median_hdci(.value),
+    Pl = mean(.value < 0),
+    Pg = mean(.value > 0)
+    )
+    
+model1 |>
+  emmeans(~fYear) |>
+  regrid() |> 
+  pairs() |> 
+  gather_emmeans_draws() |>
+  mutate(contrast = str_replace_all(contrast, "fYear", "")) |> 
+  ggplot(aes(x = .value, y = contrast)) +
+  stat_halfeye(aes(fill = after_stat(level)), .width = c(0.66, 0.95, 1)) +
+  scale_fill_brewer() +
+  geom_vline(xintercept = 0, linetype = "dashed") +
+  scale_x_continuous("Effect size") +
+  ## scale_y_discrete("", labels = function(x) str_replace_all(x, "fYear", "")) +
+  scale_y_discrete("") +
+  theme_classic()
+```
+
+## Specific contrasts
+
+Lets compare 2017 to the average of 2018, 2020 and 2021
+```{r, mhidden=TRUE}
+#| label: model further 3
+#| fig.width: 6
+#| fig.height: 3
+
+
+cmat <- cbind(`2015 vs 2017` = c(-1, 0, 1, 0, 0, 0),
+  `2017 vs 2020/21` =  c(0, 0, -1, 0, 1/2, 1/2))
+
+model1 |>
+  emmeans(~fYear) |>
+  contrast(method = list(fYear = cmat)) |>
+  gather_emmeans_draws() |>
+  mutate(value = exp(.value)) |>
+  summarise(median_hdci(value),
+    Pl = mean(value < 1),
+    Pg = mean(value > 1)
+    )
+    
+```
+
+```{r, mhidden=TRUE}
+#| label: model further 4
+#| fig.width: 6
+#| fig.height: 3
+
+model1 |>
+  emmeans(~fYear) |>
+  regrid() |> 
+  contrast(method = list(fYear = cmat)) |>
+  gather_emmeans_draws() |>
+  summarise(median_hdci(.value),
+    Pl = mean(.value < 0),
+    Pg = mean(.value > 0)
+    )
+```
+
+## R2
+
+
+```{r, mhidden=TRUE}
+#| label: model further 1
+
+model1 |> bayes_R2(summary = FALSE, re_form = NA) |>
+  median_hdci()
+model1 |> bayes_R2(summary = FALSE, re_form = ~ (1|site_name)) |>
+  median_hdci()
+model1 |> bayes_R2(summary = FALSE, re_form = ~ (1|site_name) + (1|transect_id)) |>
+  median_hdci()
+```
+
+:::
+# Summary figures
+
+```{r, mhidden=TRUE}
+#| label: summary figure
+#| fig.width: 6
+#| fig.height: 3
+
+g1 <-
+  model1 |>
+  emmeans(~fYear) |>
+  gather_emmeans_draws() |>
+  mutate(fit = plogis(.value)) |>
+  summarise(median_hdci(fit, .width = c(0.66, 0.95))) |> 
+  ggplot(aes(y = y, x = fYear)) +
+  geom_ribbon(aes(ymin = ymin, ymax = ymax, x = as.numeric(fYear),
+    group = .width, alpha = factor(.width)), fill = "skyblue", show.legend = FALSE) +
+  geom_pointrange(aes(ymin = ymin, ymax = ymax,
+    linewidth = factor(.width)), show.legend = FALSE) +
+  scale_y_continuous("Coral cover (%)", labels = scales::label_number(scale =  100)) +
+  scale_x_discrete("") +
+  scale_alpha_manual(values = c(0.5, 0.2)) +
+  scale_linewidth_manual(values = c(1, 0.5)) +
+  theme_classic()
+
+
+g2 <- 
+  model1 |>
+  emmeans(~fYear) |>
+  pairs() |>
+  gather_emmeans_draws() |>
+  mutate(fit = exp(.value)) |>
+  summarise(median_hdci(fit, .width = c(0.66, 0.95))) |>
+  mutate(contrast = str_replace_all(contrast, "fYear", ""),
+    contrast = str_replace(contrast, "-", ":")) |> 
+  ggplot(aes(x = y, y = contrast)) +
+  geom_pointrange(aes(xmin = ymin, xmax = ymax,
+    linewidth = factor(.width)), show.legend = FALSE) +
+  geom_vline(xintercept = 1, linetype = "dashed") +
+  scale_y_discrete("") +
+  scale_x_continuous("Effect size", trans = scales::log2_trans()) +
+  scale_linewidth_manual(values = c(1, 0.5)) +
+  theme_classic()
+
+(g1 + annotate_npc(" a)", x = 0, y = 1, hjust = 0, vjust = 1)) +
+(g2 + annotate_npc(" b)", x = 0, y = 1, hjust = 0, vjust = 1))
+```
