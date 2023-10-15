@@ -284,7 +284,7 @@ dat |> as.data.frame() |> head()
 #| label: recode_transects
 dat <- 
   dat |>
-  mutate(transect_id = paste0(site_id, survey_depth, survey_transect_number)) 
+  mutate(transect_id = paste0(site_id, survey_transect_number)) 
 dat |> as.data.frame() |> head() 
 ```
 
@@ -406,7 +406,7 @@ dat |> as.data.frame() |> head()
 #| fig.height: 4
 dat |>
   filter(type == "point_machine_classification", GROUP == "HC") |> 
-  ggplot(aes(y =  100*COUNT/TOTAL, x = survey_start_date, colour = factor(survey_depth))) +
+  ggplot(aes(y =  100*COUNT/TOTAL, x = survey_start_date)) +
   geom_point() +
   geom_line(aes(group = transect_id)) + 
   scale_y_continuous("Hard coral cover (%)") +
@@ -423,7 +423,7 @@ dat |>
 #| fig.height: 4
 dat |>
   filter(type == "point_machine_classification", GROUP == "HC") |> 
-  ggplot(aes(y =  100*COUNT/TOTAL, x = fYear, colour = factor(survey_depth))) +
+  ggplot(aes(y =  100*COUNT/TOTAL, x = fYear)) +
   geom_boxplot()
 ```
 
@@ -539,7 +539,7 @@ model1 <- brm(form,
   thin =  5,
  refresh = 0,
   backend = "cmdstanr"
-  )
+  ) 
 ```
 
 
@@ -558,7 +558,7 @@ model1 |>
 ```{r, mhidden=TRUE}
 #| label: fit with prior
 #| cache: true
-model1 <- update(model1, sample_prior = "yes")
+model1 <- update(model1, sample_prior = "yes") 
 ```
 
 ```{r, mhidden=TRUE}
