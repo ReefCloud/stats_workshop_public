@@ -124,7 +124,7 @@ SUYR_prior_and_posterior <- function(mod) {
     ## rhs <-
     ##     rhs[-grep("\\|",rhs)]
     wch.rnd <- rhs[grep("\\|", rhs)]
-    if (length(wch.rnd)>0) f <- update(f, paste("~ . -",wch.rnd))
+    if (length(wch.rnd)>0) f <- update(f, paste("~ . -", paste(wch.rnd, collapse = "-")))
     no.offset <- function(x, preserve = NULL) {
       k <- 0
       proc <- function(x) {
@@ -172,7 +172,7 @@ SUYR_prior_and_posterior <- function(mod) {
         str_remove("^prior_")
     pars <- c(pars, aux)
     ## random effects
-    get_variables(mod)
+    ##get_variables(mod)
     if (length(wch.rnd)>0) {
         ## ran.pars <- brms:::change_re(mod$ranef, pars = variables(mod))[[1]]$fnames
         ran.pars <- get_variables(mod) |>
@@ -573,4 +573,157 @@ recover_data.brmsfit <- function(object, data, ...) {
     trms <- attr(model.frame(bt$dpars$mu$fe, data = object$data), "terms")
     # we don't have a call component so I'll just put in NULL
     emmeans:::recover_data.call(NULL, trms, "na.omit", data = object$data, ...)
+}
+
+
+
+Design_diagram <- function(form, data, Filter = NA, Colour = NULL, direction = "vertical") {
+    require(ggraph)
+    require(igraph)
+  if(is.null(Colour)) {
+    Colour <- 'Blank'
+    data <- data %>% mutate(Blank = 1)
+  }
+
+    form <- lme4::lFormula(form, data = data,
+                           control=lme4::lmerControl(check.nobs.vs.nlev = "ignore",
+                                                     check.nobs.vs.nRE = "ignore"))
+  ## add nested variables
+  dat <- as.data.frame(data) #form$fr
+  terms <- form$fr %>% terms()
+  resp <- terms %>% attr("response")
+  fixed_terms <- terms %>% attr("varnames.fixed") %>% `[`(-1)
+  fixed_terms <- ifelse(length(fixed_terms) == 0, "", fixed_terms)
+  
+  random_terms <- terms %>% attr("predvars.random") %>% all.vars() %>% `[`(-1) 
+  factors <- terms %>% attr("factors") 
+  if (fixed_terms == "") {
+      nested_terms <- rev(terms %>% attr("term.labels"))
+  } else {
+      nested_terms <- rev(terms %>% attr("term.labels") %>% str_subset(fixed_terms, negate = TRUE))
+  }
+    levels <- length(nested_terms)
+    if (levels > 1) {
+        for (i in 1:(levels-1)) {
+            dat <- dat %>%
+                bind_cols(
+                    !!sym(nested_terms[i]) := dimnames(form$reTrms$Ztlist[[i]])[[1]][form$reTrms$Ztlist[[i]]@i + 1]
+                )
+        }
+    }
+  edges <- data.frame(
+    from = 'Root',
+    to = unique(dat[,nested_terms[levels]]),
+    Height = levels + 1,
+    Level = random_terms[levels]) %>%
+    mutate(Name = to,
+           Label = Name) %>%
+    unique() #%>%
+    if (levels > 1) {
+        for (i in levels:2) {
+            edges <- edges %>%
+                bind_rows(
+                    dat %>%
+                    ## filter(Nest == first(Nest)) %>% 
+                    {if (length(Filter)>0 & !is.na(Filter)) filter(., !!Filter[[1]])
+                     else .
+                    } %>% 
+                    dplyr::select(from = !!nested_terms[[i]],
+                                  to = !!nested_terms[[i-1]],
+                                  Label = !!random_terms[[i-1]],
+                                  Name = nested_terms[[i-1]],
+                                  Colour = !!sym(Colour)) %>%
+                    mutate(Height = i,
+                           Level = random_terms[i-1]) %>% 
+                    distinct() %>%
+                    droplevels()
+                )
+        }
+    }
+    if (nrow(edges) != nrow(dat)) {
+        edges <- edges %>%
+            bind_rows(
+                dat %>%
+                ## filter(Nest == first(Nest)) %>%
+                {if (length(Filter)>0 & !is.na(Filter)) filter(., !!Filter[[1]])
+                 else .
+                } %>% 
+                mutate(N = 1:n(),
+                       to = paste0('Rep', !!nested_terms[[1]], N),
+                       Label = NA,
+                       Name = to,
+                       Height = 0,
+                       Level = 'Reps',
+                       Colour = !!sym(Colour)
+                       ) %>%
+                dplyr::select(from = !!nested_terms[[1]],
+                              to,
+                              Label,
+                              Name,
+                              Height,
+                              Level,
+                              Colour
+                              )
+            )
+    }
+  
+  vertices <- edges %>%
+    dplyr::select(Name, Height, Level, Label) %>%
+    distinct() %>%
+    rbind(data.frame(Name = 'Root', Height = 6, Level = 'Root', Label = NA)) 
+  heights <- edges %>% dplyr::select(Level, Height) %>% distinct()
+
+  graph <- graph_from_data_frame(edges, vertices = vertices)                                          
+  library(igraph)
+  library(ggraph)
+  g <- ggraph(graph, layout = "dendrogram", height = Height) +
+    ## ggraph(graph, layout = "igraph", algorithm = 'tree', circular = FALSE, height = edges$Height) +
+    ## geom_edge_diagonal() +
+    ## geom_edge_diagonal(aes(alpha = after_stat(index), colour = Colour), show.legend = c(alpha = FALSE, colour = TRUE)) +
+    geom_edge_diagonal(aes(colour = Colour)) +
+    ## geom_edge_fan(aes(alpha = after_stat(index))) +
+    ## geom_edge_elbow(aes(alpha = after_stat(index))) +
+    geom_node_label(aes(label = Label)) +
+    ## geom_node_label(aes(label = Label, size = Height)) +
+    theme_classic() 
+  
+  if (direction == 'vertical') {
+    g <- g +
+    scale_y_continuous('', breaks = heights$Height, labels = heights$Level) +
+    theme(
+      axis.text.y = element_text(size = rel(2)),
+      panel.grid.major.y = element_line(),
+      axis.line = element_blank(),
+      axis.title.x = element_blank(),
+      axis.text.x = element_blank(),
+      axis.ticks.x = element_blank(),
+      ## axis.title.y = element_text(margin = margin(l = 5, unit = 'cm')),
+      legend.position = 'top',
+      ## legend.justification = c(1,1),
+      legend.direction = 'horizontal') 
+    } else {
+      g <- g + scale_y_reverse('', breaks = heights$Height, labels = as.character(heights$Level)) +
+        theme(
+          axis.text.x = element_text(size = rel(2)),
+          panel.grid.major.x = element_line(),
+          axis.line = element_blank(),
+          axis.title.y = element_blank(),
+          axis.text.y = element_blank(),
+          axis.ticks.y = element_blank(),
+          ## axis.title.x = element_text(margin = margin(l = 5, unit = 'cm')),
+          legend.position = 'top',
+          ## legend.justification = c(1,1),
+          legend.direction = 'horizontal') +
+        coord_flip()
+    }
+  
+  g + guides(color = guide_none())
+}
+
+
+
+annotate_npc <- function(label, x, y, ...)
+{
+  ggplot2::annotation_custom(grid::textGrob(
+    x = unit(x, "npc"), y = unit(y, "npc"), label = label, ...))
 }
