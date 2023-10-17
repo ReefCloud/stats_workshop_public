@@ -279,7 +279,7 @@ dat |> as.data.frame() |> head()
 #| label: recode_transects
 dat <- 
   dat |>
-  mutate(transect_id = paste0(site_id, survey_depth, survey_transect_number)) 
+  mutate(transect_id = paste0(site_id, survey_transect_number)) 
 dat |> as.data.frame() |> head() 
 ```
 
@@ -387,6 +387,24 @@ dat <-
 dat |> as.data.frame() |> head() 
 ```
 
+## Incorporate disturbances
+
+```{r}
+#| label: disturbances
+disturb <- read_csv("../data/FitzroyReefs_disturbance.csv", trim_ws = TRUE)
+dat <-
+  dat |>
+  left_join(disturb |>
+              mutate(Year = report_year) |> 
+              dplyr::select(Reef_id = AIMS_reef_name,
+                Disturbance_Type,
+                Year)
+  ) |>
+  mutate(cots = ifelse(is.na(Disturbance_Type) | Disturbance_Type != "cots", 0, 1),
+    cots =  factor(cots))
+dat |> as.data.frame() |> head() 
+```
+
 :::
 
 ## Exploratory data analysis
@@ -399,11 +417,16 @@ dat |> as.data.frame() |> head()
 #| label: EDA1
 #| fig.width: 8
 #| fig.height: 4
+dat.disturb <- dat |>
+  filter(Disturbance_Type == "cots") |> 
+  group_by(site_name, TropYear) |>
+  summarise(Disturb = unique(Disturbance_Type))
 dat |>
   filter(type == "point_machine_classification", GROUP == "HC") |> 
-  ggplot(aes(y =  100*COUNT/TOTAL, x = survey_start_date, colour = factor(survey_depth))) +
+  ggplot(aes(y =  100*COUNT/TOTAL, x = survey_start_date)) +
   geom_point() +
   geom_line(aes(group = transect_id)) + 
+  geom_vline(data =  dat.disturb, aes(xintercept = date_decimal(TropYear)), colour =  "red") +
   scale_y_continuous("Hard coral cover (%)") +
   scale_colour_discrete("Survey depth (m)") +
   scale_x_datetime("Year", date_breaks = "1 years", date_labels = "%Y") + 
@@ -482,6 +505,24 @@ dat_hc <- dat |>
   droplevels()
 ```
 
+If COTS do influence coral cover, then we expect that in years when
+cots occur, we should see a decline in cover. However, if the
+following year, there are no COTs, we do not expect coral cover to
+recover instantly. Hence, we need to model COUNT/TOTAL (cover) against
+COTS and cover in the previous year.
+
+```{r, mhiden=TRUE}
+#| label: hard coral 1
+dat_hc <- dat_hc |>
+  arrange(Reef_id, site_name, transect_id, Year) |> 
+  group_by(Reef_id, site_name, transect_id) |>
+  ## mutate(previous_cover = lag(qlogis(COUNT/TOTAL))) |>
+  mutate(previous_cover = lag(COUNT/TOTAL)) |>
+  ungroup()
+
+dat_hc <- dat_hc |>
+  mutate(fYear = factor(fYear, levels = rev(levels(fYear))))
+```
 
 
 # Fit models
@@ -527,46 +568,11 @@ $$
 
 ::::
 
-## Beta-Binomial model
-
-$$
-\begin{align}
-y_{i} &\sim{} Beta-Bin(\pi_{i}, n_{i})\\
-log\left(\frac{\pi_i}{1-\pi_i}\right) &= \beta_0 + \beta_{1i}  + \beta_{2i} + \beta_{3i}\\
-\beta_0 \sim{} N(0, 1)\\
-\beta_{1-3} \sim{} N(0, 1)\\
-\end{align}
-$$
-
-:::: {.panel-tabset}
-
-### Define priors
-
-
-### Fit prior only model
-
-
-
-
-### Fit full model
-
-
-
-
-
-### MCMC sampling diagnostics
-
-
-### Posterior probability checks
-
-
-### Model validation
-
-::::
-
 :::
 
 # Model posterior summaries
+
+
 
 
 
@@ -576,15 +582,6 @@ $$
 ::: {.panels-tabset}
 
 ## Pairwise constrasts
-
-
-If we want to express this in percentage units
-
-
-
-## Specific contrasts
-
-Lets compare 2017 to the average of 2018, 2020 and 2021
 
 
 ## R2
